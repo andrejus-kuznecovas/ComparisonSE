@@ -2,6 +2,6 @@
 {
     public enum Shop
     {
-        IKI, MAXIMA, RIMI, LIDL, NORFA
+        IKI, MAXIMA, RIMI, LIDL, NORFA, UNKNOWN_SHOP
     };
 }
