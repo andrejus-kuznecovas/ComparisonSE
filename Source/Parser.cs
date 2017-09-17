@@ -20,5 +20,21 @@ namespace CSE
             }
             return Shop.UNKNOWN_SHOP; // if nothing is found, return unknown shop
         }
+
+        public static float GetPrice(string text) {
+            string pricePattern = "(\\d+(\\.|,)\\s?\\d{1,2})\\s?\u20ac?";
+            float result;
+            Match priceMatch = Regex.Match(text, pricePattern);
+            try
+            {
+                string preparedMatch = priceMatch.Groups[1].Value.Replace(" ","");
+                preparedMatch = preparedMatch.Replace(',', '.');
+                result = float.Parse(preparedMatch);
+                return result;
+            }
+            catch(FormatException e) {
+                return -1f;
+            }
+        }
     }
 }
