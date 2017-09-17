@@ -8,7 +8,7 @@ namespace CSE
 {
     class Parser
     {
-        Shop extractShop(string text) {
+        Shop ExtractShop(string text) {
             return Shop.MAXIMA;
         }
     }
