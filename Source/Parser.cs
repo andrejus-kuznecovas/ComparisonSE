@@ -9,7 +9,7 @@ namespace CSE
             foreach (string shopName in Enum.GetNames(typeof(Shop)))  // loop through all the shops (their names)
             {
                 if (shopName != "UNKNOWN_SHOP") {
-                    string shopPattern = "\\b" + shopName.ToLower() + "\\b"; // look for the name of enum as one word
+                    string shopPattern = @"\\b" + shopName.ToLower() + "\\b"; // look for the name of enum as one word
 
                     bool matching = Regex.IsMatch(text, shopPattern, RegexOptions.IgnoreCase);
                     if (matching)
@@ -22,7 +22,7 @@ namespace CSE
         }
 
         public static float GetPrice(string text) {
-            string pricePattern = "(\\d+(\\.|,)\\s?\\d{1,2})\\s?\u20ac?";
+            string pricePattern = @"(\\d+(\\.|,)\\s?\\d{1,2})\\s?\u20ac?";
             float result;
             Match priceMatch = Regex.Match(text, pricePattern);
             try
