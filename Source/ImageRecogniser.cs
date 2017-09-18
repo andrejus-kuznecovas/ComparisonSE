@@ -8,15 +8,16 @@ using Patagames.Ocr.Enums;
 
 namespace CSE.Source
 {
-    class ImgRecogn
+    class ImageRecogniser
     {
-        public void ImageToText()
+		private string imgPath;
+        public string ImageToText()
         {
             using (var api = OcrApi.Create())
             {
                 api.Init(Languages.Lithuanian);
-                string plainText = api.GetTextFromImage(@"C:\Users\Marcius\Desktop\testb.jpg");
-                Console.WriteLine(plainText);
+                string plainText = api.GetTextFromImage(@imgPath);
+                return plainText;
             }
         }
     }

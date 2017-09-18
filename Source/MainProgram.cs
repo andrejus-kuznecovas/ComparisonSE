@@ -12,16 +12,16 @@ namespace CSE
         [STAThread]
         static void Main()
         {
-          /*  if (Environment.OSVersion.Version.Major >= 6)
+            if (Environment.OSVersion.Version.Major >= 6)
             {
                 SetProcessDPIAware();
             } 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            */
-            ImgRecogn obj = new ImgRecogn();
-            obj.ImageToText();
+            
+            ImgageRecogniser imageRecogn = new ImageRecogniser();
+            imageRecogn.ImageToText();
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
