@@ -14,8 +14,8 @@ namespace CSE.Source
         {
             using (var api = OcrApi.Create())
             {
-                api.Init(Languages.English);
-                string plainText = api.GetTextFromImage(@"C:\Users\Marcius\Desktop\test3.jpg");
+                api.Init(Languages.Lithuanian);
+                string plainText = api.GetTextFromImage(@"C:\Users\Marcius\Desktop\testb.jpg");
                 Console.WriteLine(plainText);
             }
         }
