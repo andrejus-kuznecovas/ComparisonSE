@@ -22,7 +22,7 @@ namespace CSE
         }
 
         public static float GetPrice(string text) {
-            string pricePattern = @"(\\d+(\\.|,)\\s?\\d{1,2})\\s?\u20ac?";
+            string pricePattern = @"(\\d+(\\.|,)\\s?\\d{1,2})\\s?(\u20ac|A|N)?";
             float result;
             Match priceMatch = Regex.Match(text, pricePattern);
             try
