@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSE.Source;
+using System;
 using System.Windows.Forms;
 
 namespace CSE
@@ -18,6 +19,9 @@ namespace CSE
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            
+            ImgageRecogniser imageRecogn = new ImageRecogniser();
+            imageRecogn.ImageToText();
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
