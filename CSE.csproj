@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Patagames.Ocr, Version=1.9.2.341, Culture=neutral, PublicKeyToken=c2dc709ce62c6191, processorArchitecture=MSIL">
-      <HintPath>packages\Tesseract.Net.SDK.1.9.2\lib\net45\Patagames.Ocr.dll</HintPath>
+      <HintPath>..\packages\Tesseract.Net.SDK.1.9.2\lib\net45\Patagames.Ocr.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\ImgRecogn.cs" />
+    <Compile Include="Source\ImageRecogniser.cs" />
     <Compile Include="Source\Shop.cs" />
     <Compile Include="Source\Parser.cs" />
     <Compile Include="MainForm.cs">
@@ -111,7 +111,9 @@
     <None Include="tessdata\eng.traineddata">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="tessdata\lit.traineddata" />
+    <None Include="tessdata\lit.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="tessdata\pdf.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

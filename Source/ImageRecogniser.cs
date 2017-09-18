@@ -10,7 +10,6 @@ namespace CSE.Source
 {
     class ImageRecogniser
     {
-		private string imgPath;
         public string ImageToText(string imgPath)
         {
             using (var api = OcrApi.Create())

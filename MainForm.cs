@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSE.Source;
+using System;
 using System.Windows.Forms;
 
 namespace CSE
@@ -28,14 +29,17 @@ namespace CSE
                 this.receiptPreview.ImageLocation = fileDialog.FileName; // display image
                 this.fileInputButton.Text = "Analyse receipt";
                 this.fileInputButton.Click -= ChooseImage; // remove event
-                this.fileInputButton.Click += AnalyseImage; // add new event to analyse text
+                this.fileInputButton.Click += new EventHandler((s, eargs) => AnalyseImage(s, e, fileDialog.FileName)); // add new event to analyse text
 
             }
         }
 
-        private void AnalyseImage(object sender, EventArgs e) {
-            // TODO: some other methods should be called here
-            this.receiptTextLabel.Text = "This is an analysed text";
+        private void AnalyseImage(object sender, EventArgs e, string imagePath) {
+            ImageRecogniser imageRecogniser = new ImageRecogniser();
+            this.receiptTextLabel.Text = "Analysing image...";
+            string imageText = imageRecogniser.ImageToText(imagePath);
+            this.receiptTextLabel.Text = imageText;
         }
+
     }
 }
