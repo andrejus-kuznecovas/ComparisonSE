@@ -1,5 +1,7 @@
 ﻿using CSE.Source;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CSE
@@ -36,9 +38,18 @@ namespace CSE
 
         private void AnalyseImage(object sender, EventArgs e, string imagePath) {
             ImageRecogniser imageRecogniser = new ImageRecogniser();
-            this.receiptTextLabel.Text = "Analysing image...";
             string imageText = imageRecogniser.ImageToText(imagePath);
-            this.receiptTextLabel.Text = imageText;
+            Receipt receipt = new Receipt(imageText);
+            List<string> shoppingList = receipt.GetShoppingList();
+            this.receiptTextLabel.Text = "Items bought:\n";
+            foreach (string item in shoppingList)
+            {
+                this.receiptTextLabel.Text += "* " + item + "\n";
+            }
+
+            this.receiptTextLabel.Text +=
+                "\nTotal: " + receipt.GetTotal().ToString() 
+                + "\nShopping Centre: " + receipt.GetShop();
         }
 
     }
