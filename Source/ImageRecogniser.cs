@@ -9,7 +9,8 @@ namespace CSE.Source
         {
             using (var api = OcrApi.Create())
             {
-                api.Init(Languages.Lithuanian);
+                api.Init(new Languages[] { Languages.Lithuanian, Languages.English });
+                api.PageSegmentationMode = PageSegMode.PSM_SINGLE_BLOCK;
                 string plainText = api.GetTextFromImage(@imgPath);
                 return plainText;
             }

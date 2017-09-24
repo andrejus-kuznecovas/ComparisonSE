@@ -26,10 +26,10 @@ namespace CSE.Source
                 if (priceInLine != -1000f)
                 {
                     total += priceInLine;
-                    //if (priceInLine > 0)
-                    //{
+                    if (priceInLine > 0)
+                    {
                         shoppingList.Add(line);
-                    //}
+                    }
                     
                 }
 
