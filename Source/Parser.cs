@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CSE
@@ -6,35 +10,49 @@ namespace CSE
     public class Parser
     {
         public static Shop GetShopName(string text) {
-            foreach (string shopName in Enum.GetNames(typeof(Shop)))  // loop through all the shops (their names)
-            {
-                if (shopName != "UNKNOWN_SHOP") {
-                    string shopPattern = "\\b" + shopName.ToLower() + "\\b"; // look for the name of enum as one word
+            Dictionary<Shop, string[]> shopUniqueTexts = new Dictionary<Shop, string[]>();
+            string receiptText = Parser.RemoveInternationalLetters(text);
+            shopUniqueTexts.Add(Shop.IKI, new string[]{ "palink", "iki"});
+            shopUniqueTexts.Add(Shop.MAXIMA, new string[] { "maxim(a|[^u]\\w+)"});
+            shopUniqueTexts.Add(Shop.RIMI, new string[] { "rimi" });
+            shopUniqueTexts.Add(Shop.LIDL, new string[] { "lidl\\w*" });
+            shopUniqueTexts.Add(Shop.NORFA, new string[] { "norf\\w+" });
 
-                    bool matching = Regex.IsMatch(text, shopPattern, RegexOptions.IgnoreCase);
+            foreach (KeyValuePair<Shop,string[]> shopInfo in shopUniqueTexts)  // loop through all the shops (their names)
+            {
+                foreach(string shopIdentifier in shopInfo.Value) {
+                    string shopPattern = "\\b" + shopIdentifier.ToLower() + "\\b"; // look for the name of enum as one word
+
+                    bool matching = Regex.IsMatch(receiptText, shopPattern, RegexOptions.IgnoreCase);
                     if (matching)
                     {
-                        return (Shop)Enum.Parse(typeof(Shop), shopName); // return enum parsed from the shop name
+                        return shopInfo.Key; // return Shop
                     }
                 }
             }
             return Shop.UNKNOWN_SHOP; // if nothing is found, return unknown shop
         }
 
-        public static float GetPrice(string text) {
-            string pricePattern = "(-?\\d+(\\.|,)\\s?\\d{1,2})\\s?(\u20ac|A|N)?";
+        public static float ExtractPriceFloat(string text) {
+            string pricePattern = "(-?\\d+(\\.|,)\\s?\\d{1,2})\\s?(A|N)\\b"; // match price-formatted float
             float result;
             Match priceMatch = Regex.Match(text, pricePattern, RegexOptions.IgnoreCase);
             try
             {
                 string preparedMatch = priceMatch.Groups[1].Value.Replace(" ","");
-                preparedMatch = preparedMatch.Replace(',', '.');
+                preparedMatch = preparedMatch.Replace(',', '.'); // replace , to . for parsing
                 result = float.Parse(preparedMatch);
                 return result;
             }
             catch(FormatException e) {
                 return -1000f;
             }
+        }
+
+        // Replace international letter with its latin form (e.g. Š->S)
+        public static string RemoveInternationalLetters(string text) {
+            return String.Join("", text.Normalize(NormalizationForm.FormD)
+                .Where(c => char.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
         }
     }
 }

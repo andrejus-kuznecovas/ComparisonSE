@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Patagames.Ocr;
+﻿using Patagames.Ocr;
 using Patagames.Ocr.Enums;
 
 namespace CSE.Source
@@ -14,7 +9,8 @@ namespace CSE.Source
         {
             using (var api = OcrApi.Create())
             {
-                api.Init(Languages.Lithuanian);
+                api.Init(new Languages[] { Languages.Lithuanian, Languages.English });
+                api.PageSegmentationMode = PageSegMode.PSM_SINGLE_BLOCK;
                 string plainText = api.GetTextFromImage(@imgPath);
                 return plainText;
             }

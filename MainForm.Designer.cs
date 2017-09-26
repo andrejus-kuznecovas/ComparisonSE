@@ -39,9 +39,9 @@ namespace CSE
             // 
             // receiptPreview
             // 
-            this.receiptPreview.Location = new System.Drawing.Point(88, 2);
+            this.receiptPreview.Location = new System.Drawing.Point(109, 2);
             this.receiptPreview.Name = "receiptPreview";
-            this.receiptPreview.Size = new System.Drawing.Size(230, 291);
+            this.receiptPreview.Size = new System.Drawing.Size(183, 291);
             this.receiptPreview.TabIndex = 1;
             this.receiptPreview.TabStop = false;
             // 
@@ -58,11 +58,11 @@ namespace CSE
             // receiptTextLabel
             // 
             this.receiptTextLabel.AutoSize = true;
-            this.receiptTextLabel.Location = new System.Drawing.Point(13, 354);
+            this.receiptTextLabel.Location = new System.Drawing.Point(12, 353);
             this.receiptTextLabel.Name = "receiptTextLabel";
-            this.receiptTextLabel.Size = new System.Drawing.Size(72, 17);
+            this.receiptTextLabel.Size = new System.Drawing.Size(404, 17);
             this.receiptTextLabel.TabIndex = 3;
-            this.receiptTextLabel.Text = "image text";
+            this.receiptTextLabel.Text = "Upload a receipt and click \"Choose receipt\" button to analyse it";
             // 
             // MainForm
             // 
