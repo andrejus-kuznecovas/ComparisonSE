@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Statistics.cs" />
     <Compile Include="Source\Receipt.cs" />
     <Compile Include="Source\ImageRecogniser.cs" />
     <Compile Include="Source\Shop.cs" />
