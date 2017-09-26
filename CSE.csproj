@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\DataSet.cs" />
     <Compile Include="Source\Statistics.cs" />
     <Compile Include="Source\Receipt.cs" />
     <Compile Include="Source\ImageRecogniser.cs" />
@@ -133,6 +134,9 @@
     <Content Include="x86\tesseract.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source\UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
