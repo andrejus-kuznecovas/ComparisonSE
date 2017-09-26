@@ -1,24 +1,30 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace CSE.Source
 {
-    class Receipt
+    [Serializable]
+    class Receipt: ISerializable
     {
         private string initialText;
-        private float total;
-        private Shop shop;
-        private List<string> shoppingList = new List<string>(); // TO BE REPLACED BY SHOP ITEM LIST
+        public float total { get; private set; }
+        public Shop shop { get; private set; }
+        public List<string> shoppingList { get; private set; } // TO BE REPLACED BY SHOP ITEM LIST
 
         public Receipt(string initialText)
         {
             this.initialText = initialText;
+            shoppingList = new List<string>();
             total = 0f;
             Analyse();
         }
 
-        private void Analyse() {
+        private void Analyse()
+        {
             string[] lines = initialText.Split('\n');
+            shop = Parser.GetShopName(initialText);
 
             foreach (string line in lines)
             {
@@ -30,23 +36,14 @@ namespace CSE.Source
                     {
                         shoppingList.Add(line);
                     }
-                    
                 }
-
             }
         }
-
-        public float GetTotal() {
-            return total;
-        }
-
-        public Shop GetShop()
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            return Parser.GetShopName(initialText);        
-        }
-
-        public List<string> GetShoppingList() {
-            return shoppingList;
+            info.AddValue("total", total, typeof(float));
+            info.AddValue("shop", shop, typeof(Shop));
+            info.AddValue("items", shoppingList, typeof(List<string>));
         }
     }
 }
