@@ -26,7 +26,7 @@ namespace CSE
         {
             OpenFileDialog fileDialog = new OpenFileDialog(); // create new file selection window
             fileDialog.Title = "Choose a receipt to process";
-            fileDialog.Filter = "Image Files(*.png;*.jpg;*.tiff)|*.png;*.jpg;*.tiff"; // allowed formats
+            fileDialog.Filter = "Image Files(*.png;*.jpg;*.tif)|*.png;*.jpg;*.tif"; // allowed formats
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
