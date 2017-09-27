@@ -41,7 +41,7 @@ namespace CSE
 
         private void AnalyseImage(object sender, EventArgs e, string imagePath) {
             ImageRecogniser imageRecogniser = new ImageRecogniser();
-           string imageText = imageRecogniser.getText(imagePath);
+            string imageText = imageRecogniser.GetText(imagePath);
             this.receiptTextLabel.Text = imageText;
             Receipt receipt = new Receipt(imageText);
             List<string> shoppingList = receipt.shoppingList;
@@ -69,10 +69,10 @@ namespace CSE
             this.statisticsChart.Series["Data"]["PieLabelStyle"] = "Outside";
             this.statisticsChart.Series["Data"].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series["Data"].IsVisibleInLegend = false;
-            this.statisticsChart.Series["Data"].Points.DataBindXY(
-                data.Select(item => item.Key).ToArray(),
-                data.Select( item => item.Value).ToArray()
-            );
+            //this.statisticsChart.Series["Data"].Points.DataBindXY(
+            //    data.Select(item => item.Key).ToArray(),
+            //    data.Select( item => item.Value).ToArray()
+            //);
             this.statisticsChart.Visible = true;
         }
     }
