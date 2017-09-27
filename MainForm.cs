@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Tesseract.ConsoleDemo;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CSE
 {
@@ -42,18 +44,36 @@ namespace CSE
            string imageText = imageRecogniser.getText(imagePath);
             this.receiptTextLabel.Text = imageText;
             Receipt receipt = new Receipt(imageText);
-          //  List<string> shoppingList = receipt.GetShoppingList();
+            List<string> shoppingList = receipt.shoppingList;
             this.receiptTextLabel.Text = "Items bought:\n";
-            this.receiptTextLabel.Text = imageText;
-            // foreach (string item in shoppingList)
+             foreach (string item in shoppingList)
             {
-            //    this.receiptTextLabel.Text += "* " + item + "\n";
+                this.receiptTextLabel.Text += "* " + item + "\n";
             }
 
-            //this.receiptTextLabel.Text +=
-             //   "\nTotal: " + receipt.GetTotal().ToString() 
-             //   + "\nShopping Centre: " + receipt.GetShop();
+            this.receiptTextLabel.Text +=
+                "\nTotal: " + receipt.total.ToString() 
+                + "\nShopping Centre: " + receipt.shop;
         }
 
+        private void DisplayStatistics(object sender, EventArgs e)
+        {
+            var data = Statistics.GetProductsData();
+            this.statisticsChart.Series.Clear();
+            this.statisticsChart.ChartAreas.Clear();
+            
+
+            this.statisticsChart.ChartAreas.Add(new ChartArea());
+            this.statisticsChart.Series.Add(new Series("Data"));
+           
+            this.statisticsChart.Series["Data"]["PieLabelStyle"] = "Outside";
+            this.statisticsChart.Series["Data"].ChartType = SeriesChartType.Pie;
+            this.statisticsChart.Series["Data"].IsVisibleInLegend = false;
+            this.statisticsChart.Series["Data"].Points.DataBindXY(
+                data.Select(item => item.Key).ToArray(),
+                data.Select( item => item.Value).ToArray()
+            );
+            this.statisticsChart.Visible = true;
+        }
     }
 }
