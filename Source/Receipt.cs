@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace CSE.Source
 {
-    [Serializable]
+    [Serializable()]
     class Receipt: ISerializable
     {
         private string initialText;
