@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CSE
 {
@@ -24,7 +26,7 @@ namespace CSE
         {
             OpenFileDialog fileDialog = new OpenFileDialog(); // create new file selection window
             fileDialog.Title = "Choose a receipt to process";
-            fileDialog.Filter = "Image Files(*.png;*.jpg;*.tiff)|*.png;*.jpg;*.tiff"; // allowed formats
+            fileDialog.Filter = "Image Files(*.png;*.jpg;*.tif)|*.png;*.jpg;*.tif"; // allowed formats
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -40,7 +42,7 @@ namespace CSE
             ImageRecogniser imageRecogniser = new ImageRecogniser();
             string imageText = imageRecogniser.ImageToText(imagePath);
             Receipt receipt = new Receipt(imageText);
-            List<string> shoppingList = receipt.GetShoppingList();
+            List<string> shoppingList = receipt.shoppingList;
             this.receiptTextLabel.Text = "Items bought:\n";
             foreach (string item in shoppingList)
             {
@@ -48,9 +50,28 @@ namespace CSE
             }
 
             this.receiptTextLabel.Text +=
-                "\nTotal: " + receipt.GetTotal().ToString() 
-                + "\nShopping Centre: " + receipt.GetShop();
+                "\nTotal: " + receipt.total.ToString() 
+                + "\nShopping Centre: " + receipt.shop;
         }
 
+        private void DisplayStatistics(object sender, EventArgs e)
+        {
+            var data = Statistics.GetProductsData();
+            this.statisticsChart.Series.Clear();
+            this.statisticsChart.ChartAreas.Clear();
+            
+
+            this.statisticsChart.ChartAreas.Add(new ChartArea());
+            this.statisticsChart.Series.Add(new Series("Data"));
+           
+            this.statisticsChart.Series["Data"]["PieLabelStyle"] = "Outside";
+            this.statisticsChart.Series["Data"].ChartType = SeriesChartType.Pie;
+            this.statisticsChart.Series["Data"].IsVisibleInLegend = false;
+            this.statisticsChart.Series["Data"].Points.DataBindXY(
+                data.Select(item => item.Key).ToArray(),
+                data.Select( item => item.Value).ToArray()
+            );
+            this.statisticsChart.Visible = true;
+        }
     }
 }

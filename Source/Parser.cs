@@ -11,22 +11,23 @@ namespace CSE
     {
         public static Shop GetShopName(string text) {
             Dictionary<Shop, string[]> shopUniqueTexts = new Dictionary<Shop, string[]>();
-            string receiptText = Parser.RemoveInternationalLetters(text);
             shopUniqueTexts.Add(Shop.IKI, new string[]{ "palink", "iki"});
             shopUniqueTexts.Add(Shop.MAXIMA, new string[] { "maxim(a|[^u]\\w+)"});
             shopUniqueTexts.Add(Shop.RIMI, new string[] { "rimi" });
             shopUniqueTexts.Add(Shop.LIDL, new string[] { "lidl\\w*" });
             shopUniqueTexts.Add(Shop.NORFA, new string[] { "norf\\w+" });
+            string receiptText = Parser.RemoveInternationalLetters(text);
 
             foreach (KeyValuePair<Shop,string[]> shopInfo in shopUniqueTexts)  // loop through all the shops (their names)
             {
                 foreach(string shopIdentifier in shopInfo.Value) {
                     string shopPattern = "\\b" + shopIdentifier.ToLower() + "\\b"; // look for the name of enum as one word
-
+                    Shop currentShop = shopInfo.Key;
+    
                     bool matching = Regex.IsMatch(receiptText, shopPattern, RegexOptions.IgnoreCase);
                     if (matching)
                     {
-                        return shopInfo.Key; // return Shop
+                        return currentShop; // return Shop
                     }
                 }
             }
@@ -54,5 +55,7 @@ namespace CSE
             return String.Join("", text.Normalize(NormalizationForm.FormD)
                 .Where(c => char.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
         }
+
+        
     }
 }
