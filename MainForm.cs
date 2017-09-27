@@ -54,6 +54,7 @@ namespace CSE
             this.receiptTextLabel.Text +=
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;
+            XmlSerialization.SaveReceipt(receipt);
         }
 
         private void DisplayStatistics(object sender, EventArgs e)
@@ -70,10 +71,9 @@ namespace CSE
             this.statisticsChart.Series["Data"].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series["Data"].IsVisibleInLegend = false;
             //this.statisticsChart.Series["Data"].Points.DataBindXY(
-            //    data.Select(item => item.Key).ToArray(),
-            //    data.Select( item => item.Value).ToArray()
+            //    data.receipts.Select(item => item.Key).ToArray(),
+            //    data.receipts.Select(item => item.Value).ToArray()
             //);
-            this.statisticsChart.Visible = true;
         }
     }
 }
