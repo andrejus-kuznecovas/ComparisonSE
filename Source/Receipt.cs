@@ -12,11 +12,13 @@ namespace CSE.Source
         public float total { get; private set; }
         public Shop shop { get; private set; }
         public List<string> shoppingList { get; private set; } // TO BE REPLACED BY SHOP ITEM LIST
+        public DateTime purchaseTime;
 
         public Receipt(string initialText)
         {
             this.initialText = initialText;
             shoppingList = new List<string>();
+            purchaseTime = DateTime.Today;
             total = 0f;
             Analyse();
         }
@@ -44,6 +46,7 @@ namespace CSE.Source
             info.AddValue("total", total, typeof(float));
             info.AddValue("shop", shop, typeof(Shop));
             info.AddValue("items", shoppingList, typeof(List<string>));
+            info.AddValue("date", purchaseTime, typeof(DateTime));
         }
     }
 }
