@@ -40,7 +40,7 @@ namespace CSE
             ImageRecogniser imageRecogniser = new ImageRecogniser();
             string imageText = imageRecogniser.ImageToText(imagePath);
             Receipt receipt = new Receipt(imageText);
-            List<string> shoppingList = receipt.GetShoppingList();
+            List<string> shoppingList = receipt.shoppingList;
             this.receiptTextLabel.Text = "Items bought:\n";
             foreach (string item in shoppingList)
             {
@@ -48,9 +48,13 @@ namespace CSE
             }
 
             this.receiptTextLabel.Text +=
-                "\nTotal: " + receipt.GetTotal().ToString() 
-                + "\nShopping Centre: " + receipt.GetShop();
+                "\nTotal: " + receipt.total.ToString() 
+                + "\nShopping Centre: " + receipt.shop;
         }
 
+        private void DisplayStatistics(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
