@@ -1,6 +1,7 @@
 ﻿using CSE.Source;
 using System;
 using System.Windows.Forms;
+using Tesseract.ConsoleDemo;
 
 namespace CSE
 {
@@ -20,6 +21,7 @@ namespace CSE
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            
         }
 
         // Increase sharpness of Windows Forms text
