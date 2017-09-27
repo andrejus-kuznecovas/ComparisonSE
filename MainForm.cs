@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Tesseract.ConsoleDemo;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CSE
@@ -26,7 +27,7 @@ namespace CSE
         {
             OpenFileDialog fileDialog = new OpenFileDialog(); // create new file selection window
             fileDialog.Title = "Choose a receipt to process";
-            fileDialog.Filter = "Image Files(*.png;*.jpg;*.tif)|*.png;*.jpg;*.tif"; // allowed formats
+            fileDialog.Filter = "Image Files(*.png;*.jpg;*.tiff;*tif.)|*.png;*.jpg;*.tiff;*tif;"; // allowed formats
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -40,11 +41,12 @@ namespace CSE
 
         private void AnalyseImage(object sender, EventArgs e, string imagePath) {
             ImageRecogniser imageRecogniser = new ImageRecogniser();
-            string imageText = imageRecogniser.ImageToText(imagePath);
+           string imageText = imageRecogniser.getText(imagePath);
+            this.receiptTextLabel.Text = imageText;
             Receipt receipt = new Receipt(imageText);
             List<string> shoppingList = receipt.shoppingList;
             this.receiptTextLabel.Text = "Items bought:\n";
-            foreach (string item in shoppingList)
+             foreach (string item in shoppingList)
             {
                 this.receiptTextLabel.Text += "* " + item + "\n";
             }
