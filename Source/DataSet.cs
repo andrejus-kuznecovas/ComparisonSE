@@ -6,11 +6,11 @@ namespace CSE.Source
 {
     public class DataSet
     {
-        private List<Receipt> receipts;
+        public List<Receipt> receipts;
 
         public DataSet()
         {
-            receipts = new List<Receipt>();
+            receipts = XmlSerialization.GetReceipts();
         }
 
         public void Filter(Period period)

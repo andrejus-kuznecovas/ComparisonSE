@@ -81,7 +81,6 @@ namespace CSE
             this.statisticsChart.Size = new System.Drawing.Size(213, 168);
             this.statisticsChart.TabIndex = 4;
             this.statisticsChart.Text = "chart1";
-            this.statisticsChart.Visible = false;
             // 
             // statisticsButton
             // 
