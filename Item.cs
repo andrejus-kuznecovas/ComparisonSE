@@ -6,48 +6,36 @@ using System.Threading.Tasks;
 
 namespace CSE
 {
+    enum Category
+    {
+        Pieno_produktai,
+        Duonos_gaminiai,
+        Gėrimai,
+        Bakalėjos_prekės,
+        Namų_apyvokos_prekės,
+        Prekės_augintiniams,
+        Mėsos_ir_žuvies_produktai,
+        Vaisiai_ir_daržovės,
+        Saldumynai,
+        Buitinė_chemija,
+        Higienos_prekės,
+        Kitos_prekės
+    };
+
     class Item
     {
         private static uint itemCount = 0;
 
-        private double price;
-        private string name;
-        private string typeName;
-        private uint typeId;
-
-
-        public Item(double price, string name, string typeName)
-        {
-            this.price = price;
-            this.name = name;
-            this.typeName = typeName;
-        }
+        private double Price { get; set; }
+        private string Name { get; set; }
+        private uint TypeId { get;  set; }
+        private Category Category { get; set; }
 
         public Item(double price, string name, uint typeId)
         {
-            this.price = price;
-            this.name = name;
-            this.typeId = typeId;
-        }
-
-        public double getPrice()
-        {
-            return this.price;
-        }
-
-        public string getName()
-        {
-            return this.name;
-        }
-
-        public string getTypeName()
-        {
-            return this.typeName;
-        }
-
-        public double getTypeID()
-        {
-            return this.typeId;
+            this.Price = price;
+            this.Name = name;
+            this.TypeId = typeId;
         }
 
         ~Item()
