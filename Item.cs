@@ -8,34 +8,43 @@ namespace CSE
 {
     enum Category
     {
-        Pieno_produktai,
-        Duonos_gaminiai,
-        Gėrimai,
-        Bakalėjos_prekės,
-        Namų_apyvokos_prekės,
-        Prekės_augintiniams,
-        Mėsos_ir_žuvies_produktai,
-        Vaisiai_ir_daržovės,
-        Saldumynai,
-        Buitinė_chemija,
-        Higienos_prekės,
-        Kitos_prekės
+        DAIRY_PRODUCTS,
+        BREAD_PRODUCTS,
+        DRINKS,
+        HOUSEHOLD_GOODS,
+        PET_PRODUCTS,
+        MEAT_AND_FISH,
+        FRUIT_AND_VEGETABLES,
+        SWEETS,
+        HOUSEHOLD_CHEMICALS,
+        HYGIENE_PRODUCTS,
+        OTHER_GOODS
     };
 
     class Item
     {
-        private static uint itemCount = 0;
+        private static int itemCount = 0;
 
-        private double Price { get; set; }
-        private string Name { get; set; }
-        private uint TypeId { get;  set; }
-        private Category Category { get; set; }
+        private int price { get; set; }
+        private string name { get; set; }
+        private int typeId { get; set; }
+        private Category category { get; set; }
 
-        public Item(double price, string name, uint typeId)
+        public Item(int price, string name, int typeId)
         {
-            this.Price = price;
-            this.Name = name;
-            this.TypeId = typeId;
+            this.price = price;
+            this.name = name;
+            this.typeId = typeId;
+        }
+
+        public int getItemCount()
+        {
+            return itemCount;
+        }
+
+        public double getPrice()
+        {
+            return price / 100;
         }
 
         ~Item()
