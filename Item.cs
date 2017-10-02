@@ -31,7 +31,6 @@ namespace CSE
         {
             this.price = price;
             this.name = name;
-            this.typeId = typeId;
         }
 
         public int getItemCount()
