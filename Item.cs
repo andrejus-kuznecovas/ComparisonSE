@@ -23,14 +23,11 @@ namespace CSE
 
     class Item
     {
-        private static int itemCount = 0;
-
         private int price { get; set; }
         private string name { get; set; }
-        private int typeId { get; set; }
         private Category category { get; set; }
 
-        public Item(int price, string name, int typeId)
+        public Item(int price, string name)
         {
             this.price = price;
             this.name = name;
