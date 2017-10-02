@@ -10,7 +10,7 @@ namespace CSE.Source
         private string initialText;
         public float total { get; set; }
         public Shop shop { get; set; }
-        public List<string> shoppingList { get; private set; } // TO BE REPLACED BY SHOP ITEM LIST
+        public List<string> shoppingList { get; set; } // TO BE REPLACED BY SHOP ITEM LIST
         public DateTime purchaseTime;
 
         public Receipt()
@@ -40,6 +40,7 @@ namespace CSE.Source
                     total += priceInLine;
                     if (priceInLine > 0)
                     {
+                        //Item item = new Item();
                         shoppingList.Add(line);
                     }
                 }

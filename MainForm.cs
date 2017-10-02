@@ -59,7 +59,7 @@ namespace CSE
 
         private void DisplayStatistics(object sender, EventArgs e)
         {
-            var data = Statistics.GetProductsData();
+            var data = StatisticsManager.GetPriceChangeData();
             this.statisticsChart.Series.Clear();
             this.statisticsChart.ChartAreas.Clear();
             

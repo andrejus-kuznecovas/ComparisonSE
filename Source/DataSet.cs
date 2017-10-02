@@ -72,8 +72,7 @@ namespace CSE.Source
             foreach (Receipt receipt in filteredData)
             {
                 this.receipts.Add(receipt);
-            }
-
+            }            
         }
     }
 }
