@@ -74,6 +74,12 @@ namespace CSE
             return Regex.Replace(text, whitespacePattern, "");
         }
 
+        public static bool FindEurKg(string text)
+        {
+            if (text.Contains("EUR/kg"))
+                return true;
+            else return false;
+        }
 
         
     }

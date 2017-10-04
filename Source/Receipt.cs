@@ -31,20 +31,28 @@ namespace CSE.Source
         private void Populate()
         {
             string[] lines = initialText.Split('\n');
+            
             shop = Parser.GetShopName(initialText);
 
-            foreach (string line in lines)
+            for (int i =0; i<lines.Length; i++)
             {
-                float priceInLine = Parser.ExtractPriceFloat(line);
+                
+                float priceInLine = Parser.ExtractPriceFloat(lines[i]);
+                if (Parser.FindEurKg(lines[i]))
+                {
+                    lines[i] = lines[i - 1];
+                    Console.WriteLine(lines[i]);
+                }
                 if (priceInLine != -1000f)
                 {
                     total += priceInLine;
                     if (priceInLine > 0)
                     {
-                        Item item = new Item(Parser.RemoveNonLetters(line), (int)(priceInLine *100));
-                        Category itemCategory = Categoriser.GetCategory(item);
-                        item.category = itemCategory;
-                        shoppingList.Add(item);
+                   
+                       Item item = new Item(Parser.RemoveNonLetters(lines[i]), (int)(priceInLine *100));
+                       Category itemCategory = Categoriser.GetCategory(item);
+                       item.category = itemCategory;
+                       shoppingList.Add(item);
                     }
                 }
             }

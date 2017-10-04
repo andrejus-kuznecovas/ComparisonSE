@@ -53,7 +53,8 @@ namespace CSE
         private void AnalyseImage(object sender, EventArgs e, string imagePath) {
             ImageRecogniser imageRecogniser = new ImageRecogniser();
             string imageText = imageRecogniser.GetText(imagePath);
-            //this.receiptTextLabel.Text = imageText;
+            this.receiptTextLabel.Text = imageText;
+            
             Receipt receipt = new Receipt(imageText);
             List<Item> shoppingList = receipt.shoppingList;
             
@@ -67,7 +68,7 @@ namespace CSE
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;
             XmlSerialization.SaveReceipt(receipt);
-
+            
         }
 
         private void DisplayStatistics(object sender, EventArgs e)
