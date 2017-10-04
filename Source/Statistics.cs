@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSE.Source
 {
-    public class Statistics
+    class Statistics
     {
         public static DataSet GetPriceChangeData(Period period = Period.DEFAULT)
         {
@@ -23,6 +24,22 @@ namespace CSE.Source
             //data.Add("Kepiniai", 2.7f);
             //data.Filter(period); // FIX THIS
             return data;
+        }
+		
+		public static Dictionary<string, int> itemListToDictionary(List<Item> shoppingList)
+        {
+            Dictionary<string, int> groups = new Dictionary<string, int>();
+            var values = Enum.GetValues(typeof(Category));
+            foreach (Category a in values)
+            {
+                groups.Add(a.ToString(), 0);
+            }
+
+            for (int i = 0; i < shoppingList.Count; i++)
+            {
+                groups[shoppingList[i].getCategory().ToString()] += shoppingList[i].getPriceInt();
+            }
+            return groups;
         }
 
     }

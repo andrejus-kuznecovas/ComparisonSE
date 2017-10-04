@@ -45,17 +45,19 @@ namespace CSE
             // 
             // receiptPreview
             // 
-            this.receiptPreview.Location = new System.Drawing.Point(13, 2);
+            this.receiptPreview.Location = new System.Drawing.Point(10, 2);
+            this.receiptPreview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.receiptPreview.Name = "receiptPreview";
-            this.receiptPreview.Size = new System.Drawing.Size(183, 291);
+            this.receiptPreview.Size = new System.Drawing.Size(146, 233);
             this.receiptPreview.TabIndex = 1;
             this.receiptPreview.TabStop = false;
             // 
             // fileInputButton
             // 
-            this.fileInputButton.Location = new System.Drawing.Point(234, 220);
+            this.fileInputButton.Location = new System.Drawing.Point(187, 176);
+            this.fileInputButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.fileInputButton.Name = "fileInputButton";
-            this.fileInputButton.Size = new System.Drawing.Size(143, 35);
+            this.fileInputButton.Size = new System.Drawing.Size(114, 28);
             this.fileInputButton.TabIndex = 2;
             this.fileInputButton.Text = "Choose receipt...";
             this.fileInputButton.UseVisualStyleBackColor = true;
@@ -64,9 +66,10 @@ namespace CSE
             // receiptTextLabel
             // 
             this.receiptTextLabel.AutoSize = true;
-            this.receiptTextLabel.Location = new System.Drawing.Point(10, 317);
+            this.receiptTextLabel.Location = new System.Drawing.Point(8, 254);
+            this.receiptTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.receiptTextLabel.Name = "receiptTextLabel";
-            this.receiptTextLabel.Size = new System.Drawing.Size(404, 17);
+            this.receiptTextLabel.Size = new System.Drawing.Size(307, 13);
             this.receiptTextLabel.TabIndex = 3;
             this.receiptTextLabel.Text = "Upload a receipt and click \"Choose receipt\" button to analyse it";
             // 
@@ -76,17 +79,19 @@ namespace CSE
             this.statisticsChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.statisticsChart.Legends.Add(legend1);
-            this.statisticsChart.Location = new System.Drawing.Point(201, 46);
+            this.statisticsChart.Location = new System.Drawing.Point(161, 37);
+            this.statisticsChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statisticsChart.Name = "statisticsChart";
-            this.statisticsChart.Size = new System.Drawing.Size(213, 168);
+            this.statisticsChart.Size = new System.Drawing.Size(170, 134);
             this.statisticsChart.TabIndex = 4;
             this.statisticsChart.Text = "chart1";
             // 
             // statisticsButton
             // 
-            this.statisticsButton.Location = new System.Drawing.Point(234, 261);
+            this.statisticsButton.Location = new System.Drawing.Point(187, 209);
+            this.statisticsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statisticsButton.Name = "statisticsButton";
-            this.statisticsButton.Size = new System.Drawing.Size(143, 32);
+            this.statisticsButton.Size = new System.Drawing.Size(114, 26);
             this.statisticsButton.TabIndex = 5;
             this.statisticsButton.Text = "Statistics";
             this.statisticsButton.UseVisualStyleBackColor = true;
@@ -102,16 +107,17 @@ namespace CSE
             "This week",
             "This month",
             "This year"});
-            this.comboBox1.Location = new System.Drawing.Point(203, 2);
+            this.comboBox1.Location = new System.Drawing.Point(162, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(211, 24);
+            this.comboBox1.Size = new System.Drawing.Size(170, 21);
             this.comboBox1.TabIndex = 6;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(420, 640);
+            this.ClientSize = new System.Drawing.Size(336, 512);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.statisticsChart);
@@ -119,6 +125,7 @@ namespace CSE
             this.Controls.Add(this.fileInputButton);
             this.Controls.Add(this.receiptPreview);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "Billy";
             this.Load += new System.EventHandler(this.MainForm_Load);

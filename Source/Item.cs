@@ -33,14 +33,24 @@ namespace CSE
             this.name = name;
         }
 
-        public int getItemCount()
+        public Category getCategory()
         {
-            return itemCount;
+            return category;
         }
 
-        public double getPrice()
+        public double getPriceDouble()
         {
             return price / 100;
+        }
+
+        public int getPriceInt()
+        {
+            return price;
+        }
+
+        public void setCategory(string name)
+        {
+            category = (Category)Enum.Parse(typeof(Category), name);
         }
 
         ~Item()
