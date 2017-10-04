@@ -23,9 +23,13 @@ namespace CSE
 
     class Item
     {
-        private int price { get; set; }
-        private string name { get; set; }
-        private Category category { get; set; }
+        private int price;
+        public int Price { get { return price; } set { price = value; } }
+
+        private string name;
+        public string Name { get; set; }
+
+        public Category Category { get; set; }
 
         public Item(int price, string name)
         {
@@ -33,24 +37,9 @@ namespace CSE
             this.name = name;
         }
 
-        public Category getCategory()
-        {
-            return category;
-        }
-
-        public double getPriceDouble()
+        public double GetPrice()
         {
             return price / 100;
-        }
-
-        public int getPriceInt()
-        {
-            return price;
-        }
-
-        public void setCategory(string name)
-        {
-            category = (Category)Enum.Parse(typeof(Category), name);
         }
 
         ~Item()

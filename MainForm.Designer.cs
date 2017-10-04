@@ -46,7 +46,7 @@ namespace CSE
             // receiptPreview
             // 
             this.receiptPreview.Location = new System.Drawing.Point(10, 2);
-            this.receiptPreview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.receiptPreview.Margin = new System.Windows.Forms.Padding(2);
             this.receiptPreview.Name = "receiptPreview";
             this.receiptPreview.Size = new System.Drawing.Size(146, 233);
             this.receiptPreview.TabIndex = 1;
@@ -55,7 +55,7 @@ namespace CSE
             // fileInputButton
             // 
             this.fileInputButton.Location = new System.Drawing.Point(187, 176);
-            this.fileInputButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileInputButton.Margin = new System.Windows.Forms.Padding(2);
             this.fileInputButton.Name = "fileInputButton";
             this.fileInputButton.Size = new System.Drawing.Size(114, 28);
             this.fileInputButton.TabIndex = 2;
@@ -80,16 +80,16 @@ namespace CSE
             legend1.Name = "Legend1";
             this.statisticsChart.Legends.Add(legend1);
             this.statisticsChart.Location = new System.Drawing.Point(161, 37);
-            this.statisticsChart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statisticsChart.Margin = new System.Windows.Forms.Padding(2);
             this.statisticsChart.Name = "statisticsChart";
             this.statisticsChart.Size = new System.Drawing.Size(170, 134);
             this.statisticsChart.TabIndex = 4;
-            this.statisticsChart.Text = "chart1";
+            this.statisticsChart.Text = "d";
             // 
             // statisticsButton
             // 
             this.statisticsButton.Location = new System.Drawing.Point(187, 209);
-            this.statisticsButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statisticsButton.Margin = new System.Windows.Forms.Padding(2);
             this.statisticsButton.Name = "statisticsButton";
             this.statisticsButton.Size = new System.Drawing.Size(114, 26);
             this.statisticsButton.TabIndex = 5;
@@ -108,7 +108,7 @@ namespace CSE
             "This month",
             "This year"});
             this.comboBox1.Location = new System.Drawing.Point(162, 2);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(170, 21);
             this.comboBox1.TabIndex = 6;
@@ -125,7 +125,7 @@ namespace CSE
             this.Controls.Add(this.fileInputButton);
             this.Controls.Add(this.receiptPreview);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "Billy";
             this.Load += new System.EventHandler(this.MainForm_Load);

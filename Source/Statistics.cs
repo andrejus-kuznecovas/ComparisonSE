@@ -25,8 +25,8 @@ namespace CSE.Source
             //data.Filter(period); // FIX THIS
             return data;
         }
-		
-		public static Dictionary<string, int> itemListToDictionary(List<Item> shoppingList)
+
+        public static Dictionary<string, int> itemListToDictionary(List<Item> shoppingList)
         {
             Dictionary<string, int> groups = new Dictionary<string, int>();
             var values = Enum.GetValues(typeof(Category));
@@ -37,16 +37,17 @@ namespace CSE.Source
 
             for (int i = 0; i < shoppingList.Count; i++)
             {
-                groups[shoppingList[i].getCategory().ToString()] += shoppingList[i].getPriceInt();
+                groups[shoppingList[i].Category.ToString()] += (int)shoppingList[i].Price;
+                
             }
             return groups;
         }
-
     }
 
 
-    public enum Period {
-        DEFAULT, DAY, WEEK, MONTH, YEAR 
+    public enum Period
+    {
+        DEFAULT, DAY, WEEK, MONTH, YEAR
     }
 
 }

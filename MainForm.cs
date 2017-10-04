@@ -59,16 +59,18 @@ namespace CSE
 
         private void DisplayStatistics(object sender, EventArgs e)
         {
-            var data = Statistics.GetProductsData();
             this.statisticsChart.Series.Clear();
             this.statisticsChart.Series.Add("Category");
             this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
-            //this.statisticsChart.ChartAreas.Clear();
+            this.statisticsChart.Series[0].IsVisibleInLegend = false;
 
-            // replace this
-            var prekes = new List<Item>();
+            //AddChartSeries here
 
-            var groups = Statistics.itemListToDictionary(prekes);
+        }
+
+        private void AddChartSeries(List<Item> shoppingList)
+        {
+            var groups = Statistics.itemListToDictionary(shoppingList);
 
             for (int i = 0; i < groups.Keys.Count; i++)
             {
@@ -77,19 +79,6 @@ namespace CSE
                     this.statisticsChart.Series["Category"].Points.AddXY(groups.Keys.ElementAt(i).ToString(), groups.Values.ElementAt(i));
                 }
             }
-
-            //this.statisticsChart.ChartAreas.Add(new ChartArea());
-            //this.statisticsChart.Series.Add(new Series("Data"));
-
-            //this.statisticsChart.Series["Data"]["PieLabelStyle"] = "Outside";
-            //this.statisticsChart.Series["Data"].ChartType = SeriesChartType.Pie;
-            //this.statisticsChart.Series["Data"].IsVisibleInLegend = false;
-
-            //this.statisticsChart.Series["Data"].Points.DataBindXY(
-            //    data.receipts.Select(item => item.Key).ToArray(),
-            //    data.receipts.Select(item => item.Value).ToArray()
-            //);
         }
-
     }
 }
