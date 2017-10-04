@@ -41,6 +41,8 @@ namespace CSE.Source
                     if (priceInLine > 0)
                     {
                         Item item = new Item(Parser.RemoveNonLetters(line), (int)(priceInLine *100));
+                        Category itemCategory = Categoriser.GetCategory(item);
+                        item.category = itemCategory;
                         shoppingList.Add(item);
                     }
                 }

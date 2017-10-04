@@ -42,7 +42,7 @@ namespace CSE
         private void AnalyseImage(object sender, EventArgs e, string imagePath) {
             ImageRecogniser imageRecogniser = new ImageRecogniser();
             string imageText = imageRecogniser.GetText(imagePath);
-            this.receiptTextLabel.Text = imageText;
+            //this.receiptTextLabel.Text = imageText;
             Receipt receipt = new Receipt(imageText);
             List<Item> shoppingList = receipt.shoppingList;
             
@@ -50,8 +50,8 @@ namespace CSE
             foreach (Item item in shoppingList)
             {
                 this.receiptTextLabel.Text += String.Format("* {0}{1:C}\n",item.GetName().PadRight(40), item.getPrice());
+                this.receiptTextLabel.Text += String.Format("---Category: {0}\n\n", item.category.ToString());
             }
-
             this.receiptTextLabel.Text +=
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;

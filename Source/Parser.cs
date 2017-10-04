@@ -64,7 +64,14 @@ namespace CSE
             string textWithoutPrice = Regex.Replace(text, patternForPrice, "");
             textWithoutPrice = RemoveInternationalLetters(textWithoutPrice);
             string patternForLetters = @"[^a-zA-Z\s]";
-            return Regex.Replace(textWithoutPrice, patternForLetters, "");
+            string replaced = Regex.Replace(textWithoutPrice, patternForLetters, "");
+            return RemoveTrailingWhitespace(replaced);
+        }
+
+        public static string RemoveTrailingWhitespace(string text)
+        {
+            string whitespacePattern = @"\s+$";
+            return Regex.Replace(text, whitespacePattern, "");
         }
 
 

@@ -8,6 +8,7 @@ namespace CSE
 {
     public enum Category
     {
+        UNKNOWN_CATEGORY,
         DAIRY_PRODUCTS,
         BREAD_PRODUCTS,
         DRINKS,
@@ -25,7 +26,7 @@ namespace CSE
     {
         private int price { get; set; }
         private string name { get; set; }
-        private Category category { get; set; }
+        public Category category { get; set; }
 
         public Item(string name, int price)
         {
