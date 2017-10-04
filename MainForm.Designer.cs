@@ -39,7 +39,7 @@ namespace CSE
             this.receiptTextLabel = new System.Windows.Forms.Label();
             this.statisticsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statisticsButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.periodDropDown = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.receiptPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statisticsChart)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +54,7 @@ namespace CSE
             // 
             // fileInputButton
             // 
+            this.fileInputButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.fileInputButton.Location = new System.Drawing.Point(234, 220);
             this.fileInputButton.Name = "fileInputButton";
             this.fileInputButton.Size = new System.Drawing.Size(143, 35);
@@ -93,27 +94,27 @@ namespace CSE
             this.statisticsButton.UseVisualStyleBackColor = true;
             this.statisticsButton.Click += new System.EventHandler(this.DisplayStatistics);
             // 
-            // comboBox1
+            // periodDropDown
             // 
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.periodDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.periodDropDown.FormattingEnabled = true;
+            this.periodDropDown.Items.AddRange(new object[] {
             "Total",
             "Today",
             "This week",
             "This month",
             "This year"});
-            this.comboBox1.Location = new System.Drawing.Point(203, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(211, 24);
-            this.comboBox1.TabIndex = 6;
+            this.periodDropDown.Location = new System.Drawing.Point(203, 2);
+            this.periodDropDown.Name = "periodDropDown";
+            this.periodDropDown.Size = new System.Drawing.Size(211, 24);
+            this.periodDropDown.TabIndex = 6;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(420, 640);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.periodDropDown);
             this.Controls.Add(this.statisticsButton);
             this.Controls.Add(this.statisticsChart);
             this.Controls.Add(this.receiptTextLabel);
@@ -136,7 +137,7 @@ namespace CSE
         private System.Windows.Forms.Label receiptTextLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart statisticsChart;
         private System.Windows.Forms.Button statisticsButton;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox periodDropDown;
     }
 }
 

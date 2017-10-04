@@ -1,52 +1,87 @@
 ﻿<xml version="1.0">
-    <Category name="Fruits/Vegetables">
-        <Fruits>
-            <Product>bananai</Product>
-        </Fruits>
-        <Vegetables>
-            <Product>iki derlius salotu misiny</Product>
-        </Vegetables>
-    </Category>
 
-    <Category name="BreadProducts">
-        <Bread>
-            <Product>birzu senoliu duona</Product>
-            <Product>raikyta palangos duona</Product>
-        </Bread>
-        <Cookies>
-            <Product>gausainiai gaidelis su</Product>
-            <Product>du gaideliai sausainia</Product>
-            <Product>sausainiai su seklomis du</Product>
-        </Cookies>
-    </Category>
-    <Category name="Fish/Meat">
-        <Fish>
-            <Product>every time zuvies pirsteliai</Product>
-        </Fish>
-        <Meat>
-            <Product>pieniskos desreles iki</Product>
-            <Product>sviezias kalakutienos far</Product>
-        </Meat>
-    </Category>
+  <Category name="BREAD_PRODUCTS">
+    <Bread>
+      <Product>
+        <Name>birzu senoliu duona</Name>
+      </Product>
+      <Product>
+        <Name>raikyta palangos duona</Name>
+      </Product>
+    </Bread>
+    <Cookies>
+      <Product>
+        <Name>gausainiai gaidelis su</Name>
+      </Product>
+      <Product>
+        <Name>du gaideliai sausainia</Name>
+      </Product>
+      <Product>
+        <Name>sausainiai su seklomis du</Name>
+      </Product>
+    </Cookies>
+  </Category>
+  
+  <Category name="FRUIT_AND_VEGETABLES">
+    <Fruits>
+      <Product>
+        <Name>bananai</Name>
+      </Product>
+    </Fruits>
+    <Vegetables>
+      <Product>
+        <Name>iki derlius salotu misiny</Name>
+      </Product>
+    </Vegetables>
+  </Category>
 
-    <Category name="Dairy">
-        <Sourcream>
-            <Product>grietines ir augaliniu ri</Product>
-            <Product>flint grietines su zal</Product>
-        </Sourcream>
-        <Desserts>
-            <Product>karums glaistytas vars</Product>
-            <Product>karums glaistvtas vars</Product>
-        </Desserts>
-    </Category>
-    
-    <Category name="Drinks">
-        <Juice>
-            <Product>ivairiu egzotiniu vaisiu</Product>
-        </Juice>
-        <Water>
-            <Product>naturalus negazuotas va</Product>
-        </Water>
-    </Category>
+
+  <Category name="MEAT_AND_FISH">
+    <Fish>
+      <Product>
+        <Name>every time zuvies pirstel</Name>
+      </Product>
+    </Fish>
+    <Meat>
+      <Product>
+        <Name>pieniskos desreles iki</Name>
+      </Product>
+      <Product>
+        <Name>sviezias kalakutienos far</Name>
+      </Product>
+    </Meat>
+  </Category>
+
+  <Category name="DAIRY_PRODUCTS">
+    <Sourcream>
+      <Product>
+        <Name>grietines ir augaliniu ri</Name>
+      </Product>
+      <Product>
+        <Name>flint grietines su zal</Name>
+      </Product>
+    </Sourcream>
+    <Desserts>
+      <Product>
+        <Name>karums glaistytas vars</Name>
+      </Product>
+      <Product>
+        <Name>karums glaistvtas vars</Name>
+      </Product>
+    </Desserts>
+  </Category>
+
+  <Category name="DRINKS">
+    <Juice>
+      <Product>
+        <Name>ivairiu egzotiniu vaisiu</Name>
+      </Product>
+    </Juice>
+    <Water>
+      <Product>
+        <Name>naturalus negazuotas va</Name>
+      </Product>
+    </Water>
+  </Category>
 
 </xml>

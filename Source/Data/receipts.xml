@@ -1,1 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?><ArrayOfReceipt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><Receipt><purchaseTime>2017-10-04T00:00:00+03:00</purchaseTime><total>827</total><shop>IKI</shop><shoppingList><string>GAUSAĮNIAI „GAIDELIS" SU 0,58 A</string><string>EVERY TIME ŽUVIES PIRSTEL 1,79 A</string><string>2,00 GAIDELIAI" SAUSAINIA 0,48 A</string><string>Sausainiai su sėklomis DU 0,58 A</string><string>RAIKYTA „PALANGOS" DUONA 0,65 A</string><string>GRIETĮNĖS IR AUGALINIU RI 0,63 A</string><string>PlENISKOS DEŠRELĖS „IKI" 1,19 A</string><string>BIRZU „SENOLIU" DUONA 0,95 A</string><string>1,595 kg x 0,79 EUR/kg 1,26 A</string><string>NUOLAIDA BANANAMS —0,16 A</string></shoppingList></Receipt></ArrayOfReceipt>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ArrayOfReceipt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Receipt>
+    <purchaseTime>2017-10-03T00:00:00+03:00</purchaseTime>
+    <total>7.95</total>
+    <shop>IKI</shop>
+    <shoppingList>
+      <string>GAUSAINIAI „GAIDELIS" su 0,58 A</string>
+      <string>EVERY TĮME ŽUVIES PIRSTEL 1.79 A</string>
+      <string>.,DU GAIDELIAI“ SAUSAINIA 0,48 A</string>
+      <string>Sausainiai su sėklomis DU 0,58 A</string>
+      <string>RAIKYTA „PALANGOS" DUONA 0,65 A</string>
+      <string>GRIETĮNES IR AUGALINIU RI 0,63 A</string>
+      <string>PIENISKOS DEŠRELES „IKI" 1,19 A</string>
+      <string>BIRZU „SENOLIU" DUONA 0,95 A</string>
+      <string>1,595 kg x 0,79 EUR/kg 1,26 A</string>
+    </shoppingList>
+  </Receipt>
+</ArrayOfReceipt>

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E6BB1DFE-07D8-4A91-8BDB-3E5501C82C07}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CSE</RootNamespace>
     <AssemblyName>CSE</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CSE.MainProgram</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,7 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Categoriser.cs" />
     <Compile Include="Source\DataSet.cs" />
+    <Compile Include="Source\Item.cs" />
     <Compile Include="Source\MyPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -109,6 +114,7 @@
     <Folder Include="Source\UI\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Source\Data\products.xml" />
     <Content Include="Source\Data\receipts.xml" />
     <Content Include="x64\liblept172.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

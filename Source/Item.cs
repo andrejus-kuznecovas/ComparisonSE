@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CSE
 {
-    enum Category
+    public enum Category
     {
+        UNKNOWN_CATEGORY,
         DAIRY_PRODUCTS,
         BREAD_PRODUCTS,
         DRINKS,
@@ -21,26 +22,26 @@ namespace CSE
         OTHER_GOODS
     };
 
-    class Item
+    public class Item
     {
         private int price { get; set; }
         private string name { get; set; }
-        private Category category { get; set; }
+        public Category category { get; set; }
 
-        public Item(int price, string name)
+        public Item(string name, int price)
         {
             this.price = price;
-            this.name = name;
-        }
-
-        public int getItemCount()
-        {
-            return itemCount;
+            this.name = name.ToLower();
         }
 
         public double getPrice()
         {
-            return price / 100;
+            return price / (double)100;
+        }
+
+        public string GetName()
+        {
+            return this.name;
         }
 
         ~Item()
