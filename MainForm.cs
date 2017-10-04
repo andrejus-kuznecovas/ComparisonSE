@@ -77,11 +77,35 @@ namespace CSE
             this.statisticsChart.Series.Add("Category");
             this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series[0].IsVisibleInLegend = false;
+
+            string selectedPeriod = periodDropDown.SelectedItem.ToString();
+            Console.WriteLine(selectedPeriod);
+
             FontFamily arialFont = new FontFamily("Arial");
             this.statisticsChart.Series[0].Font = new Font(arialFont, 5, FontStyle.Bold);
 
+       string selectedPeriod = periodDropDown.SelectedItem.ToString();
+            
             DataSet data = new DataSet();
-            //data.Filter(Period.DEFAULT); // TODO: ADD PERIOD FROM DROPDOWN HERE 
+            switch (selectedPeriod)
+            {
+                case "This year":
+                    data.Filter(Period.YEAR);
+                    break;
+                case "Today":
+                    data.Filter(Period.TODAY);
+                    break;
+                case "This week":
+                    data.Filter(Period.WEEK);
+                    break;
+                case "This month":
+                    data.Filter(Period.MONTH);
+                    break;
+                case "Total":
+                    data.Filter(Period.DEFAULT);
+                    break;
+            }
+           
             AddChartSeries(data.GetAllItems());
 
         }
@@ -100,9 +124,7 @@ namespace CSE
             this.statisticsChart.Visible = true;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
+       
     }
 }
