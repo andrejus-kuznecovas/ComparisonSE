@@ -27,9 +27,10 @@ namespace CSE
         public int Price { get { return price; } set { price = value; } }
 
         private string name;
-        public string Name { get; set; }
+        public string Name { get { return name; } set { name = value; } }
 
-        public Category Category { get; set; }
+        private Category category;
+        public Category Category { get { return category; } set { category = value; } }
 
         public Item(int price, string name)
         {
