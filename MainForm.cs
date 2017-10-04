@@ -44,17 +44,18 @@ namespace CSE
             string imageText = imageRecogniser.GetText(imagePath);
             this.receiptTextLabel.Text = imageText;
             Receipt receipt = new Receipt(imageText);
-            List<string> shoppingList = receipt.shoppingList;
+            List<Item> shoppingList = receipt.shoppingList;
+            
             this.receiptTextLabel.Text = "Items bought:\n";
-             foreach (string item in shoppingList)
+            foreach (Item item in shoppingList)
             {
-                this.receiptTextLabel.Text += "* " + item + "\n";
+                this.receiptTextLabel.Text += String.Format("* {0}{1:C}\n",item.GetName().PadRight(40), item.getPrice());
             }
 
             this.receiptTextLabel.Text +=
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;
-            XmlSerialization.SaveReceipt(receipt);
+            //XmlSerialization.SaveReceipt(receipt);
         }
 
         private void DisplayStatistics(object sender, EventArgs e)

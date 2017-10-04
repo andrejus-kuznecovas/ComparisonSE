@@ -19,10 +19,10 @@ namespace CSE.Source
             switch (period)
             {
                 #region Filter By Day
-                case Period.DAY:
+                case Period.TODAY:
                     filteredData = this.receipts.Where(
                         receipt =>
-                            receipt.purchaseTime == DateTime.Today
+                            receipt.purchaseTime.Day == DateTime.Today.Day
                     );
                     break;
                 #endregion
@@ -68,11 +68,7 @@ namespace CSE.Source
             }
 
 
-            this.receipts.Clear();
-            foreach (Receipt receipt in filteredData)
-            {
-                this.receipts.Add(receipt);
-            }            
+            this.receipts = filteredData.ToList<Receipt>();         
         }
     }
 }

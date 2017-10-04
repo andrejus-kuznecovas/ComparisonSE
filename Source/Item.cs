@@ -27,15 +27,20 @@ namespace CSE
         private string name { get; set; }
         private Category category { get; set; }
 
-        public Item(int price, string name)
+        public Item(string name, int price)
         {
             this.price = price;
-            this.name = name;
+            this.name = name.ToLower();
         }
 
         public double getPrice()
         {
-            return price / 100;
+            return price / (double)100;
+        }
+
+        public string GetName()
+        {
+            return this.name;
         }
 
         ~Item()
