@@ -19,42 +19,55 @@ namespace CSE
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+           
             this.receiptPreview.SizeMode = PictureBoxSizeMode.StretchImage; // make image fit to the picture box
+            
             this.receiptPreview.BorderStyle = BorderStyle.FixedSingle; // apply basic border
         }
 
         private void ChooseImage(object sender, EventArgs e)
         {
+            String savingPath = "";
+            
             OpenFileDialog fileDialog = new OpenFileDialog(); // create new file selection window
             fileDialog.Title = "Choose a receipt to process";
             fileDialog.Filter = "Image Files(*.png;*.jpg;*.tiff;*tif.)|*.png;*.jpg;*.tiff;*tif;"; // allowed formats
-
+            Cursor = Cursors.WaitCursor;
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                this.receiptPreview.ImageLocation = fileDialog.FileName; // display image
-                this.fileInputButton.Text = "Analyse receipt";
-                this.fileInputButton.Click -= ChooseImage; // remove event
-                this.fileInputButton.Click += new EventHandler((s, eargs) => AnalyseImage(s, e, fileDialog.FileName)); // add new event to analyse text
-
+               Image photo = Image.FromFile(fileDialog.FileName);
+               MyPictureBox myPictureBox = new MyPictureBox();
+                myPictureBox.CorrectExifOrientation(photo);
+                savingPath = fileDialog.FileName + "fixed";
+               photo.Save(savingPath);
+               
+               this.receiptPreview.Image = photo ; // display image
+               
+                AnalyseImage(sender, e, savingPath);
+               
             }
+            Cursor = Cursors.Arrow;
         }
+
 
         private void AnalyseImage(object sender, EventArgs e, string imagePath) {
             ImageRecogniser imageRecogniser = new ImageRecogniser();
             string imageText = imageRecogniser.GetText(imagePath);
-            this.receiptTextLabel.Text = imageText;
+            //this.receiptTextLabel.Text = imageText;
             Receipt receipt = new Receipt(imageText);
-            List<string> shoppingList = receipt.shoppingList;
+            List<Item> shoppingList = receipt.shoppingList;
+            
             this.receiptTextLabel.Text = "Items bought:\n";
-             foreach (string item in shoppingList)
+            foreach (Item item in shoppingList)
             {
-                this.receiptTextLabel.Text += "* " + item + "\n";
+                this.receiptTextLabel.Text += String.Format("* {0}{1:C}\n",item.GetName().PadRight(40), item.getPrice());
+                this.receiptTextLabel.Text += String.Format("---Category: {0}\n\n", item.category.ToString());
             }
-
             this.receiptTextLabel.Text +=
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;
-            XmlSerialization.SaveReceipt(receipt);
+            //XmlSerialization.SaveReceipt(receipt);
+
         }
 
         private void DisplayStatistics(object sender, EventArgs e)

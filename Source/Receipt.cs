@@ -10,7 +10,8 @@ namespace CSE.Source
         private string initialText;
         public float total { get; set; }
         public Shop shop { get; set; }
-        public List<string> shoppingList { get; private set; } // TO BE REPLACED BY SHOP ITEM LIST
+        public List<Item> shoppingList { get; set; } // TO BE REPLACED BY SHOP ITEM LIST
+
         public DateTime purchaseTime;
 
         public Receipt()
@@ -21,13 +22,13 @@ namespace CSE.Source
         public Receipt(string initialText)
         {
             this.initialText = initialText;
-            shoppingList = new List<string>();
+            shoppingList = new List<Item>();
             purchaseTime = DateTime.Today;
             total = 0f;
-            Analyse();
+            Populate();
         }
 
-        private void Analyse()
+        private void Populate()
         {
             string[] lines = initialText.Split('\n');
             shop = Parser.GetShopName(initialText);
@@ -40,7 +41,10 @@ namespace CSE.Source
                     total += priceInLine;
                     if (priceInLine > 0)
                     {
-                        shoppingList.Add(line);
+                        Item item = new Item(Parser.RemoveNonLetters(line), (int)(priceInLine *100));
+                        Category itemCategory = Categoriser.GetCategory(item);
+                        item.category = itemCategory;
+                        shoppingList.Add(item);
                     }
                 }
             }

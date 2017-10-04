@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using CSE.Source;
 
 namespace CSE
 {
@@ -33,12 +34,12 @@ namespace CSE
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.receiptPreview = new System.Windows.Forms.PictureBox();
+            this.receiptPreview = new MyPictureBox();
             this.fileInputButton = new System.Windows.Forms.Button();
             this.receiptTextLabel = new System.Windows.Forms.Label();
             this.statisticsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statisticsButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.periodDropDown = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.receiptPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statisticsChart)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,7 @@ namespace CSE
             // 
             // fileInputButton
             // 
+
             this.fileInputButton.Location = new System.Drawing.Point(187, 176);
             this.fileInputButton.Margin = new System.Windows.Forms.Padding(2);
             this.fileInputButton.Name = "fileInputButton";
@@ -97,16 +99,17 @@ namespace CSE
             this.statisticsButton.UseVisualStyleBackColor = true;
             this.statisticsButton.Click += new System.EventHandler(this.DisplayStatistics);
             // 
-            // comboBox1
+            // periodDropDown
             // 
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.periodDropDown.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.periodDropDown.FormattingEnabled = true;
+            this.periodDropDown.Items.AddRange(new object[] {
             "Total",
             "Today",
             "This week",
             "This month",
             "This year"});
+
             this.comboBox1.Location = new System.Drawing.Point(162, 2);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
@@ -137,12 +140,12 @@ namespace CSE
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox receiptPreview;
+        private MyPictureBox receiptPreview;
         private System.Windows.Forms.Button fileInputButton;
         private System.Windows.Forms.Label receiptTextLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart statisticsChart;
         private System.Windows.Forms.Button statisticsButton;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox periodDropDown;
     }
 }
 
