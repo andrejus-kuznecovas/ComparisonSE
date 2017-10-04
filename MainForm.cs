@@ -66,27 +66,40 @@ namespace CSE
             this.receiptTextLabel.Text +=
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;
-            //XmlSerialization.SaveReceipt(receipt);
+            XmlSerialization.SaveReceipt(receipt);
 
         }
 
         private void DisplayStatistics(object sender, EventArgs e)
         {
-            var data = StatisticsManager.GetPriceChangeData();
             this.statisticsChart.Series.Clear();
-            this.statisticsChart.ChartAreas.Clear();
-            
+            this.statisticsChart.Series.Add("Category");
+            this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
+            this.statisticsChart.Series[0].IsVisibleInLegend = false;
 
-            this.statisticsChart.ChartAreas.Add(new ChartArea());
-            this.statisticsChart.Series.Add(new Series("Data"));
-           
-            this.statisticsChart.Series["Data"]["PieLabelStyle"] = "Outside";
-            this.statisticsChart.Series["Data"].ChartType = SeriesChartType.Pie;
-            this.statisticsChart.Series["Data"].IsVisibleInLegend = false;
-            //this.statisticsChart.Series["Data"].Points.DataBindXY(
-            //    data.receipts.Select(item => item.Key).ToArray(),
-            //    data.receipts.Select(item => item.Value).ToArray()
-            //);
+            DataSet data = new DataSet();
+            //data.Filter(Period.DEFAULT); // TODO: ADD PERIOD FROM DROPDOWN HERE 
+            AddChartSeries(data.GetAllItems());
+
+        }
+
+        private void AddChartSeries(List<Item> shoppingList)
+        {
+            var groups = Statistics.itemListToDictionary(shoppingList);
+
+            for (int i = 0; i < groups.Keys.Count; i++)
+            {
+                if (groups.Values.ElementAt(i) != 0)
+                {
+                    this.statisticsChart.Series["Category"].Points.AddXY(groups.Keys.ElementAt(i).ToString(), groups.Values.ElementAt(i));
+                }
+            }
+            this.statisticsChart.Visible = true;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

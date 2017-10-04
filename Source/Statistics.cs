@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CSE.Source
 {
-    public class StatisticsManager
+    public class Statistics
     {
         public static DataSet GetPriceChangeData(Period period = Period.DEFAULT)
         {
@@ -20,6 +20,22 @@ namespace CSE.Source
             return data;
         }
 
+        public static Dictionary<string, double> itemListToDictionary(List<Item> shoppingList)
+        {
+            Dictionary<string, double> groups = new Dictionary<string,double>();
+            var values = Enum.GetValues(typeof(Category));
+            foreach (Category category in values)
+            {
+                groups.Add(category.ToString(), 0);
+            }
+
+            for (int i = 0; i < shoppingList.Count; i++)
+            {
+                groups[shoppingList[i].category.ToString()] += shoppingList[i].getPrice();
+                
+            }
+            return groups;
+        }
     }
 
 
