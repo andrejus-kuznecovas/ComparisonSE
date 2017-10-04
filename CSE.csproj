@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\DataSet.cs" />
+    <Compile Include="Source\MyPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Source\Statistics.cs" />
     <Compile Include="Source\Receipt.cs" />
     <Compile Include="Source\ImageRecogniser.cs" />

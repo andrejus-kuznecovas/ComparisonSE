@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using CSE.Source;
 
 namespace CSE
 {
@@ -33,7 +34,7 @@ namespace CSE
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.receiptPreview = new System.Windows.Forms.PictureBox();
+            this.receiptPreview = new MyPictureBox();
             this.fileInputButton = new System.Windows.Forms.Button();
             this.receiptTextLabel = new System.Windows.Forms.Label();
             this.statisticsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -130,7 +131,7 @@ namespace CSE
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox receiptPreview;
+        private MyPictureBox receiptPreview;
         private System.Windows.Forms.Button fileInputButton;
         private System.Windows.Forms.Label receiptTextLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart statisticsChart;
