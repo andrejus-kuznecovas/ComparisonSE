@@ -36,8 +36,8 @@ namespace CSE
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                Image photo = Image.FromFile(fileDialog.FileName);
-               MyPictureBox a = new MyPictureBox();
-                a.CorrectExifOrientation(photo);
+               MyPictureBox myPictureBox = new MyPictureBox();
+                myPictureBox.CorrectExifOrientation(photo);
                 savingPath = fileDialog.FileName + "fixed";
                photo.Save(savingPath);
                
