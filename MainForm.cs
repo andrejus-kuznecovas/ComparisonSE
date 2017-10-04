@@ -76,6 +76,8 @@ namespace CSE
             this.statisticsChart.Series.Add("Category");
             this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series[0].IsVisibleInLegend = false;
+            FontFamily arialFont = new FontFamily("Arial");
+            this.statisticsChart.Series[0].Font = new Font(arialFont, 5, FontStyle.Bold);
 
             DataSet data = new DataSet();
             //data.Filter(Period.DEFAULT); // TODO: ADD PERIOD FROM DROPDOWN HERE 

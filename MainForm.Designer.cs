@@ -34,30 +34,20 @@ namespace CSE
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.receiptPreview = new CSE.Source.MyPictureBox();
             this.fileInputButton = new System.Windows.Forms.Button();
             this.receiptTextLabel = new System.Windows.Forms.Label();
             this.statisticsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statisticsButton = new System.Windows.Forms.Button();
             this.periodDropDown = new System.Windows.Forms.ComboBox();
             this.sortByLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptPreview)).BeginInit();
+            this.receiptPreview = new CSE.Source.MyPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.statisticsChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptPreview)).BeginInit();
             this.SuspendLayout();
-            // 
-            // receiptPreview
-            // 
-            this.receiptPreview.Image = null;
-            this.receiptPreview.Location = new System.Drawing.Point(12, 2);
-            this.receiptPreview.Margin = new System.Windows.Forms.Padding(2);
-            this.receiptPreview.Name = "receiptPreview";
-            this.receiptPreview.Size = new System.Drawing.Size(182, 291);
-            this.receiptPreview.TabIndex = 1;
-            this.receiptPreview.TabStop = false;
             // 
             // fileInputButton
             // 
-            this.fileInputButton.Location = new System.Drawing.Point(36, 258);
+            this.fileInputButton.Location = new System.Drawing.Point(52, 258);
             this.fileInputButton.Margin = new System.Windows.Forms.Padding(2);
             this.fileInputButton.Name = "fileInputButton";
             this.fileInputButton.Size = new System.Drawing.Size(142, 35);
@@ -69,7 +59,7 @@ namespace CSE
             // receiptTextLabel
             // 
             this.receiptTextLabel.AutoSize = true;
-            this.receiptTextLabel.Location = new System.Drawing.Point(9, 385);
+            this.receiptTextLabel.Location = new System.Drawing.Point(9, 318);
             this.receiptTextLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.receiptTextLabel.Name = "receiptTextLabel";
             this.receiptTextLabel.Size = new System.Drawing.Size(404, 17);
@@ -91,7 +81,7 @@ namespace CSE
             // 
             // statisticsButton
             // 
-            this.statisticsButton.Location = new System.Drawing.Point(155, 313);
+            this.statisticsButton.Location = new System.Drawing.Point(330, 258);
             this.statisticsButton.Margin = new System.Windows.Forms.Padding(2);
             this.statisticsButton.Name = "statisticsButton";
             this.statisticsButton.Size = new System.Drawing.Size(141, 35);
@@ -126,6 +116,16 @@ namespace CSE
             this.sortByLabel.Text = "Sort by:";
             this.sortByLabel.Click += new System.EventHandler(this.label1_Click);
             // 
+            // receiptPreview
+            // 
+            this.receiptPreview.Image = null;
+            this.receiptPreview.Location = new System.Drawing.Point(12, 2);
+            this.receiptPreview.Margin = new System.Windows.Forms.Padding(2);
+            this.receiptPreview.Name = "receiptPreview";
+            this.receiptPreview.Size = new System.Drawing.Size(182, 291);
+            this.receiptPreview.TabIndex = 1;
+            this.receiptPreview.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -143,8 +143,8 @@ namespace CSE
             this.Name = "MainForm";
             this.Text = "Billy";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.receiptPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.statisticsChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptPreview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
