@@ -20,18 +20,18 @@ namespace CSE.Source
             return data;
         }
 
-        public static Dictionary<string, int> itemListToDictionary(List<Item> shoppingList)
+        public static Dictionary<string, double> itemListToDictionary(List<Item> shoppingList)
         {
-            Dictionary<string, int> groups = new Dictionary<string, int>();
+            Dictionary<string, double> groups = new Dictionary<string,double>();
             var values = Enum.GetValues(typeof(Category));
-            foreach (Category a in values)
+            foreach (Category category in values)
             {
-                groups.Add(a.ToString(), 0);
+                groups.Add(category.ToString(), 0);
             }
 
             for (int i = 0; i < shoppingList.Count; i++)
             {
-                groups[shoppingList[i].Category.ToString()] += (int)shoppingList[i].Price;
+                groups[shoppingList[i].category.ToString()] += shoppingList[i].getPrice();
                 
             }
             return groups;

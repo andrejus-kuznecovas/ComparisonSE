@@ -13,6 +13,19 @@ namespace CSE.Source
             receipts = XmlSerialization.GetReceipts();
         }
 
+        public List<Item> GetAllItems()
+        {
+            List<Item> items = new List<Item>();
+            foreach (Receipt receipt in receipts)
+            {
+                foreach (Item item in receipt.shoppingList)
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
+        }
+
         public void Filter(Period period)
         {
             IEnumerable<Receipt> filteredData;

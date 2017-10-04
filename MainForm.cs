@@ -66,7 +66,7 @@ namespace CSE
             this.receiptTextLabel.Text +=
                 "\nTotal: " + receipt.total.ToString() 
                 + "\nShopping Centre: " + receipt.shop;
-            //XmlSerialization.SaveReceipt(receipt);
+            XmlSerialization.SaveReceipt(receipt);
 
         }
 
@@ -77,7 +77,9 @@ namespace CSE
             this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series[0].IsVisibleInLegend = false;
 
-            //AddChartSeries here
+            DataSet data = new DataSet();
+            //data.Filter(Period.DEFAULT); // TODO: ADD PERIOD FROM DROPDOWN HERE 
+            AddChartSeries(data.GetAllItems());
 
         }
 
@@ -92,6 +94,12 @@ namespace CSE
                     this.statisticsChart.Series["Category"].Points.AddXY(groups.Keys.ElementAt(i).ToString(), groups.Values.ElementAt(i));
                 }
             }
+            this.statisticsChart.Visible = true;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -25,9 +25,15 @@ namespace CSE
 
     public class Item
     {
-        private int price { get; set; }
-        private string name { get; set; }
+        public int price { get; set; }
+        public string name { get; set; }
         public Category category { get; set; }
+
+        // Required for XML serialization
+        public Item()
+        {
+
+        }
 
         public Item(string name, int price)
         {
