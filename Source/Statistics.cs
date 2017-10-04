@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CSE.Source
 {
@@ -7,6 +8,7 @@ namespace CSE.Source
         public static DataSet GetPriceChangeData(Period period = Period.DEFAULT)
         {
             var data = new DataSet();
+            data.Filter(period);
             return data;
         }
 
@@ -14,6 +16,7 @@ namespace CSE.Source
         {
             var data = new DataSet();
             //data.Filter(Period.WEEK);
+
             return data;
         }
 
@@ -21,7 +24,7 @@ namespace CSE.Source
 
 
     public enum Period {
-        DEFAULT, DAY, WEEK, MONTH, YEAR 
+        DEFAULT, TODAY, WEEK, MONTH, YEAR 
     }
 
 }

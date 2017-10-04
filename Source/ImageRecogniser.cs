@@ -10,7 +10,7 @@ namespace Tesseract.ConsoleDemo
             try
             {
                 
-                using (var engine = new TesseractEngine(@"./tessdata", "lit+en", EngineMode.Default))
+                using (var engine = new TesseractEngine(@"./tessdata", "lit", EngineMode.Default))
                 {
                     engine.DefaultPageSegMode = PageSegMode.SingleBlock; // important to read receipts
                     using (var img = Pix.LoadFromFile(path))
