@@ -15,6 +15,8 @@ namespace CSE.Source
         public static DataSet GetProductsData(Period period = Period.DEFAULT)
         {
             var data = new DataSet();
+            //data.Filter(Period.WEEK);
+
             return data;
         }
 

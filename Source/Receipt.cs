@@ -11,6 +11,7 @@ namespace CSE.Source
         public float total { get; set; }
         public Shop shop { get; set; }
         public List<Item> shoppingList { get; set; } // TO BE REPLACED BY SHOP ITEM LIST
+
         public DateTime purchaseTime;
 
         public Receipt()

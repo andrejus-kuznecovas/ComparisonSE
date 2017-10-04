@@ -68,7 +68,11 @@ namespace CSE.Source
             }
 
 
-            this.receipts = filteredData.ToList<Receipt>();         
+            this.receipts.Clear();
+            foreach (Receipt receipt in filteredData)
+            {
+                this.receipts.Add(receipt);
+            }
         }
     }
 }
