@@ -115,6 +115,8 @@ namespace CSE
             this.periodDropDown.Name = "periodDropDown";
             this.periodDropDown.Size = new System.Drawing.Size(270, 24);
             this.periodDropDown.TabIndex = 6;
+           
+          
             // 
             // sortByLabel
             // 
@@ -124,7 +126,7 @@ namespace CSE
             this.sortByLabel.Size = new System.Drawing.Size(57, 17);
             this.sortByLabel.TabIndex = 7;
             this.sortByLabel.Text = "Sort by:";
-            this.sortByLabel.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // MainForm
             // 
@@ -149,6 +151,8 @@ namespace CSE
             this.PerformLayout();
 
         }
+
+       
 
         #endregion
         private MyPictureBox receiptPreview;

@@ -41,7 +41,7 @@ namespace CSE.Source
                 if (Parser.FindEurKg(lines[i]))
                 {
                     lines[i] = lines[i - 1];
-                    Console.WriteLine(lines[i]);
+                   
                 }
                 if (priceInLine != -1000f)
                 {
