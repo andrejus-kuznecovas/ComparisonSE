@@ -77,8 +77,15 @@ namespace CSE
             this.statisticsChart.Series.Add("Category");
             this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series[0].IsVisibleInLegend = false;
+
             string selectedPeriod = periodDropDown.SelectedItem.ToString();
             Console.WriteLine(selectedPeriod);
+
+            FontFamily arialFont = new FontFamily("Arial");
+            this.statisticsChart.Series[0].Font = new Font(arialFont, 5, FontStyle.Bold);
+
+       string selectedPeriod = periodDropDown.SelectedItem.ToString();
+            
             DataSet data = new DataSet();
             switch (selectedPeriod)
             {
