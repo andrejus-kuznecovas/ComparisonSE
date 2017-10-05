@@ -11,6 +11,7 @@ namespace CSE.Source
         public DataSet()
         {
             receipts = XmlSerialization.GetReceipts();
+            Console.WriteLine("done, " + receipts.Count);
         }
 
         public List<Item> GetAllItems()

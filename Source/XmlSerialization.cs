@@ -31,18 +31,18 @@ namespace CSE.Source
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Receipt>));
             StreamReader input = new StreamReader(@"../../Source/Data/receipts.xml", Encoding.UTF8, true);
-            try
-            {
+            //try
+            //{
                 List<Receipt> receipts;
                 receipts = (List<Receipt>)serializer.Deserialize(input);
                 input.Close();
                 return receipts;
-            }
-            catch (Exception e)
-            {
-                input.Close();
-                return new List<Receipt>();
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    input.Close();
+            //    return new List<Receipt>();
+            //}
 
         }
     }

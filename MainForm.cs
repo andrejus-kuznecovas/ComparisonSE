@@ -78,33 +78,32 @@ namespace CSE
             this.statisticsChart.Series[0].ChartType = SeriesChartType.Pie;
             this.statisticsChart.Series[0].IsVisibleInLegend = false;
 
-            string selectedPeriod = periodDropDown.SelectedItem.ToString();
-            Console.WriteLine(selectedPeriod);
+            //string selectedPeriod = periodDropDown.SelectedItem.ToString();
 
             FontFamily arialFont = new FontFamily("Arial");
             this.statisticsChart.Series[0].Font = new Font(arialFont, 5, FontStyle.Bold);
-
-       string selectedPeriod = periodDropDown.SelectedItem.ToString();
+            
             
             DataSet data = new DataSet();
-            switch (selectedPeriod)
-            {
-                case "This year":
-                    data.Filter(Period.YEAR);
-                    break;
-                case "Today":
-                    data.Filter(Period.TODAY);
-                    break;
-                case "This week":
-                    data.Filter(Period.WEEK);
-                    break;
-                case "This month":
-                    data.Filter(Period.MONTH);
-                    break;
-                case "Total":
-                    data.Filter(Period.DEFAULT);
-                    break;
-            }
+            Console.WriteLine(data.receipts.Count);
+            //switch (selectedPeriod)
+            //{
+            //    case "This year":
+            //        data.Filter(Period.YEAR);
+            //        break;
+            //    case "Today":
+            //        data.Filter(Period.TODAY);
+            //        break;
+            //    case "This week":
+            //        data.Filter(Period.WEEK);
+            //        break;
+            //    case "This month":
+            //        data.Filter(Period.MONTH);
+            //        break;
+            //    case "Total":
+            //        data.Filter(Period.DEFAULT);
+            //        break;
+            //}
            
             AddChartSeries(data.GetAllItems());
 
