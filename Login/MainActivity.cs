@@ -32,10 +32,7 @@ namespace Login
         ListView leftDrawer;
         ActionBarDrawerToggle drawerToggle;
         private SupportToolbar mToolbar;
-        ImageView imageView;
-        Button photoButton;
-
-
+       
         //USER INPUT
         private string pass;
         static public string name;
@@ -72,10 +69,8 @@ namespace Login
             circle.Visibility = Android.Views.ViewStates.Visible;
             if (await Authentication.Authenticate(username, password))
             {
-                SetContentView(Resource.Layout.first);
-                imageView = FindViewById<ImageView>(Resource.Id.imageView);
-                photoButton = FindViewById<Button>(Resource.Id.photoButton);
-                photoButton.Click += PhotoButton_Click;
+                Intent intent = new Intent(this, typeof(WelcomeScreen));
+                StartActivity(intent);
             }
             //if (ableToStart)
             //{
@@ -117,21 +112,8 @@ namespace Login
             //*/
             //}
         }
-
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-            imageView.SetImageBitmap(bitmap);
-        }
-
-
-        private void PhotoButton_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(MediaStore.ActionImageCapture);
-            StartActivityForResult(intent, 0);
-        }
-
+      
+ 
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);
@@ -191,9 +173,6 @@ namespace Login
             return base.OnOptionsItemSelected(item);
 
         }
-
-
     }
-
 }
 

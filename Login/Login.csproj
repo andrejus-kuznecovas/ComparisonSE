@@ -88,12 +88,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CameraStream.cs" />
     <Compile Include="Source\Controllers\ApiManager.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MyActionBarDrawerToggle.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WelcomeScreen.cs" />
     <Compile Include="Source\Controllers\Authentication.cs" />
     <Compile Include="Source\Controllers\UserController.cs" />
   </ItemGroup>
@@ -111,6 +113,7 @@
     <AndroidResource Include="Resources\layout\header.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\CameraLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
