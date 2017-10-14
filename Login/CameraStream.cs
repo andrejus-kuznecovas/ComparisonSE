@@ -42,7 +42,7 @@ namespace Login
         {
             _camera = Android.Hardware.Camera.Open();
 
-            _textureView.LayoutParameters = new FrameLayout.LayoutParams(w, h);
+            
 
             try
             {
@@ -79,16 +79,15 @@ namespace Login
         {
             //define the paintbrush
             Paint mpaint = new Paint();
-            mpaint.Color = Color.Red;
+            mpaint.Color = Color.DarkOrchid;
             mpaint.SetStyle(Paint.Style.Stroke);
             mpaint.StrokeWidth = 2f;
 
-            //draw
+           
             Canvas canvas = holder.LockCanvas();
-            //clear the paint of last time
+    
             canvas.DrawColor(Color.Transparent, PorterDuff.Mode.Clear);
-            //draw a new one, set your ball's position to the rect here
-            Rect r = new Rect((int)x, (int)y, (int)x + 100, (int)y + 100);
+            Rect r = new Rect((int)x, (int)y, (int)x + 400, (int)y + 400);
             canvas.DrawRect(r, mpaint);
             holder.UnlockCanvasAndPost(canvas);
 

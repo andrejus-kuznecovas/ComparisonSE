@@ -1837,9 +1837,6 @@ namespace Login
 			// aapt resource value: 0x7f0a000c
 			public const int disableHome = 2131361804;
 			
-			// aapt resource value: 0x7f0a0061
-			public const int editText1 = 2131361889;
-      
 			// aapt resource value: 0x7f0a0049
 			public const int edit_query = 2131361865;
 			
@@ -1891,12 +1888,11 @@ namespace Login
 			// aapt resource value: 0x7f0a002b
 			public const int list_item = 2131361835;
 			
-
-			// aapt resource value: 0x7f0a005f
-			public const int login_password = 2131361887;
+			// aapt resource value: 0x7f0a0061
+			public const int login_password = 2131361889;
 			
-			// aapt resource value: 0x7f0a0063
-			public const int login_progress_bar = 2131361891;
+			// aapt resource value: 0x7f0a0065
+			public const int login_progress_bar = 2131361893;
 			
 			// aapt resource value: 0x7f0a0062
 			public const int login_signInButton = 2131361890;
