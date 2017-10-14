@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/Theme.Brand"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:weightSum="100"
+    android:minWidth="25px"
+    android:minHeight="25px">
+<!--Icon-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/mainLogo"
+        android:src="@drawable/BillyIcon"
+        android:scaleType="fitCenter"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_marginRight="0.0dp" />
+<!--Username Field-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/brand_dark"
+        android:hint="@string/login_username"
+        android:id="@+id/login_username"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="10dp" />
+<!--Password Field-->
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/brand_dark"
+        android:hint="@string/login_password"
+        android:id="@+id/editText1"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp" />
+<!--Sign In Button-->
+    <Button
+        android:text="@string/login_sign_in"
+        android:layout_width="match_parent"
+        android:layout_weight="20"
+        android:layout_height="0dp"
+        android:background="@drawable/Login_Button"
+        android:id="@+id/login_signInButton"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0.0dp" />
+<!--Register Button-->
+    <Button
+        android:text="@string/login_sign_up"
+        android:layout_width="match_parent"
+        android:layout_weight="20"
+        android:layout_height="0dp"
+        android:id="@+id/login_signUpButton"
+        android:background="@drawable/Login_Button"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+<!--Progress Bar Spinner-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="20"
+        android:layout_height="0dp"
+        android:id="@+id/relativeLayout1"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_progress_bar"
+            android:background="@drawable/Login_Progress_Bar"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</LinearLayout>
