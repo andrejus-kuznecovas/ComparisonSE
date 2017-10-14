@@ -31,10 +31,7 @@ namespace Login
         ActionBarDrawerToggle drawerToggle;
         private TextView kmiNr;
         private SupportToolbar mToolbar;
-        ImageView imageView;
-        Button photoButton;
-
-
+       
         //USER INPUT
         private string pass;
         static public string name;
@@ -60,59 +57,13 @@ namespace Login
         {
             if (ableToStart)
             {
-
-                SetContentView(Resource.Layout.first);
-                imageView = FindViewById<ImageView>(Resource.Id.imageView);
-                photoButton = FindViewById<Button>(Resource.Id.photoButton);
-                photoButton.Click += PhotoButton_Click;
-                //ToolBar reikes ateityje
-                /*
-                drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-               leftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
-                leftItems.Add("Vienas");
-                leftItems.Add("Du");
-                leftItems.Add("Trys");
-                leftItems.Add("Keturi");
-                leftItems.Add("Penki");
-                leftItems.Add("Sesi");
-                leftItems.Add("Septyni");
-
-               
-                leftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, leftItems);
-                drawerToggle = new MyActionBarDrawerToggle(this, drawerLayout, Resource.String.open_drawer, Resource.String.close_drawer);
-                leftDrawer.Adapter = leftAdapter;
-
-                drawerLayout.SetDrawerListener(drawerToggle);
-
-                mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-                SetSupportActionBar(mToolbar);
-
-                SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-                SupportActionBar.SetHomeButtonEnabled(true);
-                SupportActionBar.SetDisplayShowTitleEnabled(true);
-            }
-            else
-            {
+                Intent intent = new Intent(this, typeof(WelcomeScreen));
+                StartActivity(intent);
                
             }
-            */
-            }
         }
-
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
-        {
-            base.OnActivityResult(requestCode, resultCode, data);
-            Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-            imageView.SetImageBitmap(bitmap);
-        }
-
-
-        private void PhotoButton_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(MediaStore.ActionImageCapture);
-            StartActivityForResult(intent, 0);
-        }
-
+      
+ 
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);
@@ -172,9 +123,6 @@ namespace Login
             return base.OnOptionsItemSelected(item);
 
         }
-
-
     }
-
 }
 
