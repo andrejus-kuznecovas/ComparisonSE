@@ -42,7 +42,7 @@ namespace Login
         {
             _camera = Android.Hardware.Camera.Open();
 
-            _textureView.LayoutParameters = new FrameLayout.LayoutParams(w, h);
+            
 
             try
             {
