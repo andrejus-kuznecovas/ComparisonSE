@@ -17,6 +17,7 @@ using Java.Lang;
 using Android.Provider;
 using Android.Graphics;
 using Login.Source.Controllers;
+using Android.Views.InputMethods;
 
 namespace Login
 {
@@ -57,8 +58,15 @@ namespace Login
 
         private async void SignIn_Click(object sender, System.EventArgs e)
         {
+
             EditText usernameField = FindViewById<EditText>(Resource.Id.login_username);
             EditText passwordField = FindViewById<EditText>(Resource.Id.login_password);
+
+            // Hide Keyboard when SignIn button is clicked
+            InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
+            imm.HideSoftInputFromWindow(passwordField.WindowToken, 0);
+
+
             string username = usernameField.Text;
             string password = passwordField.Text;
             circle.Visibility = Android.Views.ViewStates.Visible;
