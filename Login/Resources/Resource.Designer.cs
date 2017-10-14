@@ -1663,40 +1663,43 @@ namespace Login
 			public const int Login_Progress_Bar = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int notification_action_background = 2130837595;
+			public const int Login_Progress_Bar_Fill = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int notification_bg = 2130837596;
+			public const int notification_action_background = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int notification_bg_low = 2130837597;
+			public const int notification_bg = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int notification_bg_low_normal = 2130837598;
+			public const int notification_bg_low = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_bg_low_pressed = 2130837599;
+			public const int notification_bg_low_normal = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg_normal = 2130837600;
+			public const int notification_bg_low_pressed = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_normal_pressed = 2130837601;
+			public const int notification_bg_normal = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_icon_background = 2130837602;
-			
-			// aapt resource value: 0x7f020065
-			public const int notification_template_icon_bg = 2130837605;
-			
-			// aapt resource value: 0x7f020066
-			public const int notification_template_icon_low_bg = 2130837606;
+			public const int notification_bg_normal_pressed = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_tile_bg = 2130837603;
+			public const int notification_icon_background = 2130837603;
+			
+			// aapt resource value: 0x7f020066
+			public const int notification_template_icon_bg = 2130837606;
+			
+			// aapt resource value: 0x7f020067
+			public const int notification_template_icon_low_bg = 2130837607;
 			
 			// aapt resource value: 0x7f020064
-			public const int notify_panel_notification_icon_bg = 2130837604;
+			public const int notification_tile_bg = 2130837604;
+			
+			// aapt resource value: 0x7f020065
+			public const int notify_panel_notification_icon_bg = 2130837605;
 			
 			static Drawable()
 			{
@@ -1836,7 +1839,7 @@ namespace Login
 			
 			// aapt resource value: 0x7f0a0061
 			public const int editText1 = 2131361889;
-			
+      
 			// aapt resource value: 0x7f0a0049
 			public const int edit_query = 2131361865;
 			
@@ -1888,8 +1891,12 @@ namespace Login
 			// aapt resource value: 0x7f0a002b
 			public const int list_item = 2131361835;
 			
-			// aapt resource value: 0x7f0a0065
-			public const int login_progress_bar = 2131361893;
+
+			// aapt resource value: 0x7f0a005f
+			public const int login_password = 2131361887;
+			
+			// aapt resource value: 0x7f0a0063
+			public const int login_progress_bar = 2131361891;
 			
 			// aapt resource value: 0x7f0a0062
 			public const int login_signInButton = 2131361890;
