@@ -133,19 +133,19 @@ namespace Login
             circle.Visibility = Android.Views.ViewStates.Visible;
             Thread thread = new Thread(actRequest);
             thread.Start();
-            if ((e.Password == null) && (e.FirstName == null) && (e.Email == null) &&
-                (e.Age == null))
-            {
-                ableToStart = false;
-            }
-            else
-            {
-                ableToStart = true;
-            }
-            pass = e.Password;
-            name = e.FirstName;
-            email = e.Email;
-            //age = Integer.ParseInt(e.Age);
+            //if ((e.Password == null) && (e.Name == null) && (e.Email == null) &&
+            //    (e.Age == null))
+            //{
+            //    ableToStart = false;
+            //}
+            //else
+            //{
+            //    ableToStart = true;
+            //}
+            //pass = e.Password;
+            //name = e.FirstName;
+            //email = e.Email;
+            ////age = Integer.ParseInt(e.Age);
 
 
         }

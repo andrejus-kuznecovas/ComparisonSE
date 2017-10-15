@@ -5,8 +5,9 @@
     android:layout_height="fill_parent"
     android:minWidth="300dp"
     android:minHeight="400dp">
+<!--Name field-->
     <EditText
-        android:id="@+id/txtFirstName"
+        android:id="@+id/popup_name"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@drawable/edit_text_style"
@@ -14,71 +15,88 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
-        android:hint="First Name"
-        android:textColorHint="#000"
+        android:hint="@string/popup_name_hint"
+        android:textColorHint="@color/shadow_gray"
         android:paddingLeft="10dp"
         android:textColor="#000" />
+<!--Surname Field-->
     <EditText
-        android:layout_below="@id/txtFirstName"
-        android:inputType="textEmailAddress"
+        android:layout_below="@id/popup_name"
+        android:id="@+id/popup_surname"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:id="@+id/txtEmail"
         android:background="@drawable/edit_text_style"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Email"
-        android:textColorHint="#000"
+        android:hint="@string/popup_surname_hint"
+        android:textColorHint="@color/shadow_gray"
         android:paddingLeft="10dp"
         android:textColor="#000" />
+<!--Email Field-->
+    <EditText
+        android:layout_below="@id/popup_surname"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/popup_email"
+        android:background="@drawable/edit_text_style"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="@string/popup_email_hint"
+        android:textColorHint="@color/shadow_gray"
+        android:paddingLeft="10dp"
+        android:textColor="#000" />
+<!--Username Field-->
+    <EditText
+        android:layout_below="@id/popup_email"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/popup_username"
+        android:background="@drawable/edit_text_style"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:hint="@string/popup_username_hint"
+        android:textColorHint="@color/shadow_gray"
+        android:paddingLeft="10dp"
+        android:textColor="#000" />
+<!--Password Field-->
     <EditText
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:id="@+id/txtPassword"
+        android:id="@+id/popup_password"
         android:background="@drawable/edit_text_style"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:hint="Password"
-        android:textColorHint="#000"
+        android:hint="@string/popup_password_hint"
+        android:textColorHint="@color/shadow_gray"
         android:paddingLeft="10dp"
         android:textColor="#000"
-        android:layout_below="@id/txtEmail" />
-    <EditText
-        android:layout_below="@id/txtPassword"
-        android:inputType="number"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:id="@+id/txtAge"
-        android:background="@drawable/edit_text_style"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:hint="Age"
-        android:textColorHint="#000"
-        android:paddingLeft="10dp"
-        android:textColor="#000" />
+        android:layout_below="@id/popup_username" />
+<!--Button-->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtAge"
+        android:layout_below="@id/popup_password"
         android:layout_marginTop="50dp">
         <Button
-            android:text="Sign Up!"
+            android:text="@string/popup_register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnDialogEmail"
+            android:id="@+id/popup_register_button"
             android:textSize="20dp"
-            android:textColor="#fff"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
             android:paddingRight="5dp"
             android:height="70dp"
             android:paddingTop="2dp"
-            android:background="@drawable/ButtonSignUpStyle"
+            android:background="@drawable/Login_Button"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp" />
     </RelativeLayout>
