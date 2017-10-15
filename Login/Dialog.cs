@@ -76,13 +76,7 @@ namespace Login
 
             return view;
         }
-        /*double userKmi = Calculations.BmiCalc(Convert.ToDouble(weight), Convert.ToDouble(height));
-          double userIntake = Calculations.DailyIntake(Convert.ToDouble(weight), Convert.ToDouble(height), Convert.ToInt16(age), Convert.ToInt16(gender));
-
-          Console.WriteLine(userKmi);
-          Console.WriteLine(userIntake);
-          Console.Read();*/
-
+    
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
            

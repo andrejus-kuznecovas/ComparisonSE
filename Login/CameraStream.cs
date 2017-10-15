@@ -6,48 +6,58 @@ using Android.Views;
 using Android.Widget;
 using Android.Hardware;
 using Android.Graphics;
+using Android.Content.PM;
 
 namespace Login
 {
-    [Activity()]
-    public class CameraStream : Activity, TextureView.ISurfaceTextureListener
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
+    public class CameraStream : Activity, TextureView.ISurfaceTextureListener, Android.Hardware.Camera.IPreviewCallback
     {
         private Android.Hardware.Camera _camera;
         private TextureView _textureView;
         private SurfaceView _surfaceView;
         private ISurfaceHolder holder;
+        private Button takePhoto;
+        
 
         protected override void OnCreate(Bundle bundle)
         {
+            
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.CameraLayout);
 
             _textureView = FindViewById<TextureView>(Resource.Id.textureView);
             _textureView.SurfaceTextureListener = this;
             _surfaceView = FindViewById<SurfaceView>(Resource.Id.surfaceView);
+            takePhoto = FindViewById<Button>(Resource.Id.captureImage);
             _surfaceView.SetZOrderOnTop(true);
             //set the background to transparent
             _surfaceView.Holder.SetFormat(Format.Transparent);
             holder = _surfaceView.Holder;
-            _surfaceView.Touch += OnSurfaceViewTouch;
-           
+
+            
+
         }
 
-        private void OnSurfaceViewTouch(object sender, View.TouchEventArgs e)
-        {
-            DrawRectangle(e.Event.GetX(), e.Event.GetY());
-        }
+      
+           
+        
 
         public void OnSurfaceTextureAvailable(Android.Graphics.SurfaceTexture surface, int w, int h)
         {
             _camera = Android.Hardware.Camera.Open();
 
-            
+
+          int x = this.Resources.DisplayMetrics.HeightPixels/2;
+            int y = this.Resources.DisplayMetrics.WidthPixels/2;
+            DrawRectangle(x, y);
+
 
             try
             {
                 _camera.SetPreviewTexture(surface);
-              //  _camera.SetDisplayOrientation(90);
+                
+                _camera.SetDisplayOrientation(90);
                 _camera.StartPreview();
                
 
@@ -88,10 +98,15 @@ namespace Login
     
             canvas.DrawColor(Color.Transparent, PorterDuff.Mode.Clear);
             Rect r = new Rect((int)x, (int)y, (int)x + 400, (int)y + 400);
+            
             canvas.DrawRect(r, mpaint);
             holder.UnlockCanvasAndPost(canvas);
 
         }
 
+        public void OnPreviewFrame(byte[] data, Android.Hardware.Camera camera)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
