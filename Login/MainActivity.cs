@@ -18,6 +18,7 @@ using Android.Provider;
 using Android.Graphics;
 using Login.Source.Controllers;
 using Android.Views.InputMethods;
+using System.Net.Mail;
 
 namespace Login
 {
@@ -128,32 +129,20 @@ namespace Login
 
             signUpD.signUpComplete += signUpD_signUpComplete;
         }
-        void signUpD_signUpComplete(object sender, OnSignUpEventArgs e)
+        async void signUpD_signUpComplete(object sender, OnSignUpEventArgs e)
         {
             circle.Visibility = Android.Views.ViewStates.Visible;
-            Thread thread = new Thread(actRequest);
-            thread.Start();
-            //if ((e.Password == null) && (e.Name == null) && (e.Email == null) &&
-            //    (e.Age == null))
-            //{
-            //    ableToStart = false;
-            //}
-            //else
-            //{
-            //    ableToStart = true;
-            //}
-            //pass = e.Password;
-            //name = e.FirstName;
-            //email = e.Email;
-            ////age = Integer.ParseInt(e.Age);
-
-
+            if ((e.Name != null) && (e.Surname != null) && (e.Email != null)
+                && (e.Username != null) && (e.Password != null))
+            {
+                if (await Authentication.Register(e.Name, e.Surname, Uri.EscapeUriString(e.Email), e.Username, e.Password))
+                {
+                    Intent intent = new Intent(this, typeof(WelcomeScreen));
+                    StartActivity(intent);
+                }
+            }
         }
-        private void actRequest()
-        {
-            Thread.Sleep(3000);
-            RunOnUiThread(() => { circle.Visibility = Android.Views.ViewStates.Invisible; });
-        }
+
         protected override void OnPostCreate(Bundle savedInstanceState)
         {
             base.OnPostCreate(savedInstanceState);
