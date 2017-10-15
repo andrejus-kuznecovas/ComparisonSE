@@ -42,11 +42,12 @@ namespace Login.Source.Controllers
         public static async Task<bool> Register
             (string name, string surname, string email, string username, string password)
         {
+            System.Diagnostics.Debug.WriteLine(String.Format("{0} {1} {2} {3} {4}", name, surname, email, username, password));
             try
             {
                 int id;
                 string token;
-                System.Diagnostics.Debug.Write("*********************Working up until now******");
+                
                 var loginInfo = await ApiManager.RegistrationRequest(name, surname, email, username, password);
                 id = Int32.Parse(loginInfo["id"]);
                 token = loginInfo["token"];

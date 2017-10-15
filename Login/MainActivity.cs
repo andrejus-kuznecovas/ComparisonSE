@@ -135,7 +135,9 @@ namespace Login
             if ((e.Name != null) && (e.Surname != null) && (e.Email != null)
                 && (e.Username != null) && (e.Password != null))
             {
-                if (await Authentication.Register(e.Name, e.Surname, Uri.EscapeUriString(e.Email), e.Username, e.Password))
+                if (await Authentication.Register(e.Name, e.Surname,
+                    e.Email,
+                    e.Username, e.Password))
                 {
                     Intent intent = new Intent(this, typeof(WelcomeScreen));
                     StartActivity(intent);

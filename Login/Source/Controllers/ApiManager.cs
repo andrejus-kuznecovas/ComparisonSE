@@ -34,12 +34,15 @@ namespace Login.Source.Controllers
         public static async Task<JsonObject> RegistrationRequest
             (string name, string surname, string email, string username, string password)
         {
+            var parameters = new object[] { name, surname, email, username, password };
             var request = HttpWebRequest.Create(
+                
                 new Uri(baseURL +
                     String.Format("register/name/{0}/surname/{1}/email/{2}/username/{3}/password/{4}"
-                    , name, surname, email, username, password)
+                    , parameters)
                 )
             );
+            System.Diagnostics.Debug.WriteLine(request.RequestUri);
 
             JsonObject userJson = await MakeRequest(request);
             

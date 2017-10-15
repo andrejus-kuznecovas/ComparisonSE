@@ -92,7 +92,7 @@ namespace Login
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
            
-                signUpComplete.Invoke(this, new OnSignUpEventArgs(name.Text, surname.Text, username.Text, email.Text, password.Text));
+                signUpComplete.Invoke(this, new OnSignUpEventArgs(name.Text, surname.Text, email.Text, username.Text, password.Text));
                 this.Dismiss();
            
         }
