@@ -8,7 +8,7 @@ using Android.Widget;
 
 namespace Login
 {
-    [Activity()]
+    [Activity(Theme = "@style/Theme.Brand")]
     class WelcomeScreen : Activity
     {
         private ImageView imageView;
