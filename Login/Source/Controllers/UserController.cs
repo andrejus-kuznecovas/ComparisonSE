@@ -66,7 +66,7 @@
 
         public static bool IsUserInitialized()
         {
-            return currentUser == null;
+            return currentUser != null;
         }
 
         public static string UserSurname

@@ -5,4 +5,5 @@
   <string name="login_username">Vartotojo vardas</string>
   <string name="login_password">Slaptažodis</string>
   <string name="welcome_text">Sveiki sugrįžę</string>
+  <string name="open_camera">Fotografuoti čekį</string>
 </resources>

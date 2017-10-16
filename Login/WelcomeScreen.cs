@@ -26,7 +26,7 @@ namespace Login
             {
                 string name = UserController.UserName;
                 string surname = UserController.UserSurname;
-                welcomeText.Text = String.Format("{0}, {1} {2}", Resource.String.welcome_text, name, surname );
+                welcomeText.Text = String.Format("{0}, {1} {2}", Resources.GetString(Resource.String.welcome_text), name, surname );
             }
             imageView = FindViewById<ImageView>(Resource.Id.imageView);
             photoButton = FindViewById<Button>(Resource.Id.photoButton);

@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:weightSum="10">
     <TextView
-      android:id="@+id/logged_in_welcome_text"
-      android:layout_weight="1"
-      android:layout_width="match_parent"
-      android:layout_height="fill_parent"/>
+        android:id="@+id/logged_in_welcome_text"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <ImageView
         android:id="@+id/imageView"
         android:layout_weight="8"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="wrap_content" />
     <Button
         android:layout_weight="1"
         android:id="@+id/photoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Atidaryti kamera" />
+        android:text="@string/open_camera" />
 </LinearLayout>

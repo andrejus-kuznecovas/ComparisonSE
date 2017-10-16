@@ -2432,6 +2432,9 @@ namespace Login
 			// aapt resource value: 0x7f050023
 			public const int login_username = 2131034147;
 			
+			// aapt resource value: 0x7f050026
+			public const int open_camera = 2131034150;
+			
 			// aapt resource value: 0x7f050013
 			public const int search_menu_title = 2131034131;
 			
