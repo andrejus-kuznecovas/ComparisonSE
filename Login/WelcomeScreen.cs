@@ -5,6 +5,7 @@ using Android.Content;
 using Android.OS;
 
 using Android.Widget;
+using Login.Source.Controllers;
 
 namespace Login
 {
@@ -13,11 +14,20 @@ namespace Login
     {
         private ImageView imageView;
         private Button photoButton;
+        private TextView welcomeText;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
+
             SetContentView(Resource.Layout.first);
+            welcomeText = FindViewById<TextView>(Resource.Id.logged_in_welcome_text);
+            if (UserController.IsUserInitialized())
+            {
+                string name = UserController.UserName;
+                string surname = UserController.UserSurname;
+                welcomeText.Text = String.Format("{0}, {1} {2}", Resource.String.welcome_text, name, surname );
+            }
             imageView = FindViewById<ImageView>(Resource.Id.imageView);
             photoButton = FindViewById<Button>(Resource.Id.photoButton);
             photoButton.Click += PhotoButton_Click;
