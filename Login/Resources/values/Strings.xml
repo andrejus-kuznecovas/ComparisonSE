@@ -4,6 +4,12 @@
   <string name="login_sign_up">Registruotis</string>
   <string name="login_username">Vartotojo vardas</string>
   <string name="login_password">Slaptažodis</string>
+  <string name="popup_register_button">Registruotis!</string>
+  <string name="popup_name_hint">Vardas</string>
+  <string name="popup_surname_hint">Pavardė</string>
+  <string name="popup_email_hint">El. Paštas</string>
+  <string name="popup_username_hint">Vartotojo slapyvardis</string>
+  <string name="popup_password_hint">Slaptažodis</string>
   <string name="welcome_text">Sveiki sugrįžę</string>
   <string name="open_camera">Fotografuoti čekį</string>
 </resources>

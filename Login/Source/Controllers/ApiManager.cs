@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Json;
 using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace Login.Source.Controllers
 {
@@ -25,6 +26,31 @@ namespace Login.Source.Controllers
             if (!succeeded)
             {
                 throw new LoginFailedException();
+            }
+
+            return userJson;
+        }
+
+        public static async Task<JsonObject> RegistrationRequest
+            (string name, string surname, string email, string username, string password)
+        {
+            var parameters = new object[] { name, surname, email, username, password };
+            var request = HttpWebRequest.Create(
+                
+                new Uri(baseURL +
+                    String.Format("register/name/{0}/surname/{1}/email/{2}/username/{3}/password/{4}"
+                    , parameters)
+                )
+            );
+            System.Diagnostics.Debug.WriteLine(request.RequestUri);
+
+            JsonObject userJson = await MakeRequest(request);
+            
+
+            bool succeeded = Boolean.Parse(userJson["success"].ToString());
+            if (!succeeded)
+            {
+                throw new RegistrationFailedException();
             }
 
             return userJson;
@@ -69,6 +95,7 @@ namespace Login.Source.Controllers
             {
                 using (Stream stream = response.GetResponseStream())
                 {
+                    System.Diagnostics.Debug.WriteLine("Request URL: " + request.RequestUri);
                     var jsonResponse = await Task.Run(() => JsonObject.Load(stream));
                     var userJson = jsonResponse as JsonObject; // End Object
                     
@@ -79,6 +106,11 @@ namespace Login.Source.Controllers
     }
 
     public class LoginFailedException : Exception
+    {
+
+    }
+
+    public class RegistrationFailedException : Exception
     {
 
     }

@@ -93,7 +93,7 @@ namespace Login
         {
             //define the paintbrush
             Paint mpaint = new Paint();
-            mpaint.Color = Color.DarkOrchid;
+            mpaint.Color = new Android.Graphics.Color(Resource.Color.brand_dark);
             mpaint.SetStyle(Paint.Style.Stroke);
             mpaint.StrokeWidth = 5f;
             mpaint.SetPathEffect(new DashPathEffect(new float[] { 30, 20 }, 0));
