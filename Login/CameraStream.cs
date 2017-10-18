@@ -8,21 +8,30 @@ using Android.Hardware;
 using Android.Graphics;
 using Android.Content.PM;
 
+
+using Camera = Android.Hardware.Camera;
+using Color = Android.Graphics.Color;
+using Console = System.Console;
+using View = Android.Views.View;
+
 namespace Login
 {
-    [Activity(ScreenOrientation = ScreenOrientation.Portrait)]
-    public class CameraStream : Activity, TextureView.ISurfaceTextureListener, Android.Hardware.Camera.IPreviewCallback
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/Theme.Brand")]
+    public class CameraStream : Activity, TextureView.ISurfaceTextureListener
     {
         private Android.Hardware.Camera _camera;
         private TextureView _textureView;
         private SurfaceView _surfaceView;
         private ISurfaceHolder holder;
         private Button takePhoto;
+        int width;
+        int height;
         
 
         protected override void OnCreate(Bundle bundle)
         {
-            
+            width = Resources.DisplayMetrics.WidthPixels/2;
+             height = Resources.DisplayMetrics.HeightPixels/2;
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.CameraLayout);
 
@@ -34,24 +43,15 @@ namespace Login
             //set the background to transparent
             _surfaceView.Holder.SetFormat(Format.Transparent);
             holder = _surfaceView.Holder;
-
-            
-
+          
         }
 
-      
-           
-        
+       
+
 
         public void OnSurfaceTextureAvailable(Android.Graphics.SurfaceTexture surface, int w, int h)
         {
             _camera = Android.Hardware.Camera.Open();
-
-
-          int x = this.Resources.DisplayMetrics.HeightPixels/2;
-            int y = this.Resources.DisplayMetrics.WidthPixels/2;
-            DrawRectangle(x, y);
-
 
             try
             {
@@ -66,6 +66,10 @@ namespace Login
             {
                 Console.WriteLine(ex.Message);
             }
+            Camera.Parameters tmp = _camera.GetParameters();
+            tmp.FocusMode = Camera.Parameters.FocusModeContinuousPicture;
+            _camera.SetParameters(tmp);
+            DrawRectangle();
         }
 
         public bool OnSurfaceTextureDestroyed(Android.Graphics.SurfaceTexture surface)
@@ -85,19 +89,22 @@ namespace Login
         {
 
         }
-        private void DrawRectangle(float x, float y)
+        private void DrawRectangle()
         {
             //define the paintbrush
             Paint mpaint = new Paint();
             mpaint.Color = Color.DarkOrchid;
             mpaint.SetStyle(Paint.Style.Stroke);
-            mpaint.StrokeWidth = 2f;
-
+            mpaint.StrokeWidth = 5f;
+            mpaint.SetPathEffect(new DashPathEffect(new float[] { 30, 20 }, 0));
+            int width1 = width / 20;
+            int height1 = height / 20;
            
             Canvas canvas = holder.LockCanvas();
     
             canvas.DrawColor(Color.Transparent, PorterDuff.Mode.Clear);
-            Rect r = new Rect((int)x, (int)y, (int)x + 400, (int)y + 400);
+            Rect r = new Rect(width1, height1, width*2-width1*2, height*2-height1*7);
+          
             
             canvas.DrawRect(r, mpaint);
             holder.UnlockCanvasAndPost(canvas);
