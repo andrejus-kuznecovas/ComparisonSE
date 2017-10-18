@@ -151,7 +151,7 @@ namespace Login
         }
         private void actRequest()
         {
-            Thread.Sleep(3000);
+            
             RunOnUiThread(() => { circle.Visibility = Android.Views.ViewStates.Invisible; });
         }
         protected override void OnPostCreate(Bundle savedInstanceState)
