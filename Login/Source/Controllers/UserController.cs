@@ -64,6 +64,11 @@
             }
         }
 
+        public static bool IsUserInitialized()
+        {
+            return currentUser != null;
+        }
+
         public static string UserSurname
         {
             get
