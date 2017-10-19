@@ -62,6 +62,15 @@
     <Reference Include="System.Json" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tesseract, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Tesseract.0.3.2\lib\MonoAndroid10\Tesseract.dll</HintPath>
+    </Reference>
+    <Reference Include="Tesseract.Binding.Droid, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Tesseract.0.3.2\lib\MonoAndroid10\Tesseract.Binding.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Tesseract.Droid, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Tesseract.0.3.2\lib\MonoAndroid10\Tesseract.Droid.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.1.1\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
     </Reference>
@@ -88,22 +97,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CameraStream.cs" />
-    <Compile Include="Source\Controllers\ApiManager.cs" />
-    <Compile Include="Dialog.cs" />
-    <Compile Include="MainActivity.cs" />
-    <Compile Include="MyActionBarDrawerToggle.cs" />
+    <Compile Include="Source\UI\CameraStream.cs" />
+    <Compile Include="Source\Controllers\Auth\ApiManager.cs" />
+    <Compile Include="Source\Controllers\OCR\ImageRecognition.cs" />
+    <Compile Include="Source\UI\Dialog.cs" />
+    <Compile Include="Source\UI\MainActivity.cs" />
+    <Compile Include="Source\UI\MyActionBarDrawerToggle.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WelcomeScreen.cs" />
-    <Compile Include="Source\Controllers\Authentication.cs" />
-    <Compile Include="Source\Controllers\UserController.cs" />
+    <Compile Include="Source\UI\WelcomeScreen.cs" />
+    <Compile Include="Source\Controllers\Auth\Authentication.cs" />
+    <Compile Include="Source\Controllers\Auth\UserController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GettingStarted.Xamarin" />
+    <AndroidAsset Include="Assets\tessdata\lit.traineddata" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
-    <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\dialog_sign_up.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -174,9 +183,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_InputField.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_Progress_Bar_Fill.xml" />
   </ItemGroup>
