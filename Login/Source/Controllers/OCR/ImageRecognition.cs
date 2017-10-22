@@ -15,7 +15,7 @@ namespace Login.Source.Controllers.OCR
                 using (var tesseract = new TesseractApi(Application.Context, AssetsDeployment.OncePerInitialization))
                 {
                     // Initialize Tesseract with Lithuanian language trained data
-                    await tesseract.Init("lit");
+                    await tesseract.Init("lit+eng");
 
                     // Set special code segmentation mode for receipts
                     tesseract.SetPageSegmentationMode(Tesseract.PageSegmentationMode.SingleBlock);
