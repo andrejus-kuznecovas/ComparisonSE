@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\tessdata\lit.traineddata" />
+    <AndroidAsset Include="Assets\tessdata\eng.traineddata" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <AndroidResource Include="Resources\layout\dialog_sign_up.axml">
