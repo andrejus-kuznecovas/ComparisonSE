@@ -101,6 +101,7 @@
     <Compile Include="Source\Controllers\Auth\ApiManager.cs" />
     <Compile Include="Source\Controllers\OCR\ImageRecognition.cs" />
     <Compile Include="Source\UI\Dialog.cs" />
+    <Compile Include="Source\UI\ItemDisplayer.cs" />
     <Compile Include="Source\UI\MainActivity.cs" />
     <Compile Include="Source\UI\MyActionBarDrawerToggle.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -123,7 +124,12 @@
     <AndroidResource Include="Resources\layout\header.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\CameraLayout.axml" />
+    <AndroidResource Include="Resources\layout\CameraLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ShowText.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">

@@ -13,6 +13,10 @@ using Camera = Android.Hardware.Camera;
 using Color = Android.Graphics.Color;
 using Console = System.Console;
 using View = Android.Views.View;
+using System.IO;
+using Login.Source.UI;
+using Android.Content;
+using System.Threading.Tasks;
 
 namespace Login
 {
@@ -24,9 +28,12 @@ namespace Login
         private SurfaceView _surfaceView;
         private ISurfaceHolder holder;
         private Button takePhoto;
+        private Button showInfo;
+        private TextView txt;
         int width;
         int height;
-        
+        static byte[] img = null;
+
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -34,20 +41,59 @@ namespace Login
              height = Resources.DisplayMetrics.HeightPixels/2;
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.CameraLayout);
-
+            showInfo = FindViewById<Button>(Resource.Id.show);
             _textureView = FindViewById<TextureView>(Resource.Id.textureView);
             _textureView.SurfaceTextureListener = this;
             _surfaceView = FindViewById<SurfaceView>(Resource.Id.surfaceView);
             takePhoto = FindViewById<Button>(Resource.Id.captureImage);
             _surfaceView.SetZOrderOnTop(true);
+            txt = FindViewById<TextView>(Resource.Id.showTxt1);
             //set the background to transparent
+            
             _surfaceView.Holder.SetFormat(Format.Transparent);
             holder = _surfaceView.Holder;
-          
+
+            takePhoto.Click += TakePhoto_Click;
+            showInfo.Click += ShowInfo_Click;
+            }
+
+        private void ShowInfo_Click(object sender, EventArgs e)
+        {
+            if (img == null)
+            {
+                txt.Text = "nulis";
+            }
+            else
+            {
+                txt.Text = "ne nulis";
+            }
         }
 
-       
+        private async void TakePhoto_Click(object sender, EventArgs e)
+        {
+            _camera.StopPreview();
+            var image = _textureView.Bitmap;
 
+            using (var imageStream = new MemoryStream())
+            {
+                await image.CompressAsync(Bitmap.CompressFormat.Jpeg, 50, imageStream);
+                image.Recycle();
+                img = imageStream.ToArray();
+               
+
+            };
+           
+            
+            Intent intent = new Intent(this, typeof(ItemDisplayer));
+            StartActivity(intent);
+            
+        }
+
+        public static byte[] GetImage()
+        {
+            return img;
+        }
+       
 
         public void OnSurfaceTextureAvailable(Android.Graphics.SurfaceTexture surface, int w, int h)
         {
@@ -110,10 +156,9 @@ namespace Login
             holder.UnlockCanvasAndPost(canvas);
 
         }
+        
 
-        public void OnPreviewFrame(byte[] data, Android.Hardware.Camera camera)
-        {
-            throw new NotImplementedException();
-        }
+        
+
     }
 }
