@@ -28,7 +28,8 @@ namespace Login
         private SurfaceView _surfaceView;
         private ISurfaceHolder holder;
         private Button takePhoto;
-        private Button showInfo;
+        private Button analyseButton;
+        private Button retakeButton;
         private TextView txt;
         int width;
         int height;
@@ -41,7 +42,10 @@ namespace Login
              height = Resources.DisplayMetrics.HeightPixels/2;
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.CameraLayout);
-            showInfo = FindViewById<Button>(Resource.Id.show);
+            analyseButton = FindViewById<Button>(Resource.Id.show);
+            analyseButton.Visibility = ViewStates.Invisible;
+            retakeButton = FindViewById<Button>(Resource.Id.retake);
+            retakeButton.Visibility = ViewStates.Invisible;
             _textureView = FindViewById<TextureView>(Resource.Id.textureView);
             _textureView.SurfaceTextureListener = this;
             _surfaceView = FindViewById<SurfaceView>(Resource.Id.surfaceView);
@@ -54,26 +58,32 @@ namespace Login
             holder = _surfaceView.Holder;
 
             takePhoto.Click += TakePhoto_Click;
-            showInfo.Click += ShowInfo_Click;
+            analyseButton.Click += analyseButton_Click;
+            retakeButton.Click += RetakeButton_Click;
             }
 
-        private void ShowInfo_Click(object sender, EventArgs e)
+        private void RetakeButton_Click(object sender, EventArgs e)
         {
-            if (img == null)
-            {
-                txt.Text = "nulis";
-            }
-            else
-            {
-                txt.Text = "ne nulis";
-            }
+            _camera.StartPreview();
+            takePhoto.Visibility = ViewStates.Visible;
+            analyseButton.Visibility = ViewStates.Invisible;
+            retakeButton.Visibility = ViewStates.Invisible;
+         
+        }
+
+        private void analyseButton_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ItemDisplayer));
+            StartActivity(intent);
         }
 
         private async void TakePhoto_Click(object sender, EventArgs e)
         {
             _camera.StopPreview();
             var image = _textureView.Bitmap;
-
+            analyseButton.Visibility = ViewStates.Visible;
+            retakeButton.Visibility = ViewStates.Visible;
+            takePhoto.Visibility = ViewStates.Invisible;
             using (var imageStream = new MemoryStream())
             {
                 await image.CompressAsync(Bitmap.CompressFormat.Jpeg, 50, imageStream);
@@ -83,9 +93,6 @@ namespace Login
 
             };
            
-            
-            Intent intent = new Intent(this, typeof(ItemDisplayer));
-            StartActivity(intent);
             
         }
 

@@ -19,7 +19,7 @@ namespace Login.Source.UI
     class ItemDisplayer:Activity
     {
         private TextView textView;
-        private ImageView img;
+      
         byte[] image;
 
         protected override void OnCreate(Bundle bundle)
@@ -32,17 +32,19 @@ namespace Login.Source.UI
 
 
             image = CameraStream.GetImage();
-           // Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length);
-          
+            // Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length);
 
+            /*
             // bbz kodel neveikia
-            Task.Run(async () =>
-            {
-                var textFromImg = await ImageRecognition.GetTextFromImage(image);
-                textView.Text = "Text:" + textFromImg + "pabaiga";
-            });
-
-            }
+            textView.Text = "test";
+            ImageRecognition imgRecg = new ImageRecognition();
+            var textFromImg =  imgRecg.GetTextFromImage(image).Result;
+            textView.Text = textFromImg;
+            */
+        }
+     
+                
+ 
        
         
     }

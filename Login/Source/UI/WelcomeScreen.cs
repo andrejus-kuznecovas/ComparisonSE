@@ -70,8 +70,5 @@ SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 SupportActionBar.SetHomeButtonEnabled(true);
 SupportActionBar.SetDisplayShowTitleEnabled(true);
 }
-else
-{
 
-}
 */

@@ -7,7 +7,7 @@ namespace Login.Source.Controllers.OCR
 {
     class ImageRecognition
     {
-        public static async Task<string> GetTextFromImage(byte[] image)
+        public async Task<string> GetTextFromImage(byte[] image)
         {
             try
             {

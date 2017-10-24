@@ -17,13 +17,20 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
     <Button
-        android:text="Button"
+       android:text="@string/analyse_photo" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/captureImage"
         android:id="@+id/show"
 />
+  <Button
+     android:text="@string/retake_photo" 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_toLeftOf="@id/captureImage"
+       android:id="@+id/retake"/>
 <TextView
         android:text="Text"
         android:layout_width="wrap_content"
