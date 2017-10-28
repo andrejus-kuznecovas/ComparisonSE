@@ -24,6 +24,8 @@ namespace Login.Source.UI
 
             var image = CameraStream.GetImage();
 
+            
+
             var imageRecognizer = new ImageRecognition();
             imageRecognizer.OnRecognition += SetText;
 

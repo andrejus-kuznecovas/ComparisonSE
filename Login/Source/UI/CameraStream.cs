@@ -184,9 +184,5 @@ namespace Login
             holder.UnlockCanvasAndPost(canvas);
 
         }
-
-
-
-
     }
 }
