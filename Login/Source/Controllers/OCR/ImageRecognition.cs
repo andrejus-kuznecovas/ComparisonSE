@@ -2,12 +2,21 @@
 using Android.App;
 using System.Threading.Tasks;
 using Tesseract.Droid;
+using System.IO;
 
 namespace Login.Source.Controllers.OCR
 {
-    class ImageRecognition
+    public class ImageRecognition: IOCR
     {
-        public async Task<string> GetTextFromImage(byte[] image)
+        // Event to be called after the recognition is done
+        public EventHandler<OCRText> OnRecognition;
+
+        /// <summary>
+        /// Extract text from the given image using Tesseract OCR
+        /// </summary>
+        /// <param name="image">Image to be recognized from</param>
+        
+        public async Task GetTextFromImage(byte[] image)
         {
             try
             {
@@ -15,7 +24,7 @@ namespace Login.Source.Controllers.OCR
                 using (var tesseract = new TesseractApi(Application.Context, AssetsDeployment.OncePerInitialization))
                 {
                     // Initialize Tesseract with Lithuanian language trained data
-                    await tesseract.Init("lit+eng");
+                    await tesseract.Init("lit+eng",Tesseract.OcrEngineMode.TesseractOnly);
 
                     // Set special code segmentation mode for receipts
                     tesseract.SetPageSegmentationMode(Tesseract.PageSegmentationMode.SingleBlock);
@@ -27,10 +36,21 @@ namespace Login.Source.Controllers.OCR
 
                     if (successful)
                     {
-                        // If text detection was successful, return text from the image
-                        return tesseract.Text;
+                        
+                        if (OnRecognition != null)
+                        {
+                            // If text detection was successful, return text from the image
+                            OnRecognition(new ImageRecognition(), new OCRText(tesseract.Text));
+                        }
                     }
-                    return "";
+                    else
+                    {
+                        if (OnRecognition != null)
+                        {
+                            // If text detection was not successful, return null
+                            OnRecognition(new ImageRecognition(), new OCRText(null));
+                        }
+                    }
                 }
             }
             catch (InvalidOperationException e)
@@ -46,5 +66,15 @@ namespace Login.Source.Controllers.OCR
             }
         }
 
+    }
+
+    public class OCRText : EventArgs
+    {
+        public string text;
+
+        public OCRText(string text)
+        {
+            this.text = text;
+        }
     }
 }

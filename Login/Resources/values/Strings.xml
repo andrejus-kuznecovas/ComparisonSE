@@ -14,4 +14,5 @@
   <string name="open_camera">Fotografuoti čekį</string>
   <string name="retake_photo">Fotografuoti dar kartą</string>
   <string name="analyse_photo">Analizuoti čekį</string>
+  <string name="camera_view_place_items_hint">Sutalpinkite prekes čia:</string>
 </resources>

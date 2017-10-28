@@ -1944,6 +1944,9 @@ namespace Login
 			// aapt resource value: 0x7f0a0064
 			public const int photoButton = 2131361892;
 			
+			// aapt resource value: 0x7f0a005b
+			public const int place_items_hint = 2131361883;
+			
 			// aapt resource value: 0x7f0a005e
 			public const int popup_email = 2131361886;
 			
@@ -2045,9 +2048,6 @@ namespace Login
 			
 			// aapt resource value: 0x7f0a0083
 			public const int showTxt = 2131361923;
-			
-			// aapt resource value: 0x7f0a005b
-			public const int showTxt1 = 2131361883;
 			
 			// aapt resource value: 0x7f0a002f
 			public const int spacer = 2131361839;
@@ -2448,6 +2448,9 @@ namespace Login
 			
 			// aapt resource value: 0x7f050030
 			public const int analyse_photo = 2131034160;
+			
+			// aapt resource value: 0x7f050031
+			public const int camera_view_place_items_hint = 2131034161;
 			
 			// aapt resource value: 0x7f050026
 			public const int login_password = 2131034150;

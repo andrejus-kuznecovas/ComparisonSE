@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Login.Source.Controllers.OCR;
-using Android.Graphics;
 using System.Threading.Tasks;
 
 namespace Login.Source.UI
@@ -20,32 +12,31 @@ namespace Login.Source.UI
     {
         private TextView textView;
       
-        byte[] image;
+        
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+
             SetContentView(Resource.Layout.ShowText);
-            textView = FindViewById<TextView>(Resource.Id.showTxt);
             
 
+            var image = CameraStream.GetImage();
 
+            var imageRecognizer = new ImageRecognition();
+            imageRecognizer.OnRecognition += SetText;
 
-            image = CameraStream.GetImage();
-            // Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length);
+            Task.Run( () => imageRecognizer.GetTextFromImage(image));
+            
 
-            /*
-            // bbz kodel neveikia
-            textView.Text = "test";
-            ImageRecognition imgRecg = new ImageRecognition();
-            var textFromImg =  imgRecg.GetTextFromImage(image).Result;
-            textView.Text = textFromImg;
-            */
         }
-     
-                
- 
-       
-        
+
+        protected void SetText(object sender, OCRText result)
+        {
+            textView = FindViewById<TextView>(Resource.Id.showTxt);
+            string text = result.text;
+            textView.Text = String.IsNullOrEmpty(text) ? "NULL" : text;
+        }
     }
 }

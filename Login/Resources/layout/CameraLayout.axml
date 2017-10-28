@@ -32,8 +32,10 @@
        android:layout_toLeftOf="@id/captureImage"
        android:id="@+id/retake"/>
 <TextView
-        android:text="Text"
+        android:text="@string/camera_view_place_items_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/showTxt1"/>
+        android:textColor="@color/brand_light"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/place_items_hint"/>
 </RelativeLayout>

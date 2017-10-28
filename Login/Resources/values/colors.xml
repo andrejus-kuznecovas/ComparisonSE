@@ -3,8 +3,8 @@
   <color name="white">#FFFFFF</color>
   <color name="shadow_gray">#D6D6D6</color>
   <!--Brand Colors-->
-  <color name="brand_light">#FF05EA</color>
-  <color name="brand_dark">#792383</color>
-  <color name="brand_darkest">#9A2175</color>
+  <color name="brand_light">#3CC5EB</color>
+  <color name="brand_dark">#1F83C6</color>
+  <color name="brand_darkest">#0078EB</color>
   
 </resources>
