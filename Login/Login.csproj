@@ -86,15 +86,6 @@
     <Reference Include="System.Json" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tesseract, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Tesseract.0.3.2\lib\MonoAndroid10\Tesseract.dll</HintPath>
-    </Reference>
-    <Reference Include="Tesseract.Binding.Droid, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Tesseract.0.3.2\lib\MonoAndroid10\Tesseract.Binding.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="Tesseract.Droid, Version=0.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Tesseract.0.3.2\lib\MonoAndroid10\Tesseract.Droid.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.1\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
     </Reference>
@@ -129,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Controllers\OCR\ImageConverter.cs" />
+    <Compile Include="Source\Controllers\OCR\ImageRecognitionScanbot.cs" />
     <Compile Include="Source\Controllers\OCR\IOCR.cs" />
     <Compile Include="Source\UI\CameraStream.cs" />
     <Compile Include="Source\Controllers\Auth\ApiManager.cs" />
@@ -136,6 +128,7 @@
     <Compile Include="Source\UI\Dialog.cs" />
     <Compile Include="Source\UI\ItemDisplayer.cs" />
     <Compile Include="Source\UI\MainActivity.cs" />
+    <Compile Include="Source\UI\MainApplication.cs" />
     <Compile Include="Source\UI\MyActionBarDrawerToggle.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,7 +224,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_InputField.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_Progress_Bar_Fill.xml" />
   </ItemGroup>

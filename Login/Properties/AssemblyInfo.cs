@@ -29,9 +29,3 @@ using Android.App;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-
-#if RELEASE
-[assembly: Application(Debuggable=false)]
-#else
-[assembly: Application(Debuggable = true)]
-#endif

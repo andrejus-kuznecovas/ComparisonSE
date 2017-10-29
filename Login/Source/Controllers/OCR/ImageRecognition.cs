@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using Android.App;
 using System.Threading.Tasks;
 using Tesseract.Droid;
@@ -78,3 +78,4 @@ namespace Login.Source.Controllers.OCR
         }
     }
 }
+*/

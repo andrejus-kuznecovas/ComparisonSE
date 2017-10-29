@@ -10,7 +10,7 @@ namespace Login.Source.UI
     [Activity(Theme = "@style/Theme.Brand")]
     class ItemDisplayer:Activity
     {
-        private TextView textView;
+        private ImageView imageView;
       
         
 
@@ -20,25 +20,26 @@ namespace Login.Source.UI
 
 
             SetContentView(Resource.Layout.ShowText);
-            
 
+            imageView = FindViewById<ImageView>(Resource.Id.showTxt);
             var image = CameraStream.GetImage();
-
+            imageView.SetImageBitmap(image);
             
 
-            var imageRecognizer = new ImageRecognition();
+
+            /*var imageRecognizer = new ImageRecognition();
             imageRecognizer.OnRecognition += SetText;
 
-            Task.Run( () => imageRecognizer.GetTextFromImage(image));
-            
+            Task.Run( () => imageRecognizer.GetTextFromImage(image));*/
+
 
         }
 
-        protected void SetText(object sender, OCRText result)
+        /*protected void SetText(object sender, OCRText result)
         {
             textView = FindViewById<TextView>(Resource.Id.showTxt);
             string text = result.text;
             textView.Text = String.IsNullOrEmpty(text) ? "NULL" : text;
-        }
+        }*/
     }
 }

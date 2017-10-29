@@ -93,7 +93,6 @@ namespace Login.Source.Controllers
             {
                 using (Stream stream = response.GetResponseStream())
                 {
-                    System.Diagnostics.Debug.WriteLine("Request URL: " + request.RequestUri);
                     var jsonResponse = await Task.Run(() => JsonObject.Load(stream));
                     var userJson = jsonResponse as JsonObject; // End Object
                     

@@ -21,6 +21,7 @@ using Java.Nio;
 using System.Drawing;
 using Login.Source.Controllers.OCR;
 using Android.Support.V4.Content;
+using ScanbotSDK.Xamarin.Android.Wrapper;
 
 namespace Login
 {
@@ -37,7 +38,7 @@ namespace Login
         private TextView txt;
         int screenWidth;
         int screenHeight;
-        static byte[] img = null;
+        static Bitmap img = null;
 
 
         protected override void OnCreate(Bundle bundle)
@@ -92,17 +93,14 @@ namespace Login
                 takePhoto.Visibility = ViewStates.Invisible;
                 using (var imageStream = new MemoryStream())
                 {
-                    double scalingFactor = 0.5;
-                    int imageWidth = (int)(imageBitmap.Width * scalingFactor);
-                    int imageHeight = (int)(imageBitmap.Height * scalingFactor);
-                    var resizedBitmap = Bitmap.CreateScaledBitmap(imageBitmap, imageWidth, imageHeight, true);
                     
-                    var preparedBitmap = ImageConverter.PrepareForRecognition(resizedBitmap);
+                    var preparedBitmap = ImageConverter.PrepareForRecognition(imageBitmap);
+                    preparedBitmap = SBSDK.ApplyImageFilter(preparedBitmap, ScanbotSDK.Xamarin.ImageFilter.Binarized);
                     await preparedBitmap.CompressAsync(Bitmap.CompressFormat.Jpeg, 100, imageStream);
                     
-                    img = imageStream.ToArray();
+                    img = preparedBitmap.Copy(preparedBitmap.GetConfig(), true);
                     imageBitmap.Recycle();
-                    resizedBitmap.Recycle();
+                    //resizedBitmap.Recycle();
                     preparedBitmap.Recycle();
 
                 };
@@ -117,7 +115,7 @@ namespace Login
 
         }
 
-        public static byte[] GetImage()
+        public static Bitmap GetImage()
         {
             return img;
         }
