@@ -22,7 +22,7 @@ namespace Login.Source.Controllers
         /// <returns></returns>
         public bool CheckName (string value)
         {
-            string pattern = @"[a-z]{3,15}";
+            string pattern = @"[A-Z]?[a-z]+";
             Match result = Regex.Match(value, pattern);
             return result.Success;
         }
@@ -33,7 +33,7 @@ namespace Login.Source.Controllers
         /// <returns></returns>
         public bool CheckSurname(string value)
         {
-            string pattern = @"[a-z]{3,20}";
+            string pattern = @"[A-Z]?[a-z]+";
             Match result = Regex.Match(value, pattern);
             return result.Success;
         }
@@ -44,7 +44,7 @@ namespace Login.Source.Controllers
         /// <returns></returns>
         public bool CheckEmail(string value)
         {
-            string pattern = @"[\w\d\._-]+@([\w]\.?)+";
+            string pattern = @"[\w\d\._-]+@([\w]+\.[\w]+)(\.[\w]+)*";
             Match result = Regex.Match(value, pattern);
             return result.Success;
         }
