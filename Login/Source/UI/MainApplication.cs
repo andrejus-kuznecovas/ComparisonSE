@@ -16,7 +16,7 @@ namespace Login.Source.UI
         public override void OnCreate()
         {
             base.OnCreate();
-            //SBSDK.Initialize(this, null, true);
+            SBSDK.Initialize(this, null, true);
         }
     }
 }

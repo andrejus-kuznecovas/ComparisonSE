@@ -2872,17 +2872,17 @@ namespace Login
 			// aapt resource value: 0x7f0b0073
 			public const int action_divider = 2131427443;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int action_fragment1 = 2131427461;
+			// aapt resource value: 0x7f0b008b
+			public const int action_fragment1 = 2131427467;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int action_fragment2 = 2131427462;
+			// aapt resource value: 0x7f0b008c
+			public const int action_fragment2 = 2131427468;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int action_fragment3 = 2131427463;
+			// aapt resource value: 0x7f0b008d
+			public const int action_fragment3 = 2131427469;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int action_help = 2131427460;
+			// aapt resource value: 0x7f0b008a
+			public const int action_help = 2131427466;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int action_image = 2131427437;
@@ -3109,6 +3109,21 @@ namespace Login
 			// aapt resource value: 0x7f0b0076
 			public const int right_side = 2131427446;
 			
+			// aapt resource value: 0x7f0b0084
+			public const int scanbotCameraView = 2131427460;
+			
+			// aapt resource value: 0x7f0b0088
+			public const int scanbotFlashButton = 2131427464;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int scanbotPolygonView = 2131427461;
+			
+			// aapt resource value: 0x7f0b0086
+			public const int scanbotResultImageView = 2131427462;
+			
+			// aapt resource value: 0x7f0b0087
+			public const int scanbotSnapButton = 2131427463;
+			
 			// aapt resource value: 0x7f0b0014
 			public const int screen = 2131427348;
 			
@@ -3240,6 +3255,9 @@ namespace Login
 			
 			// aapt resource value: 0x7f0b0012
 			public const int useLogo = 2131427346;
+			
+			// aapt resource value: 0x7f0b0089
+			public const int userGuidanceTextView = 2131427465;
 			
 			// aapt resource value: 0x7f0b0021
 			public const int withText = 2131427361;
@@ -3439,7 +3457,10 @@ namespace Login
 			public const int ShowText = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int support_simple_spinner_dropdown_item = 2130903091;
+			public const int SnapingCameraLayout = 2130903091;
+			
+			// aapt resource value: 0x7f030034
+			public const int support_simple_spinner_dropdown_item = 2130903092;
 			
 			static Layout()
 			{
