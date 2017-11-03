@@ -118,7 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\Controllers\OCR\ImageConverter.cs" />
+    <Compile Include="Source\Controllers\OCR\ImagePreparer.cs" />
     <Compile Include="Source\Controllers\OCR\ImageRecognitionScanbot.cs" />
     <Compile Include="Source\Controllers\OCR\IOCR.cs" />
     <Compile Include="Source\UI\CameraStream.cs" />
@@ -139,6 +139,8 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\tessdata\lit.traineddata" />
     <AndroidAsset Include="Assets\tessdata\eng.traineddata" />
+    <AndroidAsset Include="Assets\tessdata\languageClassifier2.bin" />
+    <AndroidAsset Include="Assets\tessdata\osd.traineddata" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -222,13 +224,21 @@
     <AndroidResource Include="Resources\drawable\BillyIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\values\Colors.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_InputField.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Login_Progress_Bar_Fill.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CameraButton.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CameraHintBubble.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets')" />

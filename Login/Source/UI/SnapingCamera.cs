@@ -1,9 +1,12 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Graphics;
 using Android.OS;
-using Android.Support.V4.View;
+using Android.Support.V4.Content;
 using Android.Support.V7.App;
 using Android.Widget;
+using Login.Source.Controllers.OCR;
+using Login.Source.UI;
 
 // native SDK namespace
 using Net.Doo.Snap.Camera;
@@ -16,7 +19,7 @@ using ScanbotSDK.Xamarin.Android.Wrapper;
 
 namespace Login
 {
-    [Activity(Theme = "@style/Theme.AppCompat")]
+    [Activity(Theme = "@style/Theme.Brand")]
     public class SnapingCamera : AppCompatActivity, IPictureCallback, ContourDetectorFrameHandler.IResultHandler, ICameraOpenCallback
     {
         protected ScanbotCameraView cameraView;
@@ -24,6 +27,8 @@ namespace Login
         protected bool flashEnabled = false;
         protected ImageView resultImageView;
         protected TextView userGuidanceTextView;
+
+        public static Bitmap Image;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -87,18 +92,17 @@ namespace Login
             // Here you are continiously notified about contour detection results.
             // For example, you can set a localized text for user guidance depending on the detection status.
 
-            var color = Color.Red;
-            var guideText = "Get closer...";
+            var color = new Color(ContextCompat.GetColor(Application.Context, Resource.Color.brand_dark));
+            var guideText = GetString(Resource.String.camera_view_receipt_too_far);
 
             if (result.Polygon == null || result.Polygon.Count == 0)
             {
-                guideText = "Searching for document...";
+                guideText = GetString(Resource.String.camera_view_receipt_not_found);
             }
 
             if (result.DetectionResult == DetectionResult.Ok)
             {
-                guideText = "OK, don't move.";
-                color = Color.Green;
+                guideText = GetString(Resource.String.camera_view_receipt_found);
             }
             // else ...
 
@@ -115,26 +119,24 @@ namespace Login
         {
             // Here we get the full image from the camera.
 
-            // decode bytes as Bitmap
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            //options.InSampleSize = 1; // use 1 for original size (if you want no downscale)
-            // to save memory for the preview image here we use smaller image (inSampleSize = 8 returns an image that is 1/8 the width/height of the original)!
-            options.InSampleSize = 8;
-            Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length, options);
+            Bitmap processedImage = BitmapFactory.DecodeByteArray(image, 0, image.Length, new BitmapFactory.Options());
 
             // Run document detection on image:
-            var detectionResult = SBSDK.DocumentDetection(bitmap);
+            var detectionResult = SBSDK.DocumentDetection(processedImage);
             if (detectionResult.Status.IsOk())
             {
-                var documentImage = detectionResult.Image as Bitmap;
-                // Do whatever you want with the documentImage...
-                resultImageView.Post(() => {
-                    resultImageView.SetImageBitmap(documentImage);
-                    // continue camera preview with continuous focus mode
-                    cameraView.ContinuousFocus();
-                    cameraView.StartPreview();
-                });
+                processedImage = detectionResult.Image as Bitmap;
             }
+            processedImage = ImagePreparer.PrepareForRecognition(processedImage);
+
+
+            
+
+
+            Image = processedImage;
+            
+            Intent itemView = new Intent(this, typeof(ItemDisplayer));
+            StartActivity(itemView);
         }
     }
 }

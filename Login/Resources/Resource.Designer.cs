@@ -1900,44 +1900,44 @@ namespace Login
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a0041
-			public const int abc_background_cache_hint_selector_material_dark = 2131361857;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int abc_background_cache_hint_selector_material_light = 2131361858;
-			
-			// aapt resource value: 0x7f0a0043
-			public const int abc_btn_colored_borderless_text_material = 2131361859;
-			
 			// aapt resource value: 0x7f0a0044
-			public const int abc_btn_colored_text_material = 2131361860;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361860;
 			
 			// aapt resource value: 0x7f0a0045
-			public const int abc_color_highlight_material = 2131361861;
+			public const int abc_background_cache_hint_selector_material_light = 2131361861;
 			
 			// aapt resource value: 0x7f0a0046
-			public const int abc_hint_foreground_material_dark = 2131361862;
+			public const int abc_btn_colored_borderless_text_material = 2131361862;
 			
 			// aapt resource value: 0x7f0a0047
-			public const int abc_hint_foreground_material_light = 2131361863;
+			public const int abc_btn_colored_text_material = 2131361863;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int abc_color_highlight_material = 2131361864;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int abc_hint_foreground_material_dark = 2131361865;
+			
+			// aapt resource value: 0x7f0a004a
+			public const int abc_hint_foreground_material_light = 2131361866;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_input_method_navigation_guard = 2131361793;
 			
-			// aapt resource value: 0x7f0a0048
-			public const int abc_primary_text_disable_only_material_dark = 2131361864;
-			
-			// aapt resource value: 0x7f0a0049
-			public const int abc_primary_text_disable_only_material_light = 2131361865;
-			
-			// aapt resource value: 0x7f0a004a
-			public const int abc_primary_text_material_dark = 2131361866;
-			
 			// aapt resource value: 0x7f0a004b
-			public const int abc_primary_text_material_light = 2131361867;
+			public const int abc_primary_text_disable_only_material_dark = 2131361867;
 			
 			// aapt resource value: 0x7f0a004c
-			public const int abc_search_url_text = 2131361868;
+			public const int abc_primary_text_disable_only_material_light = 2131361868;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int abc_primary_text_material_dark = 2131361869;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int abc_primary_text_material_light = 2131361870;
+			
+			// aapt resource value: 0x7f0a004f
+			public const int abc_search_url_text = 2131361871;
 			
 			// aapt resource value: 0x7f0a0002
 			public const int abc_search_url_text_normal = 2131361794;
@@ -1948,32 +1948,32 @@ namespace Login
 			// aapt resource value: 0x7f0a0004
 			public const int abc_search_url_text_selected = 2131361796;
 			
-			// aapt resource value: 0x7f0a004d
-			public const int abc_secondary_text_material_dark = 2131361869;
-			
-			// aapt resource value: 0x7f0a004e
-			public const int abc_secondary_text_material_light = 2131361870;
-			
-			// aapt resource value: 0x7f0a004f
-			public const int abc_tint_btn_checkable = 2131361871;
-			
 			// aapt resource value: 0x7f0a0050
-			public const int abc_tint_default = 2131361872;
+			public const int abc_secondary_text_material_dark = 2131361872;
 			
 			// aapt resource value: 0x7f0a0051
-			public const int abc_tint_edittext = 2131361873;
+			public const int abc_secondary_text_material_light = 2131361873;
 			
 			// aapt resource value: 0x7f0a0052
-			public const int abc_tint_seek_thumb = 2131361874;
+			public const int abc_tint_btn_checkable = 2131361874;
 			
 			// aapt resource value: 0x7f0a0053
-			public const int abc_tint_spinner = 2131361875;
+			public const int abc_tint_default = 2131361875;
 			
 			// aapt resource value: 0x7f0a0054
-			public const int abc_tint_switch_thumb = 2131361876;
+			public const int abc_tint_edittext = 2131361876;
 			
 			// aapt resource value: 0x7f0a0055
-			public const int abc_tint_switch_track = 2131361877;
+			public const int abc_tint_seek_thumb = 2131361877;
+			
+			// aapt resource value: 0x7f0a0056
+			public const int abc_tint_spinner = 2131361878;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int abc_tint_switch_thumb = 2131361879;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int abc_tint_switch_track = 2131361880;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int accent_material_dark = 2131361797;
@@ -1999,8 +1999,17 @@ namespace Login
 			// aapt resource value: 0x7f0a003f
 			public const int brand_darkest = 2131361855;
 			
+			// aapt resource value: 0x7f0a0041
+			public const int brand_error = 2131361857;
+			
 			// aapt resource value: 0x7f0a003d
 			public const int brand_light = 2131361853;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int brand_success = 2131361856;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int brand_warning = 2131361858;
 			
 			// aapt resource value: 0x7f0a000b
 			public const int bright_foreground_disabled_material_dark = 2131361803;
@@ -2146,11 +2155,11 @@ namespace Login
 			// aapt resource value: 0x7f0a0038
 			public const int switch_thumb_disabled_material_light = 2131361848;
 			
-			// aapt resource value: 0x7f0a0056
-			public const int switch_thumb_material_dark = 2131361878;
+			// aapt resource value: 0x7f0a0059
+			public const int switch_thumb_material_dark = 2131361881;
 			
-			// aapt resource value: 0x7f0a0057
-			public const int switch_thumb_material_light = 2131361879;
+			// aapt resource value: 0x7f0a005a
+			public const int switch_thumb_material_light = 2131361882;
 			
 			// aapt resource value: 0x7f0a0039
 			public const int switch_thumb_normal_material_dark = 2131361849;
@@ -2158,8 +2167,8 @@ namespace Login
 			// aapt resource value: 0x7f0a003a
 			public const int switch_thumb_normal_material_light = 2131361850;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int theme_devicedefault_background = 2131361856;
+			// aapt resource value: 0x7f0a0043
+			public const int theme_devicedefault_background = 2131361859;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int white = 2131361851;
@@ -2770,61 +2779,67 @@ namespace Login
 			public const int ButtonSignUpStyle = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int drawerLayoutImg = 2130837589;
+			public const int CameraButton = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int edit_text_style = 2130837590;
+			public const int CameraHintBubble = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ic_navigation_drawer = 2130837591;
+			public const int drawerLayoutImg = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int Login_Button = 2130837592;
+			public const int edit_text_style = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int Login_InputField = 2130837593;
+			public const int ic_navigation_drawer = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int Login_Progress_Bar = 2130837594;
+			public const int Login_Button = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int Login_Progress_Bar_Fill = 2130837595;
+			public const int Login_InputField = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int notification_action_background = 2130837596;
+			public const int Login_Progress_Bar = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int notification_bg = 2130837597;
+			public const int Login_Progress_Bar_Fill = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int notification_bg_low = 2130837598;
+			public const int notification_action_background = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_bg_low_normal = 2130837599;
+			public const int notification_bg = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg_low_pressed = 2130837600;
+			public const int notification_bg_low = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_normal = 2130837601;
+			public const int notification_bg_low_normal = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg_normal_pressed = 2130837602;
+			public const int notification_bg_low_pressed = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_icon_background = 2130837603;
-			
-			// aapt resource value: 0x7f020066
-			public const int notification_template_icon_bg = 2130837606;
-			
-			// aapt resource value: 0x7f020067
-			public const int notification_template_icon_low_bg = 2130837607;
+			public const int notification_bg_normal = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_tile_bg = 2130837604;
+			public const int notification_bg_normal_pressed = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notify_panel_notification_icon_bg = 2130837605;
+			public const int notification_icon_background = 2130837605;
+			
+			// aapt resource value: 0x7f020068
+			public const int notification_template_icon_bg = 2130837608;
+			
+			// aapt resource value: 0x7f020069
+			public const int notification_template_icon_low_bg = 2130837609;
+			
+			// aapt resource value: 0x7f020066
+			public const int notification_tile_bg = 2130837606;
+			
+			// aapt resource value: 0x7f020067
+			public const int notify_panel_notification_icon_bg = 2130837607;
 			
 			static Drawable()
 			{
@@ -3592,6 +3607,15 @@ namespace Login
 			
 			// aapt resource value: 0x7f060033
 			public const int camera_view_place_items_hint = 2131099699;
+			
+			// aapt resource value: 0x7f060034
+			public const int camera_view_receipt_found = 2131099700;
+			
+			// aapt resource value: 0x7f060036
+			public const int camera_view_receipt_not_found = 2131099702;
+			
+			// aapt resource value: 0x7f060035
+			public const int camera_view_receipt_too_far = 2131099701;
 			
 			// aapt resource value: 0x7f060023
 			public const int device_configuration = 2131099683;

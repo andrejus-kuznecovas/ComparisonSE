@@ -94,7 +94,7 @@ namespace Login
                 using (var imageStream = new MemoryStream())
                 {
                     
-                    var preparedBitmap = ImageConverter.PrepareForRecognition(imageBitmap);
+                    var preparedBitmap = ImagePreparer.PrepareForRecognition(imageBitmap);
                     preparedBitmap = SBSDK.ApplyImageFilter(preparedBitmap, ScanbotSDK.Xamarin.ImageFilter.Binarized);
                     await preparedBitmap.CompressAsync(Bitmap.CompressFormat.Jpeg, 100, imageStream);
                     
@@ -107,6 +107,7 @@ namespace Login
             }
             catch (Exception ex)
             {
+                
                 System.Diagnostics.Debug.WriteLine("*************************\n"+ex.Message);
             }
 

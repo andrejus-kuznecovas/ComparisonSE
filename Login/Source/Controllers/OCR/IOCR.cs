@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Android.Graphics;
 
 namespace Login.Source.Controllers.OCR
 {
     interface IOCR
     {
-        Task GetTextFromImage(byte[] image);
+        void GetTextFromImage(Bitmap image);
     }
 }

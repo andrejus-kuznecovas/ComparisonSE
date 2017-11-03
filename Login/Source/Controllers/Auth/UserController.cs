@@ -2,7 +2,8 @@
 {
     public class UserController
     {
-        #region User
+        // Define User class with all it's attributes
+        #region User class definition
         private class User
         {
             private int id;
@@ -40,6 +41,9 @@
         }
         #endregion
 
+
+        // Singleton pattern. Only one user can be logged in
+        // User cannot be created explicitly
         private static User currentUser = null;
 
         public static void InitializeUser(int id, string token, string name, string surname)

@@ -2,16 +2,17 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using AndroidNetUri = Android.Net.Uri;
 using Login.Source.Controllers.OCR;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace Login.Source.UI
 {
     [Activity(Theme = "@style/Theme.Brand")]
     class ItemDisplayer:Activity
     {
-        private ImageView imageView;
-      
+        private TextView textView;
+
         
 
         protected override void OnCreate(Bundle bundle)
@@ -21,25 +22,28 @@ namespace Login.Source.UI
 
             SetContentView(Resource.Layout.ShowText);
 
-            imageView = FindViewById<ImageView>(Resource.Id.showTxt);
-            var image = CameraStream.GetImage();
-            imageView.SetImageBitmap(image);
-            
+            textView = FindViewById<TextView>(Resource.Id.showTxt);
+            var image = SnapingCamera.Image;
+
+            var imageRecognizer = new ImageRecognitionScanbot(this);
+            imageRecognizer.OnOCRComplete += SetText;
 
 
-            /*var imageRecognizer = new ImageRecognition();
-            imageRecognizer.OnRecognition += SetText;
-
-            Task.Run( () => imageRecognizer.GetTextFromImage(image));*/
+            Thread imageRecognitionThread = new Thread(delegate() {
+                imageRecognizer.GetTextFromImage(image);
+            });
+            imageRecognitionThread.Start();
+            imageRecognitionThread.Join();
 
 
         }
 
-        /*protected void SetText(object sender, OCRText result)
+        protected void SetText(object sender, OCRText result)
         {
             textView = FindViewById<TextView>(Resource.Id.showTxt);
             string text = result.text;
             textView.Text = String.IsNullOrEmpty(text) ? "NULL" : text;
-        }*/
+        }
     }
+    
 }
