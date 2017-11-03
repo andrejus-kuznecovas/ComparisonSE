@@ -29,11 +29,11 @@ namespace Login.Source.UI
             imageRecognizer.OnOCRComplete += SetText;
 
 
-            Thread imageRecognitionThread = new Thread(delegate() {
+            Thread imageRecognitionThread = new Thread(delegate ()
+            {
                 imageRecognizer.GetTextFromImage(image);
             });
             imageRecognitionThread.Start();
-            imageRecognitionThread.Join();
 
 
         }

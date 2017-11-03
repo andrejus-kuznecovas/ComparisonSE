@@ -7,6 +7,8 @@ using Net.Doo.Snap.Blob;
 using System.Collections.Generic;
 using Net.Doo.Snap.Entity;
 using Android.Graphics;
+using Net.Doo.Snap.Util;
+using ScanbotSDK.Xamarin.Android.Wrapper;
 
 namespace Login.Source.Controllers.OCR
 {
@@ -114,8 +116,14 @@ namespace Login.Source.Controllers.OCR
             try
             {
                 // Turn image into Page (needed for OCR)
+                TempImageStorage storage = new TempImageStorage();
+                storage.AddImage(image);
+                var images = storage.GetImages();
+
+                var path = FileChooserUtils.GetPath(activity, images[0]);
+                var imageFile = new Java.IO.File(path);
                 var pages = new List<Page>();
-                var page = pageFactory.BuildPage(image, image.Width, image.Height).Page;
+                var page = pageFactory.BuildPage(imageFile);
                 pages.Add(page);
 
                 // Result of the whole recognition
@@ -125,7 +133,8 @@ namespace Login.Source.Controllers.OCR
                 if (OnOCRComplete != null)
                 {
                     // Save the recognized text in the event argument
-                    OnOCRComplete(this, new OCRText(fullOcrResult.RecognizedText));
+                    activity.RunOnUiThread( () => OnOCRComplete(this, new OCRText(fullOcrResult.RecognizedText)));
+                    
                 }
 
             }
