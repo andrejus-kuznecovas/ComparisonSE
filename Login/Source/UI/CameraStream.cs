@@ -13,6 +13,15 @@ using Camera = Android.Hardware.Camera;
 using Color = Android.Graphics.Color;
 using Console = System.Console;
 using View = Android.Views.View;
+using System.IO;
+using Login.Source.UI;
+using Android.Content;
+using System.Threading.Tasks;
+using Java.Nio;
+using System.Drawing;
+using Login.Source.Controllers.OCR;
+using Android.Support.V4.Content;
+using ScanbotSDK.Xamarin.Android.Wrapper;
 
 namespace Login
 {
@@ -24,42 +33,106 @@ namespace Login
         private SurfaceView _surfaceView;
         private ISurfaceHolder holder;
         private Button takePhoto;
-        int width;
-        int height;
-        
+        private Button analyseButton;
+        private Button retakeButton;
+        private TextView txt;
+        int screenWidth;
+        int screenHeight;
+        static Bitmap img = null;
+
 
         protected override void OnCreate(Bundle bundle)
         {
-            width = Resources.DisplayMetrics.WidthPixels/2;
-             height = Resources.DisplayMetrics.HeightPixels/2;
+            screenWidth = Resources.DisplayMetrics.WidthPixels;
+            screenHeight = Resources.DisplayMetrics.HeightPixels;
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.CameraLayout);
-
+            analyseButton = FindViewById<Button>(Resource.Id.show);
+            analyseButton.Visibility = ViewStates.Invisible;
+            retakeButton = FindViewById<Button>(Resource.Id.retake);
+            retakeButton.Visibility = ViewStates.Invisible;
             _textureView = FindViewById<TextureView>(Resource.Id.textureView);
             _textureView.SurfaceTextureListener = this;
             _surfaceView = FindViewById<SurfaceView>(Resource.Id.surfaceView);
             takePhoto = FindViewById<Button>(Resource.Id.captureImage);
             _surfaceView.SetZOrderOnTop(true);
+            txt = FindViewById<TextView>(Resource.Id.place_items_hint);
             //set the background to transparent
+
             _surfaceView.Holder.SetFormat(Format.Transparent);
             holder = _surfaceView.Holder;
-          
+
+            takePhoto.Click += TakePhoto_Click;
+            analyseButton.Click += analyseButton_Click;
+            retakeButton.Click += RetakeButton_Click;
         }
 
-       
+        private void RetakeButton_Click(object sender, EventArgs e)
+        {
+            _camera.StartPreview();
+            takePhoto.Visibility = ViewStates.Visible;
+            analyseButton.Visibility = ViewStates.Invisible;
+            retakeButton.Visibility = ViewStates.Invisible;
+
+        }
+
+        private void analyseButton_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ItemDisplayer));
+            StartActivity(intent);
+        }
+
+        private async void TakePhoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _camera.StopPreview();
+                var imageBitmap = _textureView.Bitmap;
+                analyseButton.Visibility = ViewStates.Visible;
+                retakeButton.Visibility = ViewStates.Visible;
+                takePhoto.Visibility = ViewStates.Invisible;
+                using (var imageStream = new MemoryStream())
+                {
+                    
+                    var preparedBitmap = ImagePreparer.PrepareForRecognition(imageBitmap);
+                    preparedBitmap = SBSDK.ApplyImageFilter(preparedBitmap, ScanbotSDK.Xamarin.ImageFilter.Binarized);
+                    await preparedBitmap.CompressAsync(Bitmap.CompressFormat.Jpeg, 100, imageStream);
+                    
+                    img = preparedBitmap.Copy(preparedBitmap.GetConfig(), true);
+                    imageBitmap.Recycle();
+                    //resizedBitmap.Recycle();
+                    preparedBitmap.Recycle();
+
+                };
+            }
+            catch (Exception ex)
+            {
+                
+                System.Diagnostics.Debug.WriteLine("*************************\n"+ex.Message);
+            }
+
+            
+
+
+        }
+
+        public static Bitmap GetImage()
+        {
+            return img;
+        }
 
 
         public void OnSurfaceTextureAvailable(Android.Graphics.SurfaceTexture surface, int w, int h)
         {
-            _camera = Android.Hardware.Camera.Open();
+            _camera = Camera.Open();
 
             try
             {
                 _camera.SetPreviewTexture(surface);
-                
+
                 _camera.SetDisplayOrientation(90);
                 _camera.StartPreview();
-               
+
 
             }
             catch (Java.IO.IOException ex)
@@ -93,27 +166,22 @@ namespace Login
         {
             //define the paintbrush
             Paint mpaint = new Paint();
-            mpaint.Color = new Android.Graphics.Color(Resource.Color.brand_dark);
+            mpaint.Color = new Color(ContextCompat.GetColor(Application.Context ,Resource.Color.brand_dark));
             mpaint.SetStyle(Paint.Style.Stroke);
             mpaint.StrokeWidth = 5f;
             mpaint.SetPathEffect(new DashPathEffect(new float[] { 30, 20 }, 0));
-            int width1 = width / 20;
-            int height1 = height / 20;
-           
+            int paddingLeft = screenWidth / 20;
+            int paddingTop = screenHeight / 20;
+
             Canvas canvas = holder.LockCanvas();
-    
+
             canvas.DrawColor(Color.Transparent, PorterDuff.Mode.Clear);
-            Rect r = new Rect(width1, height1, width*2-width1*2, height*2-height1*7);
-          
-            
+            Rect r = new Rect(paddingLeft, paddingTop, screenWidth - paddingLeft, screenHeight - paddingTop * 3);
+
+
             canvas.DrawRect(r, mpaint);
             holder.UnlockCanvasAndPost(canvas);
 
-        }
-
-        public void OnPreviewFrame(byte[] data, Android.Hardware.Camera camera)
-        {
-            throw new NotImplementedException();
         }
     }
 }

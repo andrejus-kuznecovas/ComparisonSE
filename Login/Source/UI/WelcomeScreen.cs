@@ -9,7 +9,7 @@ using Login.Source.Controllers;
 
 namespace Login
 {
-    [Activity(Theme = "@style/Theme.Brand")]
+    [Activity(Theme = "@style/Theme.AppCompat")]
     class WelcomeScreen : Activity
     {
         private ImageView imageView;
@@ -35,7 +35,7 @@ namespace Login
 
         private void PhotoButton_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(CameraStream));
+            Intent intent = new Intent(this, typeof(SnapingCamera));
             StartActivity(intent);
 
         }
@@ -70,8 +70,5 @@ SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 SupportActionBar.SetHomeButtonEnabled(true);
 SupportActionBar.SetDisplayShowTitleEnabled(true);
 }
-else
-{
 
-}
 */

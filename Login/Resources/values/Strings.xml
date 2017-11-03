@@ -12,4 +12,10 @@
   <string name="popup_password_hint">Slaptažodis</string>
   <string name="welcome_text">Sveiki sugrįžę</string>
   <string name="open_camera">Fotografuoti čekį</string>
+  <string name="retake_photo">Fotografuoti dar kartą</string>
+  <string name="analyse_photo">Analizuoti čekį</string>
+  <string name="camera_view_place_items_hint">Sutalpinkite prekes čia:</string>
+  <string name="camera_view_receipt_found">Čekis aptiktas, nejudėkite</string>
+  <string name="camera_view_receipt_too_far">Kamera per toli</string>
+  <string name="camera_view_receipt_not_found">Čekis nerastas</string>
 </resources>

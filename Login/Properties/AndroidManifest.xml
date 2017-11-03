@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Billy.Billy" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="23" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="mif.vu.billy" android:installLocation="auto" android:versionCode="1" android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="25" />
 	<uses-permission android:name="android.permission.CAMERA" />
-	<application android:label="Billy" android:icon="@drawable/BillyIcon"></application>
+	<uses-feature android:name="android.hardware.camera" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<application android:label="Billy">
+		<meta-data android:name="ocr_blobs_path" android:value="tessdata" />
+		<meta-data android:name="language_classifier_blob_path" android:value="tessdata" />
+	</application>
 </manifest>
