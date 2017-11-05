@@ -12,7 +12,7 @@
         android:layout_height="wrap_content" />
     <ImageView
         android:id="@+id/imageView"
-        android:layout_weight="8"
+        android:layout_weight="7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -21,4 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/open_camera" />
+  <Button
+       android:layout_weight="1"
+       android:id="@+id/showAnalyseButton"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="@string/Open_Analyse_Button" />
 </LinearLayout>

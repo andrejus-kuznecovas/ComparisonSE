@@ -6,6 +6,7 @@ using Android.OS;
 
 using Android.Widget;
 using Login.Source.Controllers;
+using Login.Source.UI;
 
 namespace Login
 {
@@ -14,6 +15,7 @@ namespace Login
     {
         private ImageView imageView;
         private Button photoButton;
+        private Button statisticButton;
         private TextView welcomeText;
         protected override void OnCreate(Bundle bundle)
         {
@@ -30,7 +32,15 @@ namespace Login
             }
             imageView = FindViewById<ImageView>(Resource.Id.imageView);
             photoButton = FindViewById<Button>(Resource.Id.photoButton);
+            statisticButton = FindViewById<Button>(Resource.Id.showAnalyseButton);
             photoButton.Click += PhotoButton_Click;
+            statisticButton.Click += StatisticButton_Click;
+        }
+
+        private void StatisticButton_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(Statistics));
+            StartActivity(intent);
         }
 
         private void PhotoButton_Click(object sender, EventArgs e)
