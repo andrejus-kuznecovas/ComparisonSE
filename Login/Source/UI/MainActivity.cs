@@ -14,7 +14,7 @@ using Android.Views.InputMethods;
 namespace Login
 {
     [Activity(Label = "Login", MainLauncher = true, Icon = "@drawable/billyicon", Theme = "@style/CustomActionBarTheme")]
-    public class MainActivity : ActionBarActivity
+    public class MainActivity : Activity
     {
 
         ProgressBar circle;
@@ -31,6 +31,7 @@ namespace Login
         private string email;
         //
         private bool ableToStart = false;
+        private Android.App.AlertDialog.Builder alertDialog;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -67,14 +68,33 @@ namespace Login
                 }
                 else
                 {
+                    alertDialog = new Android.App.AlertDialog.Builder(this.ApplicationContext);
+                    alertDialog.SetMessage(GetString(Resource.String.Login_Authentication_Error));
+                    alertDialog.SetNeutralButton("Tęsti", delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
                     circle.Visibility = ViewStates.Visible;
                 }
+                
             }
-            
-          
+            else
+            {
+               
+                alertDialog = new Android.App.AlertDialog.Builder(this);
+                alertDialog.SetMessage(GetString(Resource.String.Login_Empty_Fields_Error));
+                alertDialog.SetNeutralButton("Tęsti", delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
+
         }
+
+
       
- 
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);

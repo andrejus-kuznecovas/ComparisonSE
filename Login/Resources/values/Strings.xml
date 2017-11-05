@@ -24,5 +24,8 @@
   <string name="Register_Nickname_Error">Klaidingai įvestas slapyvardis</string>
   <string name="Register_Email_Error">Klaidingai įvestas elektroninis paštas</string>
   <string name="Register_Empty_Fields_Error">Trūksta duomenų</string>
+  <string name="Login_Empty_Fields_Error">Neįvedėte visos informacijos</string>
+  <string name="Login_Authentication_Error">Klaida su prisijungimu. Bandykite dar kartą</string>
+  
 
 </resources>

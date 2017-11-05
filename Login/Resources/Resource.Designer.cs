@@ -3506,6 +3506,12 @@ namespace Login
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f06003e
+			public const int Login_Authentication_Error = 2131099710;
+			
+			// aapt resource value: 0x7f06003d
+			public const int Login_Empty_Fields_Error = 2131099709;
+			
 			// aapt resource value: 0x7f06003b
 			public const int Register_Email_Error = 2131099707;
 			
