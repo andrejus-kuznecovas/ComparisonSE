@@ -3506,6 +3506,24 @@ namespace Login
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f06003b
+			public const int Register_Email_Error = 2131099707;
+			
+			// aapt resource value: 0x7f06003c
+			public const int Register_Empty_Fields_Error = 2131099708;
+			
+			// aapt resource value: 0x7f060037
+			public const int Register_Name_Error = 2131099703;
+			
+			// aapt resource value: 0x7f06003a
+			public const int Register_Nickname_Error = 2131099706;
+			
+			// aapt resource value: 0x7f060039
+			public const int Register_Password_Error = 2131099705;
+			
+			// aapt resource value: 0x7f060038
+			public const int Register_Surname_Error = 2131099704;
+			
 			// aapt resource value: 0x7f060000
 			public const int abc_action_bar_home_description = 2131099648;
 			

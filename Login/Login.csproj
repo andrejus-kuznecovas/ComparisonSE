@@ -121,6 +121,7 @@
     <Compile Include="Source\Controllers\OCR\ImagePreparer.cs" />
     <Compile Include="Source\Controllers\OCR\ImageRecognitionScanbot.cs" />
     <Compile Include="Source\Controllers\OCR\IOCR.cs" />
+    <Compile Include="Source\Controllers\Validator.cs" />
     <Compile Include="Source\UI\CameraStream.cs" />
     <Compile Include="Source\Controllers\Auth\ApiManager.cs" />
     <Compile Include="Source\Controllers\OCR\ImageRecognition.cs" />
