@@ -10,11 +10,19 @@ namespace Login
 {
     public class Categoriser
     {
-        public static Category GetCategory(Item item)
+        /// <summary>
+        /// Detects category in text
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns></returns>
+        public static Category GetCategory(string itemName)
         {
+            // Read the XML file from assets
             AssetManager assets = Application.Context.Assets;
             XDocument productsXml = GetData(assets.Open("products.xml"));
-            string categoryString = FilterByName(productsXml, item.GetName());
+
+
+            string categoryString = FilterByName(productsXml, itemName);
             if (categoryString == null)
             {
                 return Category.UNKNOWN_CATEGORY;
@@ -26,6 +34,11 @@ namespace Login
             
         }
 
+        /// <summary>
+        /// Get data from path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         private static XDocument GetData(Stream path)
         {
             XDocument productCategories = XDocument.Load(path);

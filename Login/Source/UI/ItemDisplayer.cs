@@ -50,7 +50,7 @@ namespace Login.Source.UI
                 Receipt receipt = new Receipt(text);
                 string receiptJSON = JsonConvert.SerializeObject(receipt);
                 System.Diagnostics.Debug.WriteLine("ID: " + UserController.GetUserID + " Token: " + UserController.UserToken + " json: " +receiptJSON);
-                Task.Run(() => ReceiptApiManager.SaveReceiptData(UserController.GetUserID, UserController.UserToken, receiptJSON));
+                
                 textView.Text = "Shop:" + receipt.shop.ToString() + "\n\n";
                 textView.Text += "Items bought:\n";
                 foreach (Item item in receipt.shoppingList)
@@ -58,7 +58,8 @@ namespace Login.Source.UI
                     textView.Text += "* " + item.name + " " + item.getPrice() + "\nCategory: "+ item.category + "\n\n";
                 }
                 textView.Text += "Total : " + receipt.total+"\n";
-                
+                Task.Run(() => ReceiptApiManager.SaveReceiptData(UserController.GetUserID, UserController.UserToken, receiptJSON));
+
             }
         }
     }

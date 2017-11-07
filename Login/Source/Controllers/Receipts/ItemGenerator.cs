@@ -7,6 +7,9 @@ namespace Login.Source.Controllers.Receipts
     {
         private static List<String> _items;
 
+        /// <summary>
+        /// Populate list of fake items
+        /// </summary>
         public static void Initialize()
         {
             _items = new List<string>();
