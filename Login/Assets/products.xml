@@ -1,0 +1,90 @@
+﻿<xml version="1.0">
+
+  <Category name="BREAD_PRODUCTS">
+    <Bread>
+      <Product>
+        <Name>Duona</Name>
+      </Product>
+    </Bread>
+    <Cookies>
+      <Product>
+        <Name>sausainiai belvita</Name>
+      </Product>
+      <Product>
+        <Name>sausainiai du gaideliai</Name>
+      </Product>
+    </Cookies>
+  </Category>
+  
+  <Category name="FRUIT_AND_VEGETABLES">
+    <Fruits>
+      <Product>
+        <Name>obuoliai</Name>
+      </Product>
+    </Fruits>
+    <Vegetables>
+      <Product>
+        <Name>morkos</Name>
+      </Product>
+    </Vegetables>
+  </Category>
+
+
+  <Category name="MEAT_AND_FISH">
+    <Fish>
+      <Product>
+        <Name>rukyta lydeka</Name>
+      </Product>
+    </Fish>
+    <Meat>
+      <Product>
+        <Name>pieniskos desreles iki</Name>
+      </Product>
+    </Meat>
+  </Category>
+
+  <Category name="DAIRY_PRODUCTS">
+    <Milk>
+      <Product>
+        <Name>pienas</Name>
+      </Product>
+    </Milk>
+    <Desserts>
+      <Product>
+        <Name>surelis</Name>
+      </Product>
+    </Desserts>
+  </Category>
+
+  <Category name="DRINKS">
+    <Water>
+      <Product>
+        <Name>vanduo tiche</Name>
+      </Product>
+    </Water>
+  </Category>
+  
+  <Category name="OTHER_GOODS">
+    <Office>
+      <Product>
+        <Name>tusinukas</Name>
+      </Product>
+    </Office>
+  </Category>
+  
+   <Category name="SWEETS">
+    <Bars>
+      <Product>
+        <Name>batonelis twix</Name>
+      </Product>
+    </Bars>
+  </Category>
+  
+  <Category name="PET_PRODUCTS">
+    <Food>
+      <Product>
+        <Name>sunu edalas</Name>
+      </Product>
+    </Food>
+  </Category>
+</xml>

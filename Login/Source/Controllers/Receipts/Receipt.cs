@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace Login
 {
-    public class Receipt
+    public class Receipt 
     {
+        
         private string initialText;
         public float total { get; set; }
         public Shop shop { get; set; }
@@ -22,7 +22,7 @@ namespace Login
         {
             this.initialText = initialText;
             shoppingList = new List<Item>();
-            purchaseTime = DateTime.Today;
+            purchaseTime = DateTime.Now;
             total = 0f;
             Populate();
         }
@@ -48,10 +48,10 @@ namespace Login
                     if (priceInLine > 0)
                     {
                    
-                       Item item = new Item(Parser.RemoveNonLetters(lines[i]), (int)(priceInLine *100));
-                       Category itemCategory = Categoriser.GetCategory(item);
-                       item.category = itemCategory;
-                       shoppingList.Add(item);
+                       Item item = new Item(Parser.RemoveNonLetters(lines[i]), priceInLine);
+                        Category itemCategory = Categoriser.GetCategory(item);
+                        item.category = itemCategory;
+                        shoppingList.Add(item);
                     }
                 }
             }

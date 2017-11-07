@@ -49,10 +49,10 @@ namespace Login
             PolygonView polygonView = FindViewById<PolygonView>(Resource.Id.scanbotPolygonView);
             contourDetectorFrameHandler.AddResultHandler(polygonView);
             contourDetectorFrameHandler.AddResultHandler(this);
-            autoSnappingController = AutoSnappingController.Attach(cameraView, contourDetectorFrameHandler);
-            // Set the sensitivity of AutoSnappingController
-            // Range is from 0 to 1, where 1 is the most sensitive. The more sensitive it is the faster it shoots.
-            autoSnappingController.SetSensitivity(1.0f);
+            //autoSnappingController = AutoSnappingController.Attach(cameraView, contourDetectorFrameHandler);
+            //// Set the sensitivity of AutoSnappingController
+            //// Range is from 0 to 1, where 1 is the most sensitive. The more sensitive it is the faster it shoots.
+            //autoSnappingController.SetSensitivity(1.0f);
 
             cameraView.AddPictureCallback(this);
             cameraView.SetCameraOpenCallback(this);

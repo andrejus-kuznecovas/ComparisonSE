@@ -19,7 +19,7 @@
 
     public class Item
     {
-        public int price { get; set; }
+        public float price { get; set; }
         public string name { get; set; }
         public Category category { get; set; }
 
@@ -29,15 +29,15 @@
 
         }
 
-        public Item(string name, int price)
+        public Item(string name, float price)
         {
             this.price = price;
             this.name = name.ToLower();
         }
 
-        public double getPrice()
+        public float getPrice()
         {
-            return price / (double)100;
+            return price;
         }
 
         public string GetName()

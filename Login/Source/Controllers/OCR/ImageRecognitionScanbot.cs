@@ -12,20 +12,8 @@ using ScanbotSDK.Xamarin.Android.Wrapper;
 
 namespace Login.Source.Controllers.OCR
 {
-    /// <summary>
-    /// Event Args that have Recognition text in it
-    /// </summary>
-    public class OCRText : EventArgs
-    {
-        public string text;
 
-        public OCRText(string text)
-        {
-            this.text = text;
-        }
-    }
-
-    public class ImageRecognitionScanbot : IOCR
+    public class ImageRecognitionScanbot : ITextRecognizer
     {
         private static List<Language> ocrLanguages = new List<Language>();
         private PageFactory pageFactory;
@@ -38,7 +26,12 @@ namespace Login.Source.Controllers.OCR
         /// <summary>
         /// Event to happen when the text is successfully detected
         /// </summary>
-        public EventHandler<OCRText> OnOCRComplete;
+        private EventHandler<OCRText> OnOCRComplete;
+
+        public void AddOnCompleteHandler(EventHandler<OCRText> action)
+        {
+            OnOCRComplete = action;
+        }
 
         public ImageRecognitionScanbot(Activity activity)
         {
