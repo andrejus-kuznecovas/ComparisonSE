@@ -20,7 +20,7 @@ namespace Login.Source.UI
             base.OnCreate(bundle);
 
 
-            SetContentView(Resource.Layout.ShowText);
+            SetContentView(Resource.Layout.ItemListViewLayout);
 
             textView = FindViewById<TextView>(Resource.Id.showTxt);
             var image = SnapingCamera.Image;

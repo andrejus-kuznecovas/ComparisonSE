@@ -129,10 +129,6 @@ namespace Login
             }
             processedImage = ImagePreparer.PrepareForRecognition(processedImage);
 
-
-            
-
-
             Image = processedImage;
             
             Intent itemView = new Intent(this, typeof(ItemDisplayer));
