@@ -38,6 +38,7 @@ namespace Login.Source.UI
             get { return items[position]; }
         }
 
+        // display one item in itemListView
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View row = convertView;
@@ -47,6 +48,7 @@ namespace Login.Source.UI
                 row = LayoutInflater.From(this.context).Inflate(Resource.Layout.ItemRow, null, false);
             }
 
+            // set text for one item
             TextView name = row.FindViewById<TextView>(Resource.Id.rowName);
             name.Text = items[position].Name;
             TextView price = row.FindViewById<TextView>(Resource.Id.rowPrice);

@@ -27,12 +27,14 @@ namespace Login.Source.UI
 
             itemList = new List<Item>();
 
+
+            // for testing
             itemList.Add(new Item("viens", 2, "trys"));
             itemList.Add(new Item("keturi", 5, "sesi"));
 
 
+            // link adapter to listView
             ItemListViewAdapter adapter = new ItemListViewAdapter(this, itemList);
-
             listView.Adapter = adapter;
 
 
