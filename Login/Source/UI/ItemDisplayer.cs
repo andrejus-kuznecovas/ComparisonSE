@@ -23,6 +23,7 @@ namespace Login.Source.UI
             SetContentView(Resource.Layout.ShowText);
 
             textView = FindViewById<TextView>(Resource.Id.showTxt);
+            
             var image = SnapingCamera.Image;
 
             var imageRecognizer = new ImageRecognitionScanbot(this);
@@ -34,8 +35,6 @@ namespace Login.Source.UI
                 imageRecognizer.GetTextFromImage(image);
             });
             imageRecognitionThread.Start();
-
-
         }
 
         protected void SetText(object sender, OCRText result)

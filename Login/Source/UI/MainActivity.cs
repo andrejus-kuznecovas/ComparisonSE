@@ -14,7 +14,7 @@ using Android.Views.InputMethods;
 namespace Login
 {
     [Activity(Label = "Login", MainLauncher = true, Icon = "@drawable/billyicon", Theme = "@style/CustomActionBarTheme")]
-    public class MainActivity : ActionBarActivity
+    public class MainActivity : Activity
     {
 
         ProgressBar circle;
@@ -31,6 +31,7 @@ namespace Login
         private string email;
         //
         private bool ableToStart = false;
+        private Android.App.AlertDialog.Builder alertDialog;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -47,7 +48,7 @@ namespace Login
 
         private async void SignIn_Click(object sender, System.EventArgs e)
         {
-
+            bool isReady = true;
             EditText usernameField = FindViewById<EditText>(Resource.Id.login_username);
             EditText passwordField = FindViewById<EditText>(Resource.Id.login_password);
 
@@ -55,57 +56,45 @@ namespace Login
             InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
             imm.HideSoftInputFromWindow(passwordField.WindowToken, 0);
 
-
-            string username = usernameField.Text;
-            string password = passwordField.Text;
-            circle.Visibility = Android.Views.ViewStates.Visible;
-            if (await Authentication.Authenticate(username, password))
+            if (usernameField.Text.Length > 0 && passwordField.Text.Length > 0)
             {
-                Intent intent = new Intent(this, typeof(WelcomeScreen));
-                StartActivity(intent);
+                string username = usernameField.Text;
+                string password = passwordField.Text;
+                circle.Visibility = Android.Views.ViewStates.Visible;
+                if (await Authentication.Authenticate(username, password))
+                {
+                    Intent intent = new Intent(this, typeof(WelcomeScreen));
+                    StartActivity(intent);
+                }
+                else
+                {
+                    alertDialog = new Android.App.AlertDialog.Builder(this.ApplicationContext);
+                    alertDialog.SetMessage(GetString(Resource.String.Login_Authentication_Error));
+                    alertDialog.SetNeutralButton("Tęsti", delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                    circle.Visibility = ViewStates.Visible;
+                }
+                
             }
-            //if (ableToStart)
-            //{
+            else
+            {
+               
+                alertDialog = new Android.App.AlertDialog.Builder(this);
+                alertDialog.SetMessage(GetString(Resource.String.Login_Empty_Fields_Error));
+                alertDialog.SetNeutralButton(GetString(Resource.String.Continue_work), delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
 
-            //    SetContentView(Resource.Layout.first);
-            //    imageView = FindViewById<ImageView>(Resource.Id.imageView);
-            //    photoButton = FindViewById<Button>(Resource.Id.photoButton);
-            //    photoButton.Click += PhotoButton_Click;
-            //    //ToolBar reikes ateityje
-            //    /*
-            //    drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            //   leftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
-            //    leftItems.Add("Vienas");
-            //    leftItems.Add("Du");
-            //    leftItems.Add("Trys");
-            //    leftItems.Add("Keturi");
-            //    leftItems.Add("Penki");
-            //    leftItems.Add("Sesi");
-            //    leftItems.Add("Septyni");
-
-
-            //    leftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, leftItems);
-            //    drawerToggle = new MyActionBarDrawerToggle(this, drawerLayout, Resource.String.open_drawer, Resource.String.close_drawer);
-            //    leftDrawer.Adapter = leftAdapter;
-
-            //    drawerLayout.SetDrawerListener(drawerToggle);
-
-            //    mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
-            //    SetSupportActionBar(mToolbar);
-
-            //    SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            //    SupportActionBar.SetHomeButtonEnabled(true);
-            //    SupportActionBar.SetDisplayShowTitleEnabled(true);
-            //}
-            //else
-            //{
-
-            //}
-            //*/
-            //}
         }
+
+
       
- 
         public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
         {
             base.OnConfigurationChanged(newConfig);

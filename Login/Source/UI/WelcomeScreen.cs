@@ -6,15 +6,20 @@ using Android.OS;
 
 using Android.Widget;
 using Login.Source.Controllers;
+using Login.Source.UI;
+using OxyPlot.Xamarin.Android;
 
 namespace Login
 {
-    [Activity(Theme = "@style/Theme.AppCompat")]
+    [Activity(Theme = "@style/Theme.Brand")]
     class WelcomeScreen : Activity
     {
-        private ImageView imageView;
         private Button photoButton;
+        private Button statisticButton;
         private TextView welcomeText;
+        private PlotView plotView;
+        private Spinner type;
+        
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -28,16 +33,34 @@ namespace Login
                 string surname = UserController.UserSurname;
                 welcomeText.Text = String.Format("{0}, {1} {2}", Resources.GetString(Resource.String.welcome_text), name, surname );
             }
-            imageView = FindViewById<ImageView>(Resource.Id.imageView);
+             
             photoButton = FindViewById<Button>(Resource.Id.photoButton);
+            plotView = FindViewById<PlotView>(Resource.Id.plot_View);
+            statisticButton = FindViewById<Button>(Resource.Id.showAnalyseButton);
+            type = FindViewById<Spinner>(Resource.Id.categoryType);
+            plotView.Model = Statistics.pieChart(null);
             photoButton.Click += PhotoButton_Click;
+            statisticButton.Click += StatisticButton_Click;
+        }
+
+        private void StatisticButton_Click(object sender, EventArgs e)
+        {
+            if (type.SelectedItem.ToString() == "Category")
+            {
+                plotView.Model = Statistics.pieChart(null);
+            }
+            if (type.SelectedItem.ToString() == "Price")
+            {
+                plotView.Model = Statistics.linearChart(null);
+            }
+           
         }
 
         private void PhotoButton_Click(object sender, EventArgs e)
         {
+
             Intent intent = new Intent(this, typeof(SnapingCamera));
             StartActivity(intent);
-
         }
 
     }
