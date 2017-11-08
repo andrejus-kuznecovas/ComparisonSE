@@ -96,7 +96,7 @@ namespace Login
 
             if (!validator.CheckName(name.Text))
             {
-                showMsg(GetString(Resource.String.Register_Name_Error));
+                displayMessage(GetString(Resource.String.Register_Name_Error));
                 validation = false;
             }
             else
@@ -105,7 +105,7 @@ namespace Login
             }
             if (!validator.CheckSurname(surname.Text))
             {
-                showMsg(GetString(Resource.String.Register_Surname_Error));
+                displayMessage(GetString(Resource.String.Register_Surname_Error));
                 validation = false;
             }
             else
@@ -114,7 +114,7 @@ namespace Login
             }
             if (!validator.CheckNickname(username.Text))
             {
-                showMsg(GetString(Resource.String.Register_Nickname_Error));
+                displayMessage(GetString(Resource.String.Register_Nickname_Error));
                 validation = false;
             }
             else
@@ -123,7 +123,7 @@ namespace Login
             }
             if (!validator.CheckPassword(password.Text))
             {
-                showMsg(GetString(Resource.String.Register_Password_Error));
+                displayMessage(GetString(Resource.String.Register_Password_Error));
                 validation = false;
             }
             else
@@ -132,7 +132,7 @@ namespace Login
             }
             if (!validator.CheckEmail(email.Text))
             {
-                showMsg(GetString(Resource.String.Register_Email_Error));
+                displayMessage(GetString(Resource.String.Register_Email_Error));
                 validation = false;
             }
             else
@@ -149,7 +149,7 @@ namespace Login
             }
             else
             {
-                showMsg(GetString(Resource.String.Register_Empty_Fields_Error));
+                displayMessage(GetString(Resource.String.Register_Empty_Fields_Error));
             }
 
 
@@ -165,7 +165,7 @@ namespace Login
         /// Creates alerDialog and displays message about wrong input
         /// </summary>
         /// <param name="text"></param>
-        public void showMsg(string text)
+        public void displayMessage(string text)
         {
             alertDialog = new AlertDialog.Builder(this.Activity);
             alertDialog.SetMessage(text);

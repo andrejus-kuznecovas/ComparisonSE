@@ -27,6 +27,8 @@
   <string name="Login_Empty_Fields_Error">Neįvedėte visos informacijos</string>
   <string name="Login_Authentication_Error">Klaida su prisijungimu. Bandykite dar kartą</string>
   <string name="Open_Analyse_Button">Parodyti statistiką</string>
+  <string name ="Continue_work">Tęsti</string>
+  <string name ="Statistics">Statistika</string>
   <string-array name="Statistics_Types">
     <item>Category</item>
     <item>Price</item>

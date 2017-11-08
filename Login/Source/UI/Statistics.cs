@@ -17,44 +17,22 @@ using OxyPlot.Axes;
 namespace Login.Source.UI
 {
     [Activity(Theme = "@style/Theme.Brand")]
-    class Statistics : Activity
+    class Statistics
     {
-        private PlotView plotView;
-        private Spinner type;
-        private Button showData;
-        protected override void OnCreate(Bundle bundle)
-        {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.StatisticLayout);
-            plotView = FindViewById<PlotView>(Resource.Id.plot_View);
-            showData = FindViewById<Button>(Resource.Id.showDataButton);
-            type = FindViewById<Spinner>(Resource.Id.categoryType);
-            showData.Click += ShowData_Click;
-           // plotView.Model = pieChart();
-        }
-        /// <summary>
+    
+       /// <summary>
         /// loads diagram according to the selected spinner 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowData_Click(object sender, EventArgs e)
-        {
-           if(type.SelectedItem.ToString() == "Category")
-            {
-                plotView.Model = pieChart(null);
-            }
-            if (type.SelectedItem.ToString() == "Price")
-            {
-                plotView.Model = linearChart(null);
-            }
-        }
+        
 
         /// <summary>
         /// Creates a pie chart from a dictionary
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private PlotModel pieChart(Dictionary<string, int> value)
+        public static PlotModel pieChart(Dictionary<string, int> value)
         {
             PlotModel model = new PlotModel { Title = "Statistika" };
             var series = new PieSeries { StrokeThickness = 2.0, InsideLabelPosition = 0.7, AngleSpan = 360, StartAngle = 0 };
@@ -80,11 +58,11 @@ namespace Login.Source.UI
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private PlotModel linearChart(Dictionary<string, int> value)
+        public static PlotModel linearChart(Dictionary<string, int> value)
         {
-            PlotModel model = new PlotModel { Title = "Linijine statistika" };
+            PlotModel model = new PlotModel { Title = "Statistika" };
             model.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom });
-            model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Maximum = 10, Minimum = 0 });
+            model.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Maximum = 10, Minimum = 0, IsPanEnabled = false });
 
             var series = new LineSeries
             {

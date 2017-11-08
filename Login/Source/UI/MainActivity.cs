@@ -84,7 +84,7 @@ namespace Login
                
                 alertDialog = new Android.App.AlertDialog.Builder(this);
                 alertDialog.SetMessage(GetString(Resource.String.Login_Empty_Fields_Error));
-                alertDialog.SetNeutralButton("Tęsti", delegate
+                alertDialog.SetNeutralButton(GetString(Resource.String.Continue_work), delegate
                 {
                     alertDialog.Dispose();
                 });
