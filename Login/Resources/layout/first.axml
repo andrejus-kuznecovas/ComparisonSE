@@ -4,14 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:gridSpec="1|8|#0093eeff|K:#ee8700ff:16,l:72,l:16,r|S:#83ee00ff:16,0,l:16,56,l:16,0,r">
-    <TextView
-        android:id="@+id/logged_in_welcome_text"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    android:weightSum="10">
+  <TextView
+      android:id="@+id/logged_in_welcome_text"
+      android:layout_weight="1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
   <Spinner
       android:layout_below="@id/logged_in_welcome_text"
         android:id="@+id/categoryType"
@@ -19,23 +17,23 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:entries="@array/Statistics_Types"></Spinner>
-  
+
   <oxyplot.xamarin.android.PlotView
       android:layout_below="@id/categoryType"
         android:id="@+id/plot_View"
         android:layout_width="match_parent"
         android:layout_weight="5"
-        android:layout_height="match_parent" />
-    <Button
-        android:layout_weight="1"
-        android:id="@+id/photoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/open_camera" />
-    <Button
-        android:layout_weight="1"
-        android:id="@+id/showAnalyseButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Open_Analyse_Button" />
+        android:layout_height="wrap_content" />
+  <Button
+      android:layout_weight="1"
+      android:id="@+id/photoButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/open_camera" />
+  <Button
+      android:layout_weight="1"
+      android:id="@+id/showAnalyseButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/Open_Analyse_Button" />
 </LinearLayout>
