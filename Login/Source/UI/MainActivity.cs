@@ -9,7 +9,8 @@ using Android.Support.V4.Widget;
 using System.Collections.Generic;
 using Login.Source.Controllers;
 using Android.Views.InputMethods;
-
+using Newtonsoft.Json;
+using System;
 
 namespace Login
 {
@@ -37,6 +38,10 @@ namespace Login
         {
             base.OnCreate(bundle);
 
+
+
+
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             Button signUpBtn = FindViewById<Button>(Resource.Id.login_signUpButton);
@@ -48,7 +53,9 @@ namespace Login
 
         private async void SignIn_Click(object sender, System.EventArgs e)
         {
+
             bool isReady = true;
+
             EditText usernameField = FindViewById<EditText>(Resource.Id.login_username);
             EditText passwordField = FindViewById<EditText>(Resource.Id.login_password);
 

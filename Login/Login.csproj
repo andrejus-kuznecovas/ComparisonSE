@@ -60,6 +60,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
     <Reference Include="OxyPlot, Version=1.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.1.0.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1+Xamarin.iOS10\OxyPlot.dll</HintPath>
     </Reference>
@@ -89,7 +91,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Json" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -136,8 +140,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Controllers\Auth\ReceiptApiManager.cs" />
+    <Compile Include="Source\Controllers\Auth\AuthApiManager.cs" />
     <Compile Include="Source\Controllers\OCR\ImagePreparer.cs" />
     <Compile Include="Source\Controllers\OCR\ImageRecognitionScanbot.cs" />
+    <Compile Include="Source\Controllers\OCR\ITextRecognizer.cs" />
+    <Compile Include="Source\Controllers\OCR\OCRText.cs" />
+    <Compile Include="Source\Controllers\Parsing\Categoriser.cs" />
+    <Compile Include="Source\Controllers\Parsing\Parser.cs" />
+    <Compile Include="Source\Controllers\Receipts\Item.cs" />
+    <Compile Include="Source\Controllers\Receipts\ItemGenerator.cs" />
+    <Compile Include="Source\Controllers\Receipts\Receipt.cs" />
+    <Compile Include="Source\Controllers\Receipts\Shop.cs" />
     <Compile Include="Source\Controllers\OCR\IOCR.cs" />
     <Compile Include="Source\Controllers\Validator.cs" />
     <Compile Include="Source\UI\CameraStream.cs" />
@@ -262,6 +276,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\CameraHintBubble.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\products.xml">
+      <SubType>Designer</SubType>
+    </AndroidAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.3\build\Xamarin.Build.Download.targets')" />

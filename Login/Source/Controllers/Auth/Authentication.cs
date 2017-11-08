@@ -21,7 +21,7 @@ namespace Login.Source.Controllers
                 string token;
 
                 // Make Login request to the server with provided credentials
-                
+
                var loginInfo = await ApiManager.LoginRequest(username, password);
                 if (loginInfo != null)
                 {
@@ -73,7 +73,7 @@ namespace Login.Source.Controllers
                 string token;
                 
                 // Make registration request using credentials
-                var loginInfo = await ApiManager.RegistrationRequest(name, surname, email, username, password);
+                var loginInfo = await AuthApiManager.RegistrationRequest(name, surname, email, username, password);
 
                 id = Int32.Parse(loginInfo["id"]);
                 token = loginInfo["token"];
@@ -114,7 +114,7 @@ namespace Login.Source.Controllers
                 string surname;
 
                 // Get info about the user using provided credentials
-                JsonObject userInfo = await ApiManager.GetInfo(id, token);
+                JsonObject userInfo = await AuthApiManager.GetInfo(id, token);
                 name = userInfo["name"];
                 surname = userInfo["surname"];
 

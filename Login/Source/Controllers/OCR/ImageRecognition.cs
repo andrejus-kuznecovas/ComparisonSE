@@ -2,27 +2,41 @@
 using Android.App;
 using System.Threading.Tasks;
 using Tesseract.Droid;
+using Android.Graphics;
 using System.IO;
 
 namespace Login.Source.Controllers.OCR
 {
-    public class ImageRecognition: IOCR
+    public class ImageRecognition: ITextRecognizer
     {
         // Event to be called after the recognition is done
-        public EventHandler<OCRText> OnRecognition;
+        private EventHandler<OCRText> OnOCRComplete;
+
+        public void AddOnCompleteHandler(EventHandler<OCRText> action)
+        {
+            OnOCRComplete = action;
+        }
 
         /// <summary>
         /// Extract text from the given image using Tesseract OCR
         /// </summary>
         /// <param name="image">Image to be recognized from</param>
         
-        public async Task GetTextFromImage(byte[] image)
+        public async void GetTextFromImage(Bitmap image)
         {
             try
             {
                 // Get Tesseract API for current context
                 using (var tesseract = new TesseractApi(Application.Context, AssetsDeployment.OncePerInitialization))
                 {
+                    // Convert image to byte[] for this Tesseract implementation
+                    byte[] imageBytes;
+                    using (var stream = new MemoryStream())
+                    {
+                        image.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                        imageBytes = stream.ToArray();
+                    }
+
                     // Initialize Tesseract with Lithuanian language trained data
                     await tesseract.Init("lit+eng",Tesseract.OcrEngineMode.TesseractOnly);
 
@@ -31,24 +45,24 @@ namespace Login.Source.Controllers.OCR
 
                     // Set Image and perform recognition on another thread
                     var successful = await Task.Run(
-                        () => tesseract.SetImage(image)
+                        () => tesseract.SetImage(imageBytes)
                     );
 
                     if (successful)
                     {
                         
-                        if (OnRecognition != null)
+                        if (OnOCRComplete != null)
                         {
                             // If text detection was successful, return text from the image
-                            OnRecognition(new ImageRecognition(), new OCRText(tesseract.Text));
+                            OnOCRComplete(new ImageRecognition(), new OCRText(tesseract.Text));
                         }
                     }
                     else
                     {
-                        if (OnRecognition != null)
+                        if (OnOCRComplete != null)
                         {
                             // If text detection was not successful, return null
-                            OnRecognition(new ImageRecognition(), new OCRText(null));
+                            OnOCRComplete(new ImageRecognition(), new OCRText(null));
                         }
                     }
                 }
@@ -67,15 +81,4 @@ namespace Login.Source.Controllers.OCR
         }
 
     }
-
-    public class OCRText : EventArgs
-    {
-        public string text;
-
-        public OCRText(string text)
-        {
-            this.text = text;
-        }
-    }
-}
-*/
+}*/

@@ -2,9 +2,12 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
-using AndroidNetUri = Android.Net.Uri;
 using Login.Source.Controllers.OCR;
 using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Login.Source.Controllers;
+using Login.Source.Controllers.Receipts;
 
 namespace Login.Source.UI
 {
@@ -26,22 +29,40 @@ namespace Login.Source.UI
             
             var image = SnapingCamera.Image;
 
-            var imageRecognizer = new ImageRecognitionScanbot(this);
-            imageRecognizer.OnOCRComplete += SetText;
+            //ITextRecognizer imageRecognizer = new ImageRecognitionScanbot(this);
+            //imageRecognizer.AddOnCompleteHandler(SetText);
 
 
-            Thread imageRecognitionThread = new Thread(delegate ()
-            {
-                imageRecognizer.GetTextFromImage(image);
-            });
-            imageRecognitionThread.Start();
+            //Task.Run( () => imageRecognizer.GetTextFromImage(image) );
+            
+            SetText();
+
         }
 
-        protected void SetText(object sender, OCRText result)
+        protected void SetText(/*object sender, OCRText result*/)
         {
             textView = FindViewById<TextView>(Resource.Id.showTxt);
-            string text = result.text;
-            textView.Text = String.IsNullOrEmpty(text) ? "NULL" : text;
+
+            // Should be replaced by fake item generator for now
+            //string text = result.text;
+            ItemGenerator.Initialize();
+            string text = ItemGenerator.GenerateItems();
+            if (!String.IsNullOrEmpty(text))
+            {
+                Receipt receipt = new Receipt(text);
+                string receiptJSON = JsonConvert.SerializeObject(receipt);
+                System.Diagnostics.Debug.WriteLine("ID: " + UserController.GetUserID + " Token: " + UserController.UserToken + " json: " +receiptJSON);
+                
+                textView.Text = "Shop:" + receipt.shop.ToString() + "\n\n";
+                textView.Text += "Items bought:\n";
+                foreach (Item item in receipt.shoppingList)
+                {
+                    textView.Text += "* " + item.name + " " + item.getPrice() + "\nCategory: "+ item.category + "\n\n";
+                }
+                textView.Text += "Total : " + receipt.total+"\n";
+                Task.Run(() => ReceiptApiManager.SaveReceiptData(UserController.GetUserID, UserController.UserToken, receiptJSON));
+
+            }
         }
     }
     
