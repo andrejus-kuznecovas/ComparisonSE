@@ -18,4 +18,22 @@
   <string name="camera_view_receipt_found">Čekis aptiktas, nejudėkite</string>
   <string name="camera_view_receipt_too_far">Kamera per toli</string>
   <string name="camera_view_receipt_not_found">Čekis nerastas</string>
+  <string name="Register_Name_Error">Klaidingai įvestas vardas</string>
+  <string name="Register_Surname_Error">Klaidingai įvesta pavardė</string>
+  <string name="Register_Password_Error">Klaidingai įvestas slaptažodis</string>
+  <string name="Register_Nickname_Error">Klaidingai įvestas slapyvardis</string>
+  <string name="Register_Email_Error">Klaidingai įvestas elektroninis paštas</string>
+  <string name="Register_Empty_Fields_Error">Trūksta duomenų</string>
+  <string name="Login_Empty_Fields_Error">Neįvedėte visos informacijos</string>
+  <string name="Login_Authentication_Error">Klaida su prisijungimu. Bandykite dar kartą</string>
+  <string name="Open_Analyse_Button">Parodyti statistiką</string>
+  <string name ="Continue_work">Tęsti</string>
+  <string name ="Statistics">Statistika</string>
+  <string-array name="Statistics_Types">
+    <item>Category</item>
+    <item>Price</item>
+  </string-array>
+
+
+
 </resources>

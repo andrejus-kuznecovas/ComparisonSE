@@ -21,15 +21,20 @@ namespace Login.Source.Controllers
                 string token;
 
                 // Make Login request to the server with provided credentials
-                var loginInfo = await AuthApiManager.LoginRequest(username, password);
 
-                id = Int32.Parse(loginInfo["id"]);
-                token = loginInfo["token"];
+               var loginInfo = await ApiManager.LoginRequest(username, password);
+                if (loginInfo != null)
+                {
+                    id = Int32.Parse(loginInfo["id"]);
+                    token = loginInfo["token"];
 
-                // Check if initialization was performed correctly
-                var succeeded = await InitializeUser(id, token);
-                if (succeeded) {
-                    return true;
+                    // Check if initialization was performed correctly
+                    var succeeded = await InitializeUser(id, token);
+                    if (succeeded)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
                 return false;
             }
