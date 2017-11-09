@@ -30,8 +30,8 @@
   <string name ="Continue_work">Tęsti</string>
   <string name ="Statistics">Statistika</string>
   <string-array name="Statistics_Types">
-    <item>Category</item>
-    <item>Price</item>
+    <item>Išlaidos konkrečiai kategorijai</item>
+    <item>Kainų kitimas</item>
   </string-array>
 
 

@@ -4,18 +4,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10">
+    android:weightSum="7">
   <TextView
       android:id="@+id/logged_in_welcome_text"
-      android:layout_weight="1"
+      android:layout_weight="0.5"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
+      android:layout_height="0dp" />
   <Spinner
       android:layout_below="@id/logged_in_welcome_text"
         android:id="@+id/categoryType"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:entries="@array/Statistics_Types"></Spinner>
 
   <oxyplot.xamarin.android.PlotView
@@ -23,17 +23,11 @@
         android:id="@+id/plot_View"
         android:layout_width="match_parent"
         android:layout_weight="5"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp" />
   <Button
       android:layout_weight="1"
       android:id="@+id/photoButton"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
+      android:layout_height="0dp"
       android:text="@string/open_camera" />
-  <Button
-      android:layout_weight="1"
-      android:id="@+id/showAnalyseButton"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="@string/Open_Analyse_Button" />
 </LinearLayout>

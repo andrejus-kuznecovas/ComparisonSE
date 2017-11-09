@@ -8,6 +8,10 @@ using Android.Widget;
 using Login.Source.Controllers;
 using Login.Source.UI;
 using OxyPlot.Xamarin.Android;
+using System.Json;
+using Login.Source.Controllers.Auth;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Login
 {
@@ -19,6 +23,8 @@ namespace Login
         private TextView welcomeText;
         private PlotView plotView;
         private Spinner type;
+        private Dictionary<string, float> pieChartData = new Dictionary<string, float>();
+        private Dictionary<DateTime, float> linearChartData = new Dictionary<DateTime, float>();
         
         protected override void OnCreate(Bundle bundle)
         {
@@ -36,22 +42,78 @@ namespace Login
              
             photoButton = FindViewById<Button>(Resource.Id.photoButton);
             plotView = FindViewById<PlotView>(Resource.Id.plot_View);
-            statisticButton = FindViewById<Button>(Resource.Id.showAnalyseButton);
             type = FindViewById<Spinner>(Resource.Id.categoryType);
-            plotView.Model = Statistics.pieChart(null);
+
+            
+            
+
+
+
             photoButton.Click += PhotoButton_Click;
-            statisticButton.Click += StatisticButton_Click;
+            type.ItemSelected += ChooseItem;
         }
 
-        private void StatisticButton_Click(object sender, EventArgs e)
+        public void DisplayPieChart()
         {
-            if (type.SelectedItem.ToString() == "Category")
+            if(pieChartData.Count <= 0)
             {
-                plotView.Model = Statistics.pieChart(null);
+                // Get the data from the server
+                StatisticsApiManager.OnDataRetrieved = PopulatePieChartData;
+                Task.Run(() => StatisticsApiManager.TotalSpendings(UserController.GetUserID, UserController.UserToken));
             }
-            if (type.SelectedItem.ToString() == "Price")
+            this.RunOnUiThread(() => plotView.Model = Statistics.pieChart(pieChartData));
+        }
+
+        public void PopulatePieChartData(object sender, StatisticsEventArgs eventArgs)
+        {
+            if (eventArgs != null)
             {
-                plotView.Model = Statistics.linearChart(null);
+                dynamic data = eventArgs.statistics.data;
+                foreach (dynamic dataPoint in data)
+                {
+                    pieChartData.Add((string)dataPoint.name, (float)dataPoint.sum);
+                }
+            }
+            this.RunOnUiThread(() => plotView.Model = Statistics.pieChart(pieChartData));
+        }
+
+        public void DisplayLinearGraph()
+        {
+            if (linearChartData.Count <= 0)
+            {
+                // Get the data from the server
+                StatisticsApiManager.OnDataRetrieved = PopulateLinearChartData;
+
+                // ADD DROPDOWN TO SELECT CATEGORY LATER
+                Task.Run(() => StatisticsApiManager.PriceChange(Category.BREAD_PRODUCTS));
+            }
+            this.RunOnUiThread(() => plotView.Model = Statistics.linearChart(linearChartData));
+            
+        }
+
+
+        public void PopulateLinearChartData(object sender, StatisticsEventArgs eventArgs)
+        {
+            if (eventArgs != null)
+            {
+                dynamic data = eventArgs.statistics.data;
+                foreach (dynamic dataPoint in data)
+                {
+                    linearChartData.Add(Convert.ToDateTime((string)dataPoint.date), (float)dataPoint.average_price);
+                }
+            }
+            this.RunOnUiThread(() => plotView.Model = Statistics.linearChart(linearChartData));
+        }
+
+        private void ChooseItem(object sender, EventArgs e)
+        {
+            if (type.SelectedItem.ToString() == type.GetItemAtPosition(0).ToString())
+            {
+                DisplayPieChart();
+            }
+            if (type.SelectedItem.ToString() == type.GetItemAtPosition(1).ToString())
+            {
+                DisplayLinearGraph();
             }
            
         }

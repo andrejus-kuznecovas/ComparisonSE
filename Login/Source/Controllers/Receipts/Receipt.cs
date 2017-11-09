@@ -59,11 +59,12 @@ namespace Login
                     // If it is negative - it is a discount
                     if (priceInLine > 0)
                     {
-                        string itemName = lines[i];
-                        Item item = new Item(itemName, priceInLine);
-                        
                         // When categorising, it is better to remove all lithuanian letters, quotes, dots, commas, etc.
-                        Category itemCategory = Categoriser.GetCategory(Parser.RemoveNonLetters(itemName));
+                        Item item = new Item(Parser.RemoveNonLetters(lines[i]), priceInLine);
+                        string itemName = item.name;
+
+                        
+                        Category itemCategory = Categoriser.GetCategory(itemName);
                         item.category = itemCategory;
                         shoppingList.Add(item);
                     }
