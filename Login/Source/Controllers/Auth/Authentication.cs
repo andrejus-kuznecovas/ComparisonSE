@@ -22,7 +22,7 @@ namespace Login.Source.Controllers
 
                 // Make Login request to the server with provided credentials
 
-               var loginInfo = await ApiManager.LoginRequest(username, password);
+               var loginInfo = await AuthApiManager.LoginRequest(username, password);
                 if (loginInfo != null)
                 {
                     id = Int32.Parse(loginInfo["id"]);
