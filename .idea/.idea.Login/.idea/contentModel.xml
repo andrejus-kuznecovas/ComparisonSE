@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Marcius\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_Login.-634932551.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Marcius\Desktop\LastFinalBilly\ComparisonSE" t="IncludeFlat">
+      <e p="Login" t="IncludeRecursive">
+        <e p="Assets" t="Include">
+          <e p="products.xml" t="Include" />
+          <e p="tessdata" t="Include">
+            <e p="eng.traineddata" t="Include" />
+            <e p="languageClassifier2.bin" t="Include" />
+            <e p="lit.traineddata" t="Include" />
+            <e p="osd.traineddata" t="Include" />
+          </e>
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Login.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AndroidManifest.xml" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="AboutResources.txt" t="Include" />
+          <e p="anim" t="Include">
+            <e p="dialogRight.xml" t="Include" />
+            <e p="dialogUp.xml" t="Include" />
+          </e>
+          <e p="drawable" t="Include">
+            <e p="BillyIcon.png" t="Include" />
+            <e p="ButtonSignUpStyle.xml" t="Include" />
+            <e p="CameraButton.xml" t="Include" />
+            <e p="CameraHintBubble.xml" t="Include" />
+            <e p="drawerLayoutImg.png" t="Include" />
+            <e p="edit_text_style.xml" t="Include" />
+            <e p="ic_navigation_drawer.png" t="Include" />
+            <e p="Login_Button.xml" t="Include" />
+            <e p="Login_InputField.xml" t="Include" />
+            <e p="Login_Progress_Bar.xml" t="Include" />
+            <e p="Login_Progress_Bar_Fill.xml" t="Include" />
+          </e>
+          <e p="layout" t="Include">
+            <e p="CameraLayout.axml" t="Include" />
+            <e p="dialog_sign_up.axml" t="Include" />
+            <e p="dialogEditText.axml" t="Include" />
+            <e p="first.axml" t="Include" />
+            <e p="header.axml" t="Include" />
+            <e p="ItemDisplayerLayout.axml" t="Include" />
+            <e p="Main.axml" t="Include" />
+            <e p="ShowText.axml" t="Include" />
+            <e p="SnapingCameraLayout.axml" t="Include" />
+            <e p="StatisticLayout.axml" t="Include" />
+          </e>
+          <e p="menu" t="Include">
+            <e p="menu.xml" t="Include" />
+          </e>
+          <e p="Resource.Designer.cs" t="Include" />
+          <e p="values" t="Include">
+            <e p="Colors.xml" t="Include" />
+            <e p="Strings.xml" t="Include" />
+            <e p="Styles.xml" t="Include" />
+            <e p="theme.xml" t="Include" />
+          </e>
+        </e>
+        <e p="Source" t="Include">
+          <e p="Controllers" t="Include">
+            <e p="Auth" t="Include">
+              <e p="ApiManager.cs" t="Include" />
+              <e p="AuthApiManager.cs" t="Include" />
+              <e p="Authentication.cs" t="Include" />
+              <e p="ReceiptApiManager.cs" t="Include" />
+              <e p="StatisticsApiManager.cs" t="Include" />
+              <e p="UserController.cs" t="Include" />
+              <e p="Validator.cs" t="Include" />
+            </e>
+            <e p="OCR" t="Include">
+              <e p="ImagePreparer.cs" t="Include" />
+              <e p="ImageRecognition.cs" t="Include" />
+              <e p="ImageRecognitionScanbot.cs" t="Include" />
+              <e p="ITextRecognizer.cs" t="Include" />
+              <e p="OCRText.cs" t="Include" />
+            </e>
+            <e p="Parsing" t="Include">
+              <e p="Categoriser.cs" t="Include" />
+              <e p="Parser.cs" t="Include" />
+            </e>
+            <e p="Receipts" t="Include">
+              <e p="Item.cs" t="Include" />
+              <e p="ItemGenerator.cs" t="Include" />
+              <e p="Receipt.cs" t="Include" />
+              <e p="Shop.cs" t="Include" />
+            </e>
+            <e p="Statistics" t="Include">
+              <e p="Statistics.cs" t="Include" />
+            </e>
+          </e>
+          <e p="UI" t="Include">
+            <e p="CameraStream.cs" t="Include" />
+            <e p="Dialog.cs" t="Include" />
+            <e p="EditItemDialog.cs" t="Include" />
+            <e p="ItemDisplayer.cs" t="Include" />
+            <e p="ListViewAdapter.cs" t="Include" />
+            <e p="MainActivity.cs" t="Include" />
+            <e p="MainApplication.cs" t="Include" />
+            <e p="MyActionBarDrawerToggle.cs" t="Include" />
+            <e p="SnapingCamera.cs" t="Include" />
+            <e p="WelcomeScreen.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Login.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+        <e p="Xamarin.Android.Support.Core.UI.25.4.0.2\proguard" t="Include">
+          <e p="proguard.txt" t="Include" />
+        </e>
+      </e>
+    </e>
+  </component>
+</project>

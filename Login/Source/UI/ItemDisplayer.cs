@@ -19,6 +19,10 @@ namespace Login.Source.UI
         private TextView textView;
         private ListView productsListView;
         private List<Item> products;
+        String shopInfo;
+        private string tempName = null;
+        private float tempPrice;
+        private Category tempCategory;
         
 
         protected override void OnCreate(Bundle bundle)
@@ -29,7 +33,7 @@ namespace Login.Source.UI
             SetContentView(Resource.Layout.ItemDisplayerLayout);
 
             productsListView = FindViewById<ListView>(Resource.Id.productsListView);
-            String shopInfo;
+        
             // textView = FindViewById<TextView>(Resource.Id.showTxt);
 
 
@@ -48,25 +52,8 @@ namespace Login.Source.UI
                 productType = "darzove"
             });
             */
-            // SetText();
-            ItemGenerator.Initialize();
-            string text = ItemGenerator.GenerateItems();
-            if (!String.IsNullOrEmpty(text))
-            {
-                Receipt receipt = new Receipt(text);
-
-                shopInfo = "Shop:" + receipt.shop.ToString() + " items bought:";
-               
-                foreach (Item item in receipt.shoppingList)
-                {
-                    products.Add(new Item()
-                    {
-                        name = item.name,
-                        price = item.getPrice(),
-                        category = item.category
-                    });
-                }
-            }
+             SetText(shopInfo);
+            
             ListViewAdapter listViewAdapter = new ListViewAdapter(products, this);
 
             productsListView.Adapter = listViewAdapter;
@@ -76,11 +63,30 @@ namespace Login.Source.UI
 
         private void ProductsListView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-           // productsListView. = true;
-           // products[e.Position].name = "pakeista";
+            Android.App.FragmentTransaction transaction = FragmentManager.BeginTransaction();
+            EditItemDialog editItem = new EditItemDialog(products[e.Position].name, products[e.Position].getPrice().ToString());
+            editItem.Show(transaction, "Dialog frag");
+            //kazkaip reikia padaryti kad kviestu editComplete su papildomu argumentu AdapterView.itemclickeventargs kad galetume 
+            //paduot viska ko reikia i sit metoda
+            editItem.EditDone += editComplete;
+            
+            products[e.Position].name = tempName;
+            products[e.Position].price = tempPrice;
+            products[e.Position].category = tempCategory;
+         
         }
 
-        protected void SetText(/*object sender, OCRText result*/)
+        private void editComplete(object sender, OnEditText e)
+        {
+            tempName = e.ItemName;
+            tempPrice = Convert.ToSingle(e.ItemPrice);
+            Category givenCategory = (Category)Enum.Parse(typeof(Category), e.Category);
+            tempCategory = givenCategory;
+
+            
+        }
+
+        protected void SetText(String shopInfo)
         {
           //  textView = FindViewById<TextView>(Resource.Id.showTxt);
 
@@ -93,14 +99,18 @@ namespace Login.Source.UI
                 Receipt receipt = new Receipt(text);
                 string receiptJSON = JsonConvert.SerializeObject(receipt);
                 System.Diagnostics.Debug.WriteLine("ID: " + UserController.GetUserID + " Token: " + UserController.UserToken + " json: " +receiptJSON);
-                
-                textView.Text = "Shop:" + receipt.shop.ToString() + "\n\n";
-                textView.Text += "Items bought:\n";
+
+                shopInfo = "Shop:" + receipt.shop.ToString() + " Items bought:";
                 foreach (Item item in receipt.shoppingList)
                 {
-                    textView.Text += "* " + item.name + " " + item.getPrice() + "\nCategory: "+ item.category + "\n\n";
+                    products.Add(new Item()
+                    {
+                        name = item.name,
+                        price = item.getPrice(),
+                        category = item.category
+                    });
                 }
-                textView.Text += "Total : " + receipt.total+"\n";
+                //textView.Text += "Total : " + receipt.total+"\n";
                 Task.Run(() => ReceiptApiManager.SaveReceiptData(UserController.GetUserID, UserController.UserToken, receiptJSON));
 
             }

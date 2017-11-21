@@ -32,9 +32,24 @@
   <string name ="Product_Name">Pavadinimas</string>
   <string name ="Product_Type">Kategorija</string>
   <string name ="Product_Price">Kaina</string>
+  <string name ="Edit_Item">Edit item</string>
   <string-array name="Statistics_Types">
     <item>Išlaidos konkrečiai kategorijai</item>
     <item>Kainų kitimas</item>
+  </string-array>
+  <string-array name="Products_Types">
+    <item>UNKNOWN_CATEGORY</item>
+    <item>DAIRY_PRODUCTS</item>
+    <item>BREAD_PRODUCTS</item>
+    <item> DRINKS</item>
+    <item> HOUSEHOLD_GOODS</item>
+    <item>PET_PRODUCTS</item>
+    <item>MEAT_AND_FISH</item>
+    <item> FRUIT_AND_VEGETABLES</item>
+    <item>SWEETS</item>
+    <item>HOUSEHOLD_CHEMICALS</item>
+    <item>HYGIENE_PRODUCTS</item>
+    <item>OTHER_GOODS</item>
   </string-array>
 
 
