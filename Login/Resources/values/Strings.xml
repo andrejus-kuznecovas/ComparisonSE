@@ -29,6 +29,9 @@
   <string name="Open_Analyse_Button">Parodyti statistiką</string>
   <string name ="Continue_work">Tęsti</string>
   <string name ="Statistics">Statistika</string>
+  <string name ="Product_Name">Pavadinimas</string>
+  <string name ="Product_Type">Kategorija</string>
+  <string name ="Product_Price">Kaina</string>
   <string-array name="Statistics_Types">
     <item>Išlaidos konkrečiai kategorijai</item>
     <item>Kainų kitimas</item>

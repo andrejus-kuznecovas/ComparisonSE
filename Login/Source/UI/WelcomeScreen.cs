@@ -121,7 +121,7 @@ namespace Login
         private void PhotoButton_Click(object sender, EventArgs e)
         {
 
-            Intent intent = new Intent(this, typeof(SnapingCamera));
+            Intent intent = new Intent(this, typeof(ItemDisplayer));
             StartActivity(intent);
         }
 

@@ -160,6 +160,7 @@
     <Compile Include="Source\Controllers\OCR\ImageRecognition.cs" />
     <Compile Include="Source\UI\Dialog.cs" />
     <Compile Include="Source\UI\ItemDisplayer.cs" />
+    <Compile Include="Source\UI\ListViewAdapter.cs" />
     <Compile Include="Source\UI\MainActivity.cs" />
     <Compile Include="Source\UI\MainApplication.cs" />
     <Compile Include="Source\UI\MyActionBarDrawerToggle.cs" />
@@ -201,6 +202,7 @@
     <AndroidResource Include="Resources\layout\StatisticLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\ItemDisplayerLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
