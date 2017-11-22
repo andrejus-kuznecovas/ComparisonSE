@@ -3,14 +3,35 @@ using System.Net;
 using System.IO;
 using System.Threading.Tasks;
 using System.Json;
+using System.Text;
 
 namespace Login.Source.Controllers
 {
     public class ApiManager
     {
         // Save server name to avoid repetition
-        protected static string baseURL = "http://billycse.gearhostpreview.com/";
+        protected static string baseUrlDB = "http://billycse.gearhostpreview.com/";
 
+
+        protected static async void MakePostRequest(string endpoint, string body = "")
+        {
+            WebRequest request = FormRequest(endpoint, RequestType.POST);
+            UTF8Encoding encoding = new UTF8Encoding();
+            byte[] bytes = encoding.GetBytes(Uri.EscapeUriString(body));
+            request.ContentLength = bytes.Length;
+            Stream requestStream = request.GetRequestStream();
+
+            requestStream.Write(bytes, 0, bytes.Length);
+            requestStream.Close();
+
+
+            JsonObject result = await MakeRequest(request);
+        }
+
+        protected static void MakeGetRequest(string endpoint)
+        {
+
+        }
 
 
         /// <summary>
@@ -55,23 +76,19 @@ namespace Login.Source.Controllers
         /// <param name="url"></param>
         /// <param name="method"></param>
         /// <returns></returns>
-        internal static WebRequest FormRequest(string url, string method)
+        internal static WebRequest FormRequest(string url, RequestType type)
         {
             var request = HttpWebRequest.Create(
-                new Uri(baseURL + url)
+                new Uri(baseUrlDB + url)
             );
             
-            switch (method)
+            switch (type)
             {
-                case "GET":
+                case RequestType.GET:
                     request.Method = "GET";
                     break;
-                case "POST":
+                case RequestType.POST:
                     request.Method = "POST";
-                    request.ContentType = "application/x-www-form-urlencoded";
-                    break;
-                case "PUT":
-                    request.Method = "PUT";
                     request.ContentType = "application/x-www-form-urlencoded";
                     break;
             }
@@ -83,7 +100,7 @@ namespace Login.Source.Controllers
 
     public enum RequestType
     {
-        LOGIN, REGISTER, GET_INFO
+        GET, POST
     }
 
     public class LoginFailedException : Exception
