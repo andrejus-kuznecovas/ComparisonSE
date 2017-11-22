@@ -141,6 +141,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Controllers\Auth\FormattedResponse.cs" />
+    <Compile Include="Source\Controllers\Auth\FormattedResponseFactory.cs" />
     <Compile Include="Source\Controllers\Auth\ReceiptApiManager.cs" />
     <Compile Include="Source\Controllers\Auth\AuthApiManager.cs" />
     <Compile Include="Source\Controllers\Auth\StatisticsApiManager.cs" />

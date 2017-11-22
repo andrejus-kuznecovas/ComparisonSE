@@ -21,7 +21,7 @@ namespace Login.Source.Controllers.Auth
                     {
                         result.AddProperty(key, response[key].ToString(), false);
                     }
-                    
+
                 }
                 else
                 {
@@ -31,7 +31,7 @@ namespace Login.Source.Controllers.Auth
             return result;
         }
 
-        public static FormattedResponse FromJsonObject(JObject response)
+        public static FormattedResponse FromDynamicJObject(dynamic response)
         {
             FormattedResponse result = new FormattedResponse();
             foreach (var property in response)

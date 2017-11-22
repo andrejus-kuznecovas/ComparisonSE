@@ -29,14 +29,15 @@ namespace Login.Source.Controllers
 
 
             JObject result = await MakeRequest(request);
-            return FormattedResponseFactory.FromJsonObject(result);
+            return FormattedResponseFactory.FromDynamicJObject(result);
         }
 
-        protected static async Task<FormattedResponse> MakeGetRequest(string endpoint)
+        public static async Task<FormattedResponse> MakeGetRequest(string endpoint)
         {
             WebRequest request = FormRequest(endpoint, RequestType.GET);
             JObject result = await MakeRequest(request);
-            return FormattedResponseFactory.FromJsonObject(result);
+            FormattedResponse response = FormattedResponseFactory.FromDynamicJObject(result);
+            return response;
         }
 
 
@@ -45,16 +46,16 @@ namespace Login.Source.Controllers
         /// </summary>
         /// <param name="request">Request object</param>
         /// <returns>User data if request was successful</returns>
-        protected static async Task<JObject> MakeRequest(WebRequest request)
+        protected static async Task<dynamic> MakeRequest(WebRequest request)
         {
-
-            JObject userJson;
+            dynamic userJson;
             using (WebResponse response = await request.GetResponseAsync())
             {
                 using (Stream stream = response.GetResponseStream())
                 {
                     JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream));
-                    userJson = JObject.Parse(jsonReader.ReadAsString());
+                    var serializer = new JsonSerializer();
+                    userJson = serializer.Deserialize(jsonReader);
                 }
             }
             return userJson;
@@ -72,7 +73,7 @@ namespace Login.Source.Controllers
             var request = HttpWebRequest.Create(
                 new Uri(endpoint)
             );
-            
+
             switch (type)
             {
                 case RequestType.GET:
@@ -85,7 +86,7 @@ namespace Login.Source.Controllers
             }
 
             return request;
-            
+
         }
     }
 
