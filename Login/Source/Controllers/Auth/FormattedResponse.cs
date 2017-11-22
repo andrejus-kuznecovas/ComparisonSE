@@ -7,9 +7,9 @@ namespace Login.Source.Controllers.Auth
         public List<Property> properties = new List<Property>();
         public bool Success { get; set; }
 
-        public void AddProperty(string name, string value)
+        public void AddProperty(string name, object value, bool isArray)
         {
-            properties.Add(new Property(name, value));
+            properties.Add(new Property(name, value, isArray));
         }
 
         public bool HasProperty(string name)
@@ -41,12 +41,14 @@ namespace Login.Source.Controllers.Auth
     public class Property
     {
         public string Name { get; set; }
-        public string Value { get; set; }
+        public object Value { get; set; }
+        public bool IsArray { get; set; }
 
-        public Property(string name, string value)
+        public Property(string name, object value, bool isArray)
         {
             this.Name = name;
             this.Value = value;
+            this.IsArray = isArray;
         }
     }
 }

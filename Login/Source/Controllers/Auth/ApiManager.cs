@@ -2,8 +2,10 @@
 using System.Net;
 using System.IO;
 using System.Threading.Tasks;
-using System.Json;
 using System.Text;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Login.Source.Controllers.Auth;
 
 namespace Login.Source.Controllers
 {
@@ -11,9 +13,10 @@ namespace Login.Source.Controllers
     {
         // Save server name to avoid repetition
         protected static string baseUrlDB = "http://billycse.gearhostpreview.com/";
+        protected static string baseUrlAI = "https://serene-fortress-77904.herokuapp.com/";
 
 
-        protected static async void MakePostRequest(string endpoint, string body = "")
+        protected static async Task<FormattedResponse> MakePostRequest(string endpoint, string body = "")
         {
             WebRequest request = FormRequest(endpoint, RequestType.POST);
             UTF8Encoding encoding = new UTF8Encoding();
@@ -25,12 +28,15 @@ namespace Login.Source.Controllers
             requestStream.Close();
 
 
-            JsonObject result = await MakeRequest(request);
+            JObject result = await MakeRequest(request);
+            return FormattedResponseFactory.FromJsonObject(result);
         }
 
-        protected static void MakeGetRequest(string endpoint)
+        protected static async Task<FormattedResponse> MakeGetRequest(string endpoint)
         {
-
+            WebRequest request = FormRequest(endpoint, RequestType.GET);
+            JObject result = await MakeRequest(request);
+            return FormattedResponseFactory.FromJsonObject(result);
         }
 
 
@@ -39,47 +45,32 @@ namespace Login.Source.Controllers
         /// </summary>
         /// <param name="request">Request object</param>
         /// <returns>User data if request was successful</returns>
-        protected static async Task<JsonObject> MakeRequest(WebRequest request)
+        protected static async Task<JObject> MakeRequest(WebRequest request)
         {
 
+            JObject userJson;
             using (WebResponse response = await request.GetResponseAsync())
             {
                 using (Stream stream = response.GetResponseStream())
                 {
-                    // Save server response to JSON object
-                    var jsonResponse = await Task.Run(() => JsonObject.Load(stream));
-                    var userJson = jsonResponse as JsonObject; // End Object
-                    
-                    return userJson;
+                    JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream));
+                    userJson = JObject.Parse(jsonReader.ReadAsString());
                 }
             }
-        }
-
-        /// <summary>
-        /// Used to check whether request data is correct
-        /// </summary>
-        /// <param name="data">JSON Object - data from the server</param>
-        /// <returns></returns>
-        protected static bool CheckForSuccess(JsonObject data)
-        {
-            // Server returns JSON object containing field "success", which indicates
-            // whether the request was successful
-            bool succeeded = Boolean.Parse(data["success"].ToString());
-
-            return succeeded;
+            return userJson;
         }
 
 
         /// <summary>
         /// Forms request with specified endpoint and method
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="endpoint"></param>
         /// <param name="method"></param>
         /// <returns></returns>
-        internal static WebRequest FormRequest(string url, RequestType type)
+        internal static WebRequest FormRequest(string endpoint, RequestType type)
         {
             var request = HttpWebRequest.Create(
-                new Uri(baseUrlDB + url)
+                new Uri(endpoint)
             );
             
             switch (type)
@@ -101,20 +92,5 @@ namespace Login.Source.Controllers
     public enum RequestType
     {
         GET, POST
-    }
-
-    public class LoginFailedException : Exception
-    {
-
-    }
-
-    public class RegistrationFailedException : Exception
-    {
-
-    }
-
-    public class GetInfoFailedException : Exception
-    {
-
     }
 }
