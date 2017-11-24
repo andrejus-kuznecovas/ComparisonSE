@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
+    android:background="@color/background_light"
     android:weightSum="100"
     android:minWidth="25px"
     android:minHeight="25px">
@@ -22,7 +22,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/brand_dark"
+        android:backgroundTint="@color/primary_dark"
         android:hint="@string/login_username"
         android:id="@+id/login_username"
         android:layout_marginLeft="40dp"
@@ -33,7 +33,7 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/brand_dark"
+        android:backgroundTint="@color/primary_dark"
         android:hint="@string/login_password"
         android:id="@+id/login_password"
         android:layout_marginLeft="40dp"
@@ -45,14 +45,13 @@
         android:layout_width="match_parent"
         android:layout_weight="20"
         android:layout_height="0dp"
-        android:background="@drawable/Login_Button"
         android:id="@+id/login_signInButton"
+        android:background="@drawable/Login_Button"
         android:layout_marginLeft="75dp"
         android:layout_marginRight="75dp"
-        android:textSize="20sp"
-        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="0.0dp" />
+        android:textSize="20sp"
+        android:textColor="@color/white" />
 <!--Register Button-->
     <Button
         android:text="@string/login_sign_up"

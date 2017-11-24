@@ -166,7 +166,7 @@ namespace Login
         {
             //define the paintbrush
             Paint mpaint = new Paint();
-            mpaint.Color = new Color(ContextCompat.GetColor(Application.Context ,Resource.Color.brand_dark));
+            mpaint.Color = new Color(ContextCompat.GetColor(Application.Context ,Resource.Color.primary_dark));
             mpaint.SetStyle(Paint.Style.Stroke);
             mpaint.StrokeWidth = 5f;
             mpaint.SetPathEffect(new DashPathEffect(new float[] { 30, 20 }, 0));

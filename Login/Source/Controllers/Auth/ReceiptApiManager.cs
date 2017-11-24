@@ -20,7 +20,7 @@ namespace Login.Source.Controllers
         {
             var endpoint = String.Format("receipts/add/user/{0}/token/{1}", ID, token, receiptJSON);
             string body = String.Format("user={0}&token={1}&receipt={2}",ID, token, Uri.EscapeUriString(receiptJSON));
-            return await MakePostRequest(baseUrlDB + endpoint, body);
+            return await MakeAsyncPostRequest(baseUrlDB + endpoint, body);
         }
 
         

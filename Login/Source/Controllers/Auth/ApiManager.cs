@@ -16,9 +16,41 @@ namespace Login.Source.Controllers
         protected static string baseUrlAI = "https://serene-fortress-77904.herokuapp.com/";
 
 
-        protected static async Task<FormattedResponse> MakePostRequest(string endpoint, string body = "")
+        protected static async Task<FormattedResponse> MakeAsyncPostRequest(string endpoint, string body = "")
         {
             WebRequest request = FormRequest(endpoint, RequestType.POST);
+            AddBody(request, body);
+            JObject result = await MakeAsyncRequest(request);
+            return FormattedResponseFactory.FromDynamicJObject(result);
+        }
+
+        protected static async Task<FormattedResponse> MakeAsyncGetRequest(string endpoint)
+        {
+            WebRequest request = FormRequest(endpoint, RequestType.GET);
+            JObject result = await MakeAsyncRequest(request);
+            FormattedResponse response = FormattedResponseFactory.FromDynamicJObject(result);
+            return response;
+        }
+
+        protected static FormattedResponse MakeSyncPostRequest(string endpoint, string body = "")
+        {
+            WebRequest request = FormRequest(endpoint, RequestType.POST);
+            AddBody(request, body);
+            JObject result = MakeRequest(request);
+            return FormattedResponseFactory.FromDynamicJObject(result);
+        }
+
+        protected static FormattedResponse MakeSyncGetRequest(string endpoint)
+        {
+            WebRequest request = FormRequest(endpoint, RequestType.GET);
+            JObject result = MakeRequest(request);
+            FormattedResponse response = FormattedResponseFactory.FromDynamicJObject(result);
+            return response;
+        }
+
+
+        private static void AddBody(WebRequest request, string body)
+        {
             UTF8Encoding encoding = new UTF8Encoding();
             byte[] bytes = encoding.GetBytes(Uri.EscapeUriString(body));
             request.ContentLength = bytes.Length;
@@ -26,32 +58,32 @@ namespace Login.Source.Controllers
 
             requestStream.Write(bytes, 0, bytes.Length);
             requestStream.Close();
-
-
-            JObject result = await MakeRequest(request);
-            return FormattedResponseFactory.FromDynamicJObject(result);
         }
-
-        protected static async Task<FormattedResponse> MakeGetRequest(string endpoint)
-        {
-            WebRequest request = FormRequest(endpoint, RequestType.GET);
-            JObject result = await MakeRequest(request);
-            System.Diagnostics.Debug.WriteLine("****************************\n" + result.ToString() + "\n***************************");
-            FormattedResponse response = FormattedResponseFactory.FromDynamicJObject(result);
-            System.Diagnostics.Debug.WriteLine("****************************\n" + response.Success + "\n***************************");
-            return response;
-        }
-
 
         /// <summary>
         /// Performs specified request to the server
         /// </summary>
         /// <param name="request">Request object</param>
         /// <returns>User data if request was successful</returns>
-        protected static async Task<dynamic> MakeRequest(WebRequest request)
+        protected static async Task<dynamic> MakeAsyncRequest(WebRequest request)
         {
             dynamic userJson;
             using (WebResponse response = await request.GetResponseAsync())
+            {
+                using (Stream stream = response.GetResponseStream())
+                {
+                    JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream));
+                    var serializer = new JsonSerializer();
+                    userJson = serializer.Deserialize(jsonReader);
+                }
+            }
+            return userJson;
+        }
+
+        protected static dynamic MakeRequest(WebRequest request)
+        {
+            dynamic userJson;
+            using (WebResponse response = request.GetResponse())
             {
                 using (Stream stream = response.GetResponseStream())
                 {

@@ -92,7 +92,7 @@ namespace Login
             // Here you are continiously notified about contour detection results.
             // For example, you can set a localized text for user guidance depending on the detection status.
 
-            var color = new Color(ContextCompat.GetColor(Application.Context, Resource.Color.brand_dark));
+            var color = new Color(ContextCompat.GetColor(Application.Context, Resource.Color.primary_dark));
             var guideText = GetString(Resource.String.camera_view_receipt_too_far);
 
             if (result.Polygon == null || result.Polygon.Count == 0)

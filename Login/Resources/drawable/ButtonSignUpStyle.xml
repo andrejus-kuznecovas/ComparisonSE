@@ -1,5 +1,5 @@
 ﻿<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!--
   <item android:state_pressed="false">
 
     <layer-list>
@@ -43,5 +43,5 @@
       </item>
     </layer-list>
   </item>
-
-</selector>
+-->
+  </selector>

@@ -3,9 +3,10 @@
   <color name="white">#FFFFFF</color>
   <color name="shadow_gray">#D6D6D6</color>
   <!--Brand Colors-->
-  <color name="brand_light">#3CC5EB</color>
-  <color name="brand_dark">#1F83C6</color>
-  <color name="brand_darkest">#0078EB</color>
+  <color name="background_light">#F5F5F6</color>
+  <color name="primary">#2195F2</color>
+  <color name="primary_light">#6EC5FF</color>
+  <color name="primary_dark">#0068BF</color>
   <color name="brand_success">#1FC662</color>
   <color name="brand_error">#C61F83</color>
   <color name="brand_warning">#C6AD1F</color>

@@ -34,7 +34,7 @@
         android:text="@string/camera_view_place_items_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/brand_light"
+        android:textColor="@color/primary_light"
         android:layout_marginLeft="5dp"
         android:id="@+id/place_items_hint" />
 </RelativeLayout>

@@ -18,7 +18,7 @@ namespace Login.Source.Controllers.Auth
         public static async Task TotalSpendings(int id, string token)
         {
             var endpoint = String.Format("statistics/spendings/user/{0}/token/{1}", id, token);
-            var userJson = await MakeGetRequest(baseUrlDB + endpoint);
+            var userJson = await MakeAsyncGetRequest(baseUrlDB + endpoint);
 
             if (userJson != null && userJson.Success)
             {
@@ -42,7 +42,7 @@ namespace Login.Source.Controllers.Auth
         public static async Task PriceChange(Category category)
         {
             var endpoint = String.Format("statistics/price_change/category/{0}", (int)category);
-            var userJson = await MakeGetRequest(baseUrlDB + endpoint);
+            var userJson = await MakeAsyncGetRequest(baseUrlDB + endpoint);
 
             if (userJson != null && userJson.Success)
             {

@@ -1,10 +1,8 @@
-﻿using Android.App;
-using Android.Content.Res;
+﻿using Login.Source.Controllers.Auth;
+using Newtonsoft.Json.Linq;
 using System;
-using System.IO;
-using System.Linq;
-using System.Xml;
-using System.Xml.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Login
 {
@@ -13,53 +11,30 @@ namespace Login
         /// <summary>
         /// Detects category in text
         /// </summary>
-        /// <param name="itemName"></param>
+        /// <param name="itemNames"></param>
         /// <returns></returns>
-        public static Category GetCategory(string itemName)
+        public static List<Category> GetCategories(List<string> itemNames)
         {
-            // Read the XML file from assets
-            AssetManager assets = Application.Context.Assets;
-            XDocument productsXml = GetData(assets.Open("products.xml"));
+            FormattedResponse response = ClassificationApiManager.ClassificationRequest(itemNames);
 
-
-            string categoryString = FilterByName(productsXml, itemName);
-            if (categoryString == null)
+            if (response.HasProperty("categories"))
             {
-                return Category.UNKNOWN_CATEGORY;
-            }
-            else
-            {
-                return (Category)Enum.Parse(typeof(Category), categoryString);
-            }
-            
-        }
-
-        /// <summary>
-        /// Get data from path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        private static XDocument GetData(Stream path)
-        {
-            XDocument productCategories = XDocument.Load(path);
-            return productCategories;                
-        }
-
-        private static string FilterByName(XDocument document, string name)
-        {
-            Console.WriteLine(name);
-            var categoryName = from product in document.Descendants("Product")
-                               where (string)product.Element("Name") == name
-                               select (string)product.Parent.Parent.Attribute("name");
-            try
-            {
-                return categoryName.First();
-            }
-            catch (Exception e)
-            {
+                List<Category> itemCategories = new List<Category>();
+                var categories = response.GetProperty("categories");
+                if (categories.IsArray)
+                {
+                    
+                    foreach (var category in (JToken)categories.Value)
+                    {
+                        itemCategories.Add((Category)Enum.Parse(typeof(Category), category.ToString()));
+                    }
+                    return itemCategories;
+                }
                 return null;
             }
-            
+            return null;
         }
+
+
     }
 }

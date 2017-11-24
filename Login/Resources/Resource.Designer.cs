@@ -1921,44 +1921,44 @@ namespace Login
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f08004c
-			public const int abc_background_cache_hint_selector_material_dark = 2131230796;
-			
 			// aapt resource value: 0x7f08004d
-			public const int abc_background_cache_hint_selector_material_light = 2131230797;
+			public const int abc_background_cache_hint_selector_material_dark = 2131230797;
 			
 			// aapt resource value: 0x7f08004e
-			public const int abc_btn_colored_borderless_text_material = 2131230798;
+			public const int abc_background_cache_hint_selector_material_light = 2131230798;
 			
 			// aapt resource value: 0x7f08004f
-			public const int abc_btn_colored_text_material = 2131230799;
+			public const int abc_btn_colored_borderless_text_material = 2131230799;
 			
 			// aapt resource value: 0x7f080050
-			public const int abc_color_highlight_material = 2131230800;
+			public const int abc_btn_colored_text_material = 2131230800;
 			
 			// aapt resource value: 0x7f080051
-			public const int abc_hint_foreground_material_dark = 2131230801;
+			public const int abc_color_highlight_material = 2131230801;
 			
 			// aapt resource value: 0x7f080052
-			public const int abc_hint_foreground_material_light = 2131230802;
+			public const int abc_hint_foreground_material_dark = 2131230802;
+			
+			// aapt resource value: 0x7f080053
+			public const int abc_hint_foreground_material_light = 2131230803;
 			
 			// aapt resource value: 0x7f080009
 			public const int abc_input_method_navigation_guard = 2131230729;
 			
-			// aapt resource value: 0x7f080053
-			public const int abc_primary_text_disable_only_material_dark = 2131230803;
-			
 			// aapt resource value: 0x7f080054
-			public const int abc_primary_text_disable_only_material_light = 2131230804;
+			public const int abc_primary_text_disable_only_material_dark = 2131230804;
 			
 			// aapt resource value: 0x7f080055
-			public const int abc_primary_text_material_dark = 2131230805;
+			public const int abc_primary_text_disable_only_material_light = 2131230805;
 			
 			// aapt resource value: 0x7f080056
-			public const int abc_primary_text_material_light = 2131230806;
+			public const int abc_primary_text_material_dark = 2131230806;
 			
 			// aapt resource value: 0x7f080057
-			public const int abc_search_url_text = 2131230807;
+			public const int abc_primary_text_material_light = 2131230807;
+			
+			// aapt resource value: 0x7f080058
+			public const int abc_search_url_text = 2131230808;
 			
 			// aapt resource value: 0x7f08000a
 			public const int abc_search_url_text_normal = 2131230730;
@@ -1969,32 +1969,32 @@ namespace Login
 			// aapt resource value: 0x7f08000c
 			public const int abc_search_url_text_selected = 2131230732;
 			
-			// aapt resource value: 0x7f080058
-			public const int abc_secondary_text_material_dark = 2131230808;
-			
 			// aapt resource value: 0x7f080059
-			public const int abc_secondary_text_material_light = 2131230809;
+			public const int abc_secondary_text_material_dark = 2131230809;
 			
 			// aapt resource value: 0x7f08005a
-			public const int abc_tint_btn_checkable = 2131230810;
+			public const int abc_secondary_text_material_light = 2131230810;
 			
 			// aapt resource value: 0x7f08005b
-			public const int abc_tint_default = 2131230811;
+			public const int abc_tint_btn_checkable = 2131230811;
 			
 			// aapt resource value: 0x7f08005c
-			public const int abc_tint_edittext = 2131230812;
+			public const int abc_tint_default = 2131230812;
 			
 			// aapt resource value: 0x7f08005d
-			public const int abc_tint_seek_thumb = 2131230813;
+			public const int abc_tint_edittext = 2131230813;
 			
 			// aapt resource value: 0x7f08005e
-			public const int abc_tint_spinner = 2131230814;
+			public const int abc_tint_seek_thumb = 2131230814;
 			
 			// aapt resource value: 0x7f08005f
-			public const int abc_tint_switch_thumb = 2131230815;
+			public const int abc_tint_spinner = 2131230815;
 			
 			// aapt resource value: 0x7f080060
-			public const int abc_tint_switch_track = 2131230816;
+			public const int abc_tint_switch_thumb = 2131230816;
+			
+			// aapt resource value: 0x7f080061
+			public const int abc_tint_switch_track = 2131230817;
 			
 			// aapt resource value: 0x7f08000d
 			public const int accent_material_dark = 2131230733;
@@ -2008,29 +2008,23 @@ namespace Login
 			// aapt resource value: 0x7f080010
 			public const int background_floating_material_light = 2131230736;
 			
+			// aapt resource value: 0x7f080045
+			public const int background_light = 2131230789;
+			
 			// aapt resource value: 0x7f080011
 			public const int background_material_dark = 2131230737;
 			
 			// aapt resource value: 0x7f080012
 			public const int background_material_light = 2131230738;
 			
-			// aapt resource value: 0x7f080046
-			public const int brand_dark = 2131230790;
-			
-			// aapt resource value: 0x7f080047
-			public const int brand_darkest = 2131230791;
+			// aapt resource value: 0x7f08004a
+			public const int brand_error = 2131230794;
 			
 			// aapt resource value: 0x7f080049
-			public const int brand_error = 2131230793;
+			public const int brand_success = 2131230793;
 			
-			// aapt resource value: 0x7f080045
-			public const int brand_light = 2131230789;
-			
-			// aapt resource value: 0x7f080048
-			public const int brand_success = 2131230792;
-			
-			// aapt resource value: 0x7f08004a
-			public const int brand_warning = 2131230794;
+			// aapt resource value: 0x7f08004b
+			public const int brand_warning = 2131230795;
 			
 			// aapt resource value: 0x7f080013
 			public const int bright_foreground_disabled_material_dark = 2131230739;
@@ -2056,8 +2050,8 @@ namespace Login
 			// aapt resource value: 0x7f08001a
 			public const int button_material_light = 2131230746;
 			
-			// aapt resource value: 0x7f080061
-			public const int common_google_signin_btn_text_dark = 2131230817;
+			// aapt resource value: 0x7f080062
+			public const int common_google_signin_btn_text_dark = 2131230818;
 			
 			// aapt resource value: 0x7f080000
 			public const int common_google_signin_btn_text_dark_default = 2131230720;
@@ -2071,8 +2065,8 @@ namespace Login
 			// aapt resource value: 0x7f080003
 			public const int common_google_signin_btn_text_dark_pressed = 2131230723;
 			
-			// aapt resource value: 0x7f080062
-			public const int common_google_signin_btn_text_light = 2131230818;
+			// aapt resource value: 0x7f080063
+			public const int common_google_signin_btn_text_light = 2131230819;
 			
 			// aapt resource value: 0x7f080004
 			public const int common_google_signin_btn_text_light_default = 2131230724;
@@ -2086,8 +2080,8 @@ namespace Login
 			// aapt resource value: 0x7f080007
 			public const int common_google_signin_btn_text_light_pressed = 2131230727;
 			
-			// aapt resource value: 0x7f080063
-			public const int common_google_signin_btn_tint = 2131230819;
+			// aapt resource value: 0x7f080064
+			public const int common_google_signin_btn_tint = 2131230820;
 			
 			// aapt resource value: 0x7f08001b
 			public const int dim_foreground_disabled_material_dark = 2131230747;
@@ -2158,11 +2152,20 @@ namespace Login
 			// aapt resource value: 0x7f080030
 			public const int notification_material_background_media_default_color = 2131230768;
 			
+			// aapt resource value: 0x7f080046
+			public const int primary = 2131230790;
+			
+			// aapt resource value: 0x7f080048
+			public const int primary_dark = 2131230792;
+			
 			// aapt resource value: 0x7f080031
 			public const int primary_dark_material_dark = 2131230769;
 			
 			// aapt resource value: 0x7f080032
 			public const int primary_dark_material_light = 2131230770;
+			
+			// aapt resource value: 0x7f080047
+			public const int primary_light = 2131230791;
 			
 			// aapt resource value: 0x7f080033
 			public const int primary_material_dark = 2131230771;
@@ -2209,11 +2212,11 @@ namespace Login
 			// aapt resource value: 0x7f080040
 			public const int switch_thumb_disabled_material_light = 2131230784;
 			
-			// aapt resource value: 0x7f080064
-			public const int switch_thumb_material_dark = 2131230820;
-			
 			// aapt resource value: 0x7f080065
-			public const int switch_thumb_material_light = 2131230821;
+			public const int switch_thumb_material_dark = 2131230821;
+			
+			// aapt resource value: 0x7f080066
+			public const int switch_thumb_material_light = 2131230822;
 			
 			// aapt resource value: 0x7f080041
 			public const int switch_thumb_normal_material_dark = 2131230785;
@@ -2221,8 +2224,8 @@ namespace Login
 			// aapt resource value: 0x7f080042
 			public const int switch_thumb_normal_material_light = 2131230786;
 			
-			// aapt resource value: 0x7f08004b
-			public const int theme_devicedefault_background = 2131230795;
+			// aapt resource value: 0x7f08004c
+			public const int theme_devicedefault_background = 2131230796;
 			
 			// aapt resource value: 0x7f080043
 			public const int white = 2131230787;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Login
 {
@@ -62,14 +63,30 @@ namespace Login
                         // When categorising, it is better to remove all lithuanian letters, quotes, dots, commas, etc.
                         Item item = new Item(Parser.RemoveNonLetters(lines[i]), priceInLine);
                         string itemName = item.name;
-
                         
-                        Category itemCategory = Categoriser.GetCategory(itemName);
-                        item.category = itemCategory;
                         shoppingList.Add(item);
                     }
                 }
             }
+
+            
+            // Get all names of the items
+            List<string> itemNames = new List<string>();
+            foreach (Item item in shoppingList)
+            {
+                itemNames.Add(item.name);
+            }
+
+            // Categorise each of them
+            List<Category> itemCategories = Categoriser.GetCategories(itemNames);;
+
+            // Assign categories to each item
+            int index = 0;
+            foreach (var item in shoppingList)
+            {
+                item.category = itemCategories[index++];
+            }
+
         }
     }
 }
