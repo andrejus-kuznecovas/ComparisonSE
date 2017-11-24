@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Json;
 using System.Threading.Tasks;
 
 namespace Login.Source.Controllers
@@ -21,12 +20,20 @@ namespace Login.Source.Controllers
                 string token;
 
                 // Make Login request to the server with provided credentials
-
-               var loginInfo = await AuthApiManager.LoginRequest(username, password);
+                var loginInfo = await AuthApiManager.LoginRequest(username, password);
                 if (loginInfo != null)
                 {
-                    id = Int32.Parse(loginInfo["id"]);
-                    token = loginInfo["token"];
+                    if (loginInfo.HasProperty("id") && loginInfo.HasProperty("token"))
+                    {
+                        id = Int32.Parse((string)loginInfo.GetProperty("id").Value);
+                        token = (string)loginInfo.GetProperty("token").Value;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                    
 
                     // Check if initialization was performed correctly
                     var succeeded = await InitializeUser(id, token);
@@ -38,14 +45,14 @@ namespace Login.Source.Controllers
                 }
                 return false;
             }
-            catch (LoginFailedException e)
-            {
-                return false;
-            }
-            catch (GetInfoFailedException e)
-            {
-                return false;
-            }
+            //catch (LoginFailedException e)
+            //{
+            //    return false;
+            //}
+            //catch (GetInfoFailedException e)
+            //{
+            //    return false;
+            //}
             catch (FormatException e)
             {
                 return false;
@@ -75,8 +82,15 @@ namespace Login.Source.Controllers
                 // Make registration request using credentials
                 var loginInfo = await AuthApiManager.RegistrationRequest(name, surname, email, username, password);
 
-                id = Int32.Parse(loginInfo["id"]);
-                token = loginInfo["token"];
+                if (loginInfo.HasProperty("id") && loginInfo.HasProperty("token"))
+                {
+                    id = Int32.Parse((string)loginInfo.GetProperty("id").Value);
+                    token = (string)loginInfo.GetProperty("token").Value;
+                }
+                else
+                {
+                    return false;
+                }
 
                 bool succeded = await InitializeUser(id, token);
                 if (succeded)
@@ -85,14 +99,14 @@ namespace Login.Source.Controllers
                 }
                 return false;
             }
-            catch (RegistrationFailedException e)
-            {
-                return false;
-            }
-            catch (GetInfoFailedException e)
-            {
-                return false;
-            }
+            //catch (RegistrationFailedException e)
+            //{
+            //    return false;
+            //}
+            //catch (GetInfoFailedException e)
+            //{
+            //    return false;
+            //}
             catch (FormatException e)
             {
                 return false;
@@ -114,17 +128,30 @@ namespace Login.Source.Controllers
                 string surname;
 
                 // Get info about the user using provided credentials
-                JsonObject userInfo = await AuthApiManager.GetInfo(id, token);
-                name = userInfo["name"];
-                surname = userInfo["surname"];
+                var userInfo = await AuthApiManager.GetInfo(id, token);
+
+                if (userInfo.HasProperty("name") && userInfo.HasProperty("surname"))
+                {
+                    name = (string)userInfo.GetProperty("name").Value;
+                    surname = (string)userInfo.GetProperty("surname").Value;
+                }
+                else
+                {
+                    return false;
+                }
+
 
                 // Create new User instance
                 UserController.InitializeUser(id, token, name, surname);
                 return true;
             }
-            catch(GetInfoFailedException e)
+            //catch(GetInfoFailedException e)
+            //{
+            //    throw e;
+            //}
+            catch (Exception e)
             {
-                throw e;
+                return false;
             }
         }
 

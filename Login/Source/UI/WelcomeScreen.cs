@@ -12,6 +12,7 @@ using System.Json;
 using Login.Source.Controllers.Auth;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Login
 {
@@ -68,11 +69,15 @@ namespace Login
         {
             if (eventArgs != null)
             {
-                dynamic data = eventArgs.statistics.data;
-                foreach (dynamic dataPoint in data)
+                var data = eventArgs.statistics;
+                if (data.HasProperty("data"))
                 {
-                    pieChartData.Add((string)dataPoint.name, (float)dataPoint.sum);
+                    foreach (var dataPoint in ((JArray)data.GetProperty("data").Value).Children<JObject>())
+                    {
+                       pieChartData.Add((string)dataPoint.Property("name"), (float)dataPoint.Property("sum"));
+                    }
                 }
+
             }
             this.RunOnUiThread(() => plotView.Model = Statistics.pieChart(pieChartData));
         }
@@ -96,10 +101,13 @@ namespace Login
         {
             if (eventArgs != null)
             {
-                dynamic data = eventArgs.statistics.data;
-                foreach (dynamic dataPoint in data)
+                var data = eventArgs.statistics;
+                if (data.HasProperty("data"))
                 {
-                    linearChartData.Add(Convert.ToDateTime((string)dataPoint.date), (float)dataPoint.average_price);
+                    foreach (var dataPoint in ((JArray)data.GetProperty("data").Value).Children<JObject>())
+                    {
+                        linearChartData.Add(Convert.ToDateTime((string)dataPoint.Property("date")), (float)dataPoint.Property("average_price"));
+                    }
                 }
             }
             this.RunOnUiThread(() => plotView.Model = Statistics.linearChart(linearChartData));

@@ -32,11 +32,13 @@ namespace Login.Source.Controllers
             return FormattedResponseFactory.FromDynamicJObject(result);
         }
 
-        public static async Task<FormattedResponse> MakeGetRequest(string endpoint)
+        protected static async Task<FormattedResponse> MakeGetRequest(string endpoint)
         {
             WebRequest request = FormRequest(endpoint, RequestType.GET);
             JObject result = await MakeRequest(request);
+            System.Diagnostics.Debug.WriteLine("****************************\n" + result.ToString() + "\n***************************");
             FormattedResponse response = FormattedResponseFactory.FromDynamicJObject(result);
+            System.Diagnostics.Debug.WriteLine("****************************\n" + response.Success + "\n***************************");
             return response;
         }
 

@@ -18,22 +18,11 @@ namespace Login.Source.Controllers.Auth
         public static async Task TotalSpendings(int id, string token)
         {
             var endpoint = String.Format("statistics/spendings/user/{0}/token/{1}", id, token);
-            var request = FormRequest(endpoint, "GET");
+            var userJson = await MakeGetRequest(baseUrlDB + endpoint);
 
-            dynamic userJson;
-            using (WebResponse response = await request.GetResponseAsync())
+            if (userJson != null && userJson.Success)
             {
-                using (Stream stream = response.GetResponseStream())
-                {
-                    JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream));
-                    var serializer = new JsonSerializer();
-                    userJson = serializer.Deserialize(jsonReader);
-                }
-            }
-            
-            if (userJson != null)
-            {
-                System.Diagnostics.Debug.WriteLine((string)userJson.success);
+
                 if (OnDataRetrieved != null)
                 {
                     OnDataRetrieved(new Object(), new StatisticsEventArgs(userJson));
@@ -53,20 +42,9 @@ namespace Login.Source.Controllers.Auth
         public static async Task PriceChange(Category category)
         {
             var endpoint = String.Format("statistics/price_change/category/{0}", (int)category);
-            var request = FormRequest(endpoint, "GET");
+            var userJson = await MakeGetRequest(baseUrlDB + endpoint);
 
-            dynamic userJson;
-            using (WebResponse response = await request.GetResponseAsync())
-            {
-                using (Stream stream = response.GetResponseStream())
-                {
-                    JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream));
-                    var serializer = new JsonSerializer();
-                    userJson = serializer.Deserialize(jsonReader);
-                }
-            }
-
-            if (userJson != null)
+            if (userJson != null && userJson.Success)
             {
                 
                 if (OnDataRetrieved != null)
@@ -87,10 +65,10 @@ namespace Login.Source.Controllers.Auth
 
     public class StatisticsEventArgs : EventArgs
     {
-        public StatisticsEventArgs(dynamic data)
+        public StatisticsEventArgs(FormattedResponse data)
         {
             this.statistics = data;
         }
-        public dynamic statistics;
+        public FormattedResponse statistics;
     }
 }

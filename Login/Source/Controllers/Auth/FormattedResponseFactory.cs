@@ -19,7 +19,7 @@ namespace Login.Source.Controllers.Auth
                     }
                     else
                     {
-                        result.AddProperty(key, response[key].ToString(), false);
+                        result.AddProperty(key, response[key].ToString().ToLower(), false);
                     }
 
                 }
@@ -31,34 +31,44 @@ namespace Login.Source.Controllers.Auth
             return result;
         }
 
-        public static FormattedResponse FromDynamicJObject(dynamic response)
+        public static FormattedResponse FromDynamicJObject(JObject response)
         {
-            FormattedResponse result = new FormattedResponse();
-            foreach (var property in response)
+            try
             {
-                string key = property.Key;
-                JToken value = property.Value;
-                JTokenType type = value.Type;
-
-                if (key != "success")
+                FormattedResponse result = new FormattedResponse();
+                foreach (var property in response)
                 {
-                    if (type == JTokenType.Array)
+                    string key = property.Key;
+                    JToken token = property.Value;
+                    JTokenType type = token.Type;
+
+
+                    if (key != "success")
                     {
-                        result.AddProperty(key, value, true);
+                        if (type == JTokenType.Array)
+                        {
+                            result.AddProperty(key, token, true);
+                        }
+                        else
+                        {
+                            result.AddProperty(key, token.ToString(), false);
+                        }
                     }
                     else
                     {
-                        result.AddProperty(key, value.ToString(), false);
+                        result.Success = Boolean.Parse(token.ToString());
                     }
                 }
-                else
-                {
-                    result.Success = Boolean.Parse(value.ToString());
-                }
+
+
+                return result;
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                return null;
             }
 
-
-            return result;
         }
     }
 }

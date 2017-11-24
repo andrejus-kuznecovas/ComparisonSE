@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net;
-using System.IO;
 using System.Threading.Tasks;
-using System.Json;
+using Login.Source.Controllers.Auth;
 
 namespace Login.Source.Controllers
 {
@@ -15,19 +13,11 @@ namespace Login.Source.Controllers
         /// <param name="username">Username to login with</param>
         /// <param name="password">Password to login with</param>
         /// <returns>JSON object containing user data if Login operation was successful</returns>
-        public static async Task< JsonObject > LoginRequest(string username, string password)
+        public static async Task< FormattedResponse > LoginRequest(string username, string password)
         {
+            
             var endpoint = String.Format("login/username/{0}/password/{1}", username, password);
-            var request = FormRequest(endpoint, "GET");
-
-            JsonObject userJson = await MakeRequest(request);
-
-            if (CheckForSuccess(userJson))
-            {
-                return userJson;
-            }
-
-            return null;
+            return await MakeGetRequest(baseUrlDB + endpoint);
         }
 
 
@@ -40,21 +30,13 @@ namespace Login.Source.Controllers
         /// <param name="username">Username to register with</param>
         /// <param name="password">Password to register with</param>
         /// <returns>JSON object containing user data if Login operation was successful</returns>
-        public static async Task<JsonObject> RegistrationRequest
+        public static async Task<FormattedResponse> RegistrationRequest
             (string name, string surname, string email, string username, string password)
         {
             // Save all the registration fields in an array of objects
             var parameters = new object[] { name, surname, email, username, password };
             var endpoint = String.Format("register/name/{0}/surname/{1}/email/{2}/username/{3}/password/{4}", parameters);
-            var request = FormRequest(endpoint, "GET");
-
-            JsonObject userJson = await MakeRequest(request);
-
-            if (CheckForSuccess(userJson))
-            {
-                return userJson;
-            }
-            return null;
+            return await MakeGetRequest(baseUrlDB + endpoint);
         }
         /// <summary>
         /// Makes asynchronous request to get User information from the server
@@ -62,20 +44,10 @@ namespace Login.Source.Controllers
         /// <param name="id">Unique ID of a user</param>
         /// <param name="token">Unique token of a user</param>
         /// <returns>User info JSON object if request was successful</returns>
-        public static async Task<JsonObject> GetInfo(int id, string token)
+        public static async Task< FormattedResponse > GetInfo(int id, string token)
         {
-
-                var endpoint = String.Format("info/user/{0}/token/{1}", id.ToString(), token);
-                var request = FormRequest(endpoint, "GET");
-
-                JsonObject userJson = await MakeRequest(request);
-
-                if (CheckForSuccess(userJson))
-                {
-                    return userJson;
-                }
-                return null;
-
+            var endpoint = String.Format("info/user/{0}/token/{1}", id.ToString(), token);
+            return await MakeGetRequest(baseUrlDB + endpoint);
         }
 
         

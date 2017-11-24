@@ -16,7 +16,7 @@ namespace Login.Source.Controllers.Auth
         {
             foreach (Property property in properties)
             {
-                if (property.Name == name)
+                if (property.Name == name.ToLower())
                 {
                     return true;
                 }
@@ -28,7 +28,7 @@ namespace Login.Source.Controllers.Auth
         {
             foreach (Property property in properties)
             {
-                if (property.Name == name)
+                if (property.Name == name.ToLower())
                 {
                     return property;
                 }
