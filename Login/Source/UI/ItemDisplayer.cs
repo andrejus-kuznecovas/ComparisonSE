@@ -29,14 +29,20 @@ namespace Login.Source.UI
             
             var image = SnapingCamera.Image;
 
+            ProgressDialog recognitionDialog = ProgressDialog.Show(this, "",
+                Resources.GetString(Resource.String.item_displayer_receipt_being_recognized), true);
+
             //ITextRecognizer imageRecognizer = new ImageRecognitionScanbot(this);
             //imageRecognizer.AddOnCompleteHandler(SetText);
 
 
             //Task.Run( () => imageRecognizer.GetTextFromImage(image) );
-            
-            SetText();
+            recognitionDialog.Dismiss();
 
+            ProgressDialog categorisationDialog = ProgressDialog.Show(this, "",
+                Resources.GetString(Resource.String.item_displayer_items_being_categorised), true);
+            SetText();
+            categorisationDialog.Dismiss();
         }
 
         protected void SetText(/*object sender, OCRText result*/)
