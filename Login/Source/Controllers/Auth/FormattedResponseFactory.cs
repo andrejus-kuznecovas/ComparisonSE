@@ -38,15 +38,20 @@ namespace Login.Source.Controllers.Auth
                 FormattedResponse result = new FormattedResponse();
                 foreach (var property in response)
                 {
+                    // Key - name of the property
                     string key = property.Key;
+
+                    // Value of the property, may also be array
                     JToken token = property.Value;
                     JTokenType type = token.Type;
 
 
                     if (key != "success")
                     {
+                        
                         if (type == JTokenType.Array)
                         {
+                            // Mark that its array
                             result.AddProperty(key, token, true);
                         }
                         else
@@ -54,6 +59,7 @@ namespace Login.Source.Controllers.Auth
                             result.AddProperty(key, token.ToString(), false);
                         }
                     }
+                    // Mark success
                     else
                     {
                         result.Success = Boolean.Parse(token.ToString());

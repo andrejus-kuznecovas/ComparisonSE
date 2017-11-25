@@ -15,7 +15,7 @@ namespace Login.Source.Controllers
         /// <param name="ID"></param>
         /// <param name="token"></param>
         /// <param name="receiptJSON"></param>
-        /// <returns></returns>
+        /// <returns>Formatted Response containig property "success"</returns>
         public static async Task<FormattedResponse> SaveReceiptData(int ID, string token, string receiptJSON)
         {
             var endpoint = String.Format("receipts/add/user/{0}/token/{1}", ID, token, receiptJSON);

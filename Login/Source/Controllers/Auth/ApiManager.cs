@@ -15,7 +15,12 @@ namespace Login.Source.Controllers
         protected static string baseUrlDB = "http://billycse.gearhostpreview.com/";
         protected static string baseUrlAI = "https://serene-fortress-77904.herokuapp.com/";
 
-
+        /// <summary>
+        /// Makes asynchronous POST request to the endpoint
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
         protected static async Task<FormattedResponse> MakeAsyncPostRequest(string endpoint, string body = "")
         {
             WebRequest request = FormRequest(endpoint, RequestType.POST);
@@ -24,6 +29,11 @@ namespace Login.Source.Controllers
             return FormattedResponseFactory.FromDynamicJObject(result);
         }
 
+        /// <summary>
+        /// Makes asynchronous GET request to the endpoint
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <returns></returns>
         protected static async Task<FormattedResponse> MakeAsyncGetRequest(string endpoint)
         {
             WebRequest request = FormRequest(endpoint, RequestType.GET);
@@ -32,6 +42,12 @@ namespace Login.Source.Controllers
             return response;
         }
 
+        /// <summary>
+        /// Makes synchronous POST request to the endpoint
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
         protected static FormattedResponse MakeSyncPostRequest(string endpoint, string body = "")
         {
             WebRequest request = FormRequest(endpoint, RequestType.POST);
@@ -40,6 +56,11 @@ namespace Login.Source.Controllers
             return FormattedResponseFactory.FromDynamicJObject(result);
         }
 
+        /// <summary>
+        /// Makes synchronous GET request to the endpoint
+        /// </summary>
+        /// <param name="endpoint"></param>
+        /// <returns></returns>
         protected static FormattedResponse MakeSyncGetRequest(string endpoint)
         {
             WebRequest request = FormRequest(endpoint, RequestType.GET);
@@ -48,38 +69,53 @@ namespace Login.Source.Controllers
             return response;
         }
 
-
+        /// <summary>
+        /// Add and format request body appropriately
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="body"></param>
         private static void AddBody(WebRequest request, string body)
         {
             UTF8Encoding encoding = new UTF8Encoding();
+            // Convert body string to the byte array, needed for the stream
             byte[] bytes = encoding.GetBytes(Uri.EscapeUriString(body));
             request.ContentLength = bytes.Length;
             Stream requestStream = request.GetRequestStream();
 
+            // Write body to the reqeust stream
             requestStream.Write(bytes, 0, bytes.Length);
             requestStream.Close();
         }
 
         /// <summary>
-        /// Performs specified request to the server
+        /// Performs specified request asynchronously
         /// </summary>
         /// <param name="request">Request object</param>
-        /// <returns>User data if request was successful</returns>
+        /// <returns>Formatted response containing data from the server</returns>
         protected static async Task<dynamic> MakeAsyncRequest(WebRequest request)
         {
+            // Returned data
             dynamic userJson;
+
+            // Wait for response
             using (WebResponse response = await request.GetResponseAsync())
             {
                 using (Stream stream = response.GetResponseStream())
                 {
                     JsonTextReader jsonReader = new JsonTextReader(new StreamReader(stream));
                     var serializer = new JsonSerializer();
+                    // Deserialize response to JObject
                     userJson = serializer.Deserialize(jsonReader);
                 }
             }
             return userJson;
         }
 
+        /// <summary>
+        /// Performs specified request asynchronously
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         protected static dynamic MakeRequest(WebRequest request)
         {
             dynamic userJson;

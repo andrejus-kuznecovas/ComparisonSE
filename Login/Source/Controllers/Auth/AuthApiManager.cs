@@ -12,7 +12,7 @@ namespace Login.Source.Controllers
         /// </summary>
         /// <param name="username">Username to login with</param>
         /// <param name="password">Password to login with</param>
-        /// <returns>JSON object containing user data if Login operation was successful</returns>
+        /// <returns>Formatted Response containing properties "id" and "token"</returns>
         public static async Task< FormattedResponse > LoginRequest(string username, string password)
         {
             
@@ -29,7 +29,7 @@ namespace Login.Source.Controllers
         /// <param name="email">Email to register with</param>
         /// <param name="username">Username to register with</param>
         /// <param name="password">Password to register with</param>
-        /// <returns>JSON object containing user data if Login operation was successful</returns>
+        /// <returns>Formatted Response containing properties "id" and "token"</returns>
         public static async Task<FormattedResponse> RegistrationRequest
             (string name, string surname, string email, string username, string password)
         {
@@ -38,12 +38,14 @@ namespace Login.Source.Controllers
             var endpoint = String.Format("register/name/{0}/surname/{1}/email/{2}/username/{3}/password/{4}", parameters);
             return await MakeAsyncGetRequest(baseUrlDB + endpoint);
         }
+
+
         /// <summary>
         /// Makes asynchronous request to get User information from the server
         /// </summary>
         /// <param name="id">Unique ID of a user</param>
         /// <param name="token">Unique token of a user</param>
-        /// <returns>User info JSON object if request was successful</returns>
+        /// <returns>Formatted Response containing properties "name", "surname", "email"</returns>
         public static async Task< FormattedResponse > GetInfo(int id, string token)
         {
             var endpoint = String.Format("info/user/{0}/token/{1}", id.ToString(), token);
